@@ -1,270 +1,4 @@
-let respuestasCorrectas = [
-    {
-        pregunta: "JavaScript es un lenguaje?",
-        respuesta: "Interpretado",
-    },
-    {
-        pregunta: "Bootstrap es un framework q permite?",
-        respuesta:
-            "Conjunto de herramientas de código abierto para diseño de sitios y aplicaciones web",
-    },
-    {
-        pregunta: "Cuantas formas de declarar una varibale hay en JavaScript?",
-        respuesta: "3",
-    },
-    {
-        pregunta: "let es una forma de delcarar variables de forma?",
-        respuesta: "Local",
-    },
-    {
-        pregunta: "Se puede modificar el valor de una varibale const?",
-        respuesta: "No",
-    },
-    {
-        pregunta:
-            "Que se imprime en consola el sigueinte codigo?\n let num1 = '34';\n let num2 = 10;\n const resultado = num1 + num2; ",
-        respuesta: "3410",
-    },
-    {
-        pregunta: "For y While son?",
-        respuesta: "Bucles",
-    },
-    {
-        pregunta:
-            "En un archivo .css cuantas formas vistas en el curso de Desarrollo Web hay de seleccionar un elemento?",
-        respuesta: "Tipo, Clases, ID, :nth-child()",
-    },
-    {
-        pregunta: "Cual es la utilidad de CSS?",
-        respuesta: "Poner la web facherita",
-    },
-    {
-        pregunta: "HTML nos permite crear el?",
-        respuesta: "Esqueleto de la pagina web",
-    },
-    {
-        pregunta: "Una funcion en JS es?",
-        respuesta:
-            "Un conjunto de instrucciones que realiza una tarea o calcula un valor",
-    },
-    {
-        pregunta: "Una funcion es obligatorio que tenga parametros entre sus ()?",
-        respuesta: "No",
-    },
-    {
-        pregunta: "console.log() nos permite?",
-        respuesta: "escribir un mensaje en consola",
-    },
-    {
-        pregunta: "Un alert() muestra?",
-        respuesta:
-            "Muestra un diálogo de alerta con un mensaje opcional, y aguardará hasta que el usuario cierre la ventana de diálogo.",
-    },
-    {
-        pregunta: "if y else hacen?",
-        respuesta:
-            "Ejecuta una sentencia si una condición específicada es evaluada como verdadera. Si la condición es evaluada como falsa, otra sentencia puede ser ejecutada.",
-    },
-    {
-        pregunta: "La utilidad de los eventos es?",
-        respuesta:
-            "permiten la interacción entre las aplicaciones JavaScript y los usuarios. Cada vez que se pulsa un botón,se pulsa una tecla, etc",
-    },
-    {
-        pregunta: "El evento onCLick nos permite?",
-        respuesta:
-            "Ejecuta una cierta funcionalidad cuando se hace clic en un botón.",
-    },
-    {
-        pregunta:
-            "Bootstrap se debe linkear antes o despues de nuestro archivo .css?",
-        respuesta: "Antes",
-    },
-    {
-        pregunta: "Los arrays se usan para?",
-        respuesta: "Almacenar multiples valores en una sola variable",
-    },
-    {
-        pregunta: "El metodo push() nos permite?",
-        respuesta: "Nos permite agragar un elemento al final de la lista",
-    },
-    {
-        pregunta: "Los Booleanos pueden tener solo?",
-        respuesta: "2 valores",
-    },
-    {
-        pregunta: "El objeto Math permite?",
-        respuesta: "Realizar tareas matemáticas",
-    },
-    {
-        pregunta: "Los objetos son?",
-        respuesta: "Un Tipo de dato de JS",
-    },
-    {
-        pregunta: "Los objetos se utilizan para?",
-        respuesta: "Almacenar colecciones de clave/valor",
-    },
-    {
-        pregunta: ` El siguiente codigo tiene error xq?
-        const person = {
-        firstName: "John"
-        lastName: "Doe"
-        age: 50
-        eyeColor: "blue"
-        };
-        console.log(person["age"])
-        `,
-        respuesta: "Faltan las , en el objeto person",
-    },
-    {
-        pregunta: "fetch() es?",
-        respuesta: "Metodo inicia el proceso de obtener un recurso de un servidor",
-    },
-    {
-        pregunta: "Que nos devuelve una peticion fetch()",
-        respuesta: "Una promesa que se resuelve en un objeto de respuesta",
-    },
-    {
-        pregunta: "Usamos media queries para?",
-        respuesta:
-            "Aplicar estilos CSS según el tamaño de pantalla del dispositivo",
-    },
-    {
-        pregunta:
-            "En CSS la propiedad display: block; hara q nuestro elemento se vean en?",
-        respuesta: "Bloque",
-    },
-    {
-        pregunta: "JSON es?",
-        respuesta: "Formato para almacenar y transportar datos.",
-    },
-    {
-        pregunta: "Cuando se usa JSON?",
-        respuesta:
-            "Se usa cuando los datos se envían desde un servidor a una página web.",
-    },
-    {
-        pregunta: "JSON significa?",
-        respuesta: "Java Script Object Notation",
-    },
-    {
-        pregunta: "Inpeccionar una pagina nos permite?",
-        respuesta: "Ver los elementos, CSS, errores, consola, etc",
-    },
-    {
-        pregunta: ` q se escribe en consola?
-        const funcion1 = (a,b)=>{
-            let c = 0
-            return
-            c = a+b;
-        }
-        `,
-        respuesta: "undefined",
-    },
-];
-
-// const sumar = (a,b)=>{
-//     return a+b;
-// }
-
-// const restar = (a,b)=>{
-//     return a-b;
-// }
-
-// const multiplicar = (a,b)=>{
-//     return a*b;
-// }
-
-// const dividir = (a,b)=>{
-//     return a/b;
-// }
-
-// const calculadora = (num1, num2, operador)=>{
-//     let resultado = 0;
-
-//     switch (operador) {
-//         case "+":
-//             resultado = sumar(num1,num2);
-//             break;
-
-//         case "-":
-//                 resultado = restar(num1,num2);
-//                 break;
-
-//         case "*":
-//             resultado = multiplicar(num1,num2);
-//             break;
-
-//         case "/":
-//                 resultado = dividir(num1,num2);
-//                 break;
-
-//         default:
-//             break;
-//     }
-
-//     return resultado;
-// }
-
-// const mismosNumeros = (resultado,numero,operacion)=>{
-//     let res = resultado;
-
-//     if (parseInt(numero)) {
-//         res = calculadora(res,numero,operacion);
-//         alert(res);
-
-//     } else {
-//         alert("tenes q pasarme numeros");
-//     }
-
-//     return res;
-// }
-
-// const bucleOperacion = (confirmacion,resultado)=>{
-
-//     if (confirmacion == 'si') {
-//         while (confirmacion == 'si') {
-//             let numNuevo = parseInt(prompt("pasame otro numero:"));
-//             let opNueva = prompt("q operacion queres hacer (+,-,*,/)");
-
-//             resultado = mismosNumeros(resultado,numNuevo,opNueva);
-//             confirmacion = prompt("seguimos con estos numero? si o no");
-//         }
-//     }
-
-//     return resultado;
-// }
-
-// const seguirOperando = ()=>{
-//     let continuar = prompt("queres hacer una operacion matematica? si o no");
-//     let res = 0;
-
-//     while (continuar == 'si' || continuar == 'SI' || continuar == 'Si') {
-
-//         let numero1 = parseInt(prompt("pasame 1 numero"));
-//         let numero2 = parseInt(prompt("pasame otro numero"));
-//         let operacion = prompt("q operacion queres hacer (+,-,*,/)");
-//         let seguimos = "";
-
-//         if (parseInt(numero1) && parseInt(numero2)) {
-//             res = calculadora(numero1,numero2,operacion);
-
-//             alert(res);
-
-//             seguimos = prompt("seguimos con estos numero? si o no");
-
-//             res = bucleOperacion(seguimos,res);
-
-//             continuar = prompt("hacemos otra operacion?");
-
-//         } else {
-//             alert("tenes q pasarme numeros");
-//         }
-//     }
-// }
-
-// seguirOperando();
-
+//QUIZ DE PREGUNTAS (DE MOMENTO SOLO 5)
 const nombreUsuario = prompt("Ingrese su nombre: ")
 
 const pregunta1 = "JavaScript es un lenguaje?";
@@ -425,3 +159,108 @@ const funcionPregunta = (nombre) => {
 
 funcionPregunta(nombreUsuario);
 
+
+
+//CALCULADORA
+
+// const sumar = (a,b)=>{
+//     return a+b;
+// }
+
+// const restar = (a,b)=>{
+//     return a-b;
+// }
+
+// const multiplicar = (a,b)=>{
+//     return a*b;
+// }
+
+// const dividir = (a,b)=>{
+//     return a/b;
+// }
+
+// const calculadora = (num1, num2, operador)=>{
+//     let resultado = 0;
+
+//     switch (operador) {
+//         case "+":
+//             resultado = sumar(num1,num2);
+//             break;
+
+//         case "-":
+//                 resultado = restar(num1,num2);
+//                 break;
+
+//         case "*":
+//             resultado = multiplicar(num1,num2);
+//             break;
+
+//         case "/":
+//                 resultado = dividir(num1,num2);
+//                 break;
+
+//         default:
+//             break;
+//     }
+
+//     return resultado;
+// }
+
+// const mismosNumeros = (resultado,numero,operacion)=>{
+//     let res = resultado;
+
+//     if (parseInt(numero)) {
+//         res = calculadora(res,numero,operacion);
+//         alert(res);
+
+//     } else {
+//         alert("tenes q pasarme numeros");
+//     }
+
+//     return res;
+// }
+
+// const bucleOperacion = (confirmacion,resultado)=>{
+
+//     if (confirmacion == 'si') {
+//         while (confirmacion == 'si') {
+//             let numNuevo = parseInt(prompt("pasame otro numero:"));
+//             let opNueva = prompt("q operacion queres hacer (+,-,*,/)");
+
+//             resultado = mismosNumeros(resultado,numNuevo,opNueva);
+//             confirmacion = prompt("seguimos con estos numero? si o no");
+//         }
+//     }
+
+//     return resultado;
+// }
+
+// const seguirOperando = ()=>{
+//     let continuar = prompt("queres hacer una operacion matematica? si o no");
+//     let res = 0;
+
+//     while (continuar == 'si' || continuar == 'SI' || continuar == 'Si') {
+
+//         let numero1 = parseInt(prompt("pasame 1 numero"));
+//         let numero2 = parseInt(prompt("pasame otro numero"));
+//         let operacion = prompt("q operacion queres hacer (+,-,*,/)");
+//         let seguimos = "";
+
+//         if (parseInt(numero1) && parseInt(numero2)) {
+//             res = calculadora(numero1,numero2,operacion);
+
+//             alert(res);
+
+//             seguimos = prompt("seguimos con estos numero? si o no");
+
+//             res = bucleOperacion(seguimos,res);
+
+//             continuar = prompt("hacemos otra operacion?");
+
+//         } else {
+//             alert("tenes q pasarme numeros");
+//         }
+//     }
+// }
+
+// seguirOperando();
