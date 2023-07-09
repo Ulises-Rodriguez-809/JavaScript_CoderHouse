@@ -1,7 +1,9 @@
 //QUIZ DE PREGUNTAS (DE MOMENTO SOLO 5)
 const nombreUsuario = prompt("Ingrese su nombre: ")
 
+//variable donde esta la pregunta
 const pregunta1 = "JavaScript es un lenguaje?";
+//variable donde guarda el numero de la respuesta correcta
 const respuesta1 = "2";
 
 const pregunta2 = "let es una forma de?";
@@ -16,8 +18,13 @@ const respuesta4 = "1";
 const pregunta5 = "Bootstrap se debe linkear antes o despues de nuestro archivo .css?";
 const respuesta5 = "1";
 
-const analizandoRespuesta = (resU, resP, puntuacion)=>{
+//la funcion analizandoRespuesta pues hace lo q dice su nombre
+//los parametros q toma son la respuesta del usuario, respuesta1,2,3,.... (el numero depende del caso en el q estemos ene el switch) y por ultimo la variable donde se va a ir guardando la puntuacion
+const analizandoRespuesta = (resU, resP, puntuacion) => {
+    
+    //este if analiza si la respuesta del usuario es igual a la respuesta1,2,3,...
     if (resU == resP) {
+        //en caso de ser correcta se le informa y a la varibale puntuacion se le suma 1
         alert("respuesta correcta");
         puntuacion++;
 
@@ -25,12 +32,17 @@ const analizandoRespuesta = (resU, resP, puntuacion)=>{
         alert("respuesta incorrecta");
     }
 
+    //restornamos puntuacion q se usa mas adelante para mostrar la cantidad de respuestas correctas
     return puntuacion;
 }
 
+//funcion q se encarga de hacer las preguntas
+//se q podria pedir el nombre del jugador dentro de la funcion pero queria practicar todo el tema de los parametros de funciones
 const funcionPregunta = (nombre) => {
 
+    //varibale q va a ir guardando la respuesta del usuario
     let respuestaUsuario = "";
+    //cantidad de respuestas correctas del jugador
     let puntuacion = 0;
 
     for (let i = 0; i < 5; i++) {
@@ -38,7 +50,9 @@ const funcionPregunta = (nombre) => {
         switch (i) {
             case 0:
 
+                //se q podria hacer la pregunta y las opciones todo juntos pero me parecia q quedaba muy cargado todo en 1 solo propmt
                 alert(pregunta1);
+                //prompt q le muestra al usuario las posibles respuestas y guarda el numero para comparar mas adelante con la variable respuesta1
                 respuestaUsuario = prompt(`
                 escriba el numero de alguna de las siguientes opciones:
                 1_Igual q Java
@@ -47,7 +61,8 @@ const funcionPregunta = (nombre) => {
                 4_Ninguna de las anteriores
                 `);
 
-                puntuacion = analizandoRespuesta(respuestaUsuario,respuesta1,puntuacion);
+                //esta funcion cumple la misma funcion de el if else de abajo q se repetia muchas veces en el codigo
+                puntuacion = analizandoRespuesta(respuestaUsuario, respuesta1, puntuacion);
                 // if (respuestaUsuario == respuesta1) {
                 //     alert("respuesta correcta");
                 //     puntuacion++;
@@ -69,7 +84,7 @@ const funcionPregunta = (nombre) => {
                 4_Ninguna de las anteriores
                 `);
 
-                puntuacion = analizandoRespuesta(respuestaUsuario,respuesta2,puntuacion);
+                puntuacion = analizandoRespuesta(respuestaUsuario, respuesta2, puntuacion);
 
                 // if (respuestaUsuario == respuesta2) {
                 //     alert("respuesta correcta");
@@ -90,7 +105,7 @@ const funcionPregunta = (nombre) => {
                 3_Ninguna de las anteriores
                 `);
 
-                puntuacion = analizandoRespuesta(respuestaUsuario,respuesta3,puntuacion);
+                puntuacion = analizandoRespuesta(respuestaUsuario, respuesta3, puntuacion);
 
                 // if (respuestaUsuario == respuesta3) {
                 //     alert("respuesta correcta");
@@ -112,7 +127,7 @@ const funcionPregunta = (nombre) => {
                 4_Ninguna de las anteriores
                 `);
 
-                puntuacion = analizandoRespuesta(respuestaUsuario,respuesta4,puntuacion);
+                puntuacion = analizandoRespuesta(respuestaUsuario, respuesta4, puntuacion);
 
                 // if (respuestaUsuario == respuesta4) {
                 //     alert("respuesta correcta");
@@ -135,7 +150,7 @@ const funcionPregunta = (nombre) => {
                 4_Ninguna de las anteriores
                 `);
 
-                puntuacion = analizandoRespuesta(respuestaUsuario,respuesta5,puntuacion);
+                puntuacion = analizandoRespuesta(respuestaUsuario, respuesta5, puntuacion);
 
                 // if (respuestaUsuario == respuesta5) {
                 //     alert("respuesta correcta");
@@ -148,18 +163,22 @@ const funcionPregunta = (nombre) => {
                 break;
 
             default:
-                console.log("no pusiste ninguna de las opciones vamos todo de nuevo");
+                console.log("no pusiste ninguna de las opciones");
                 break;
         }
 
     }
 
+    //alert q muestra el nombre + la puntuacion del jugador
     alert(nombre + " tu puntuacion es de:" + " " + puntuacion + " respuestas correctas");
 }
 
+//llamamos a la funcion para q empeize el quiz
 funcionPregunta(nombreUsuario);
 
 
+
+//profe aca tengo una calculadora q era otra posible opcion de proyecto (puede porblarlo si quiere pero la entraga es el quiz de preguntas)
 
 //CALCULADORA
 
