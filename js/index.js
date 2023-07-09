@@ -163,7 +163,7 @@ const funcionPregunta = (nombre) => {
                 break;
 
             default:
-                console.log("no pusiste ninguna de las opciones");
+                console.log("Error");
                 break;
         }
 
