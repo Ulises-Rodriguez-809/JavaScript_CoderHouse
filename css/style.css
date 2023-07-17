@@ -1,0 +1,144 @@
+/* RESETER VALORES DEL NAVEGADOR */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Oswald', sans-serif;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+/* TITULO */
+.tituloContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulo {
+    margin: 1rem 0;
+    font-size: 4.5rem;
+    text-align: center;
+    border-bottom: .2rem solid #000;
+}
+
+/* INGRESAR NOMBRE JUGADOR */
+.sectionNombre{
+    padding: 1rem;
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: end;
+}
+
+.nombreContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.nombreContainer label, .sectionNombre input, .btnContainer button{
+    font-size: 2rem;
+}
+
+/* RONDAS */
+.rondasContainer {
+    background-color: rgb(249, 140, 140);
+    padding: 1.5rem;
+    display: flex;
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.rondas {
+    flex-grow: 1;
+}
+
+
+/* JUEGO */
+.sectionJuego {
+    background-color: rgb(251, 221, 160);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* PREGUNTAS */
+.preguntaContainer {
+    font-size: 4rem;
+    font-weight: 800;
+    text-align: center;
+    background-color: rgb(255, 150, 4);
+    width: 100%;
+}
+
+/* OPCIONES */
+.opcionesContainer ul{
+    margin: 3rem 0;
+}
+
+.opcionesContainer ul li {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.opcionesContainer ul li input {
+    background-color: rgb(255, 146, 4);
+    width: 100%;
+    font-size: 4rem;
+    margin-top: 2rem;
+    padding: 0 .2rem;
+}
+
+/* PUNTOS DEL JUGADOR ACTUAL */
+.puntuacionContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(159, 133, 255);
+}
+
+.jugador,.puntos{
+    font-size: 3rem;
+    font-weight: 800;
+    text-align: center;
+    width: 50rem;
+}
+
+/* TOP 10 */
+.top10{
+    background-color: #a2a0a0;
+    margin-top: 2rem;
+}
+
+/* TITULO TOP 10 */
+.trofeoContainer{
+    background-color: #9982f6;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.top10Titulo{
+    font-size: 4rem;
+    font-weight: 800;
+    color: #fbf780;
+    border-bottom: solid .2rem rgb(255, 0, 0);
+}
+
+.tofeoImg{
+    width: 8rem;
+    height: 8rem;
+}
+
+/* MEJORES JUGADORES */
+.top10MejoresJugadores ul li{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.puntos{
+    text-align: center;
+}

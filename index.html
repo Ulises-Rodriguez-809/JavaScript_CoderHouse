@@ -8,20 +8,41 @@
 </head>
 <body>
     <main>
+        <!-- TITULO -->
         <section class="sectionTitulo">
             <div class="tituloContainer">
-                <h1>Quiz de preguntas</h1>
+                <h1 class="titulo">Quiz de preguntas</h1>
             </div>
         </section>
-        <section class="juegoContainer">
-            <div class="preguntaContainer">
-                JavaScript es un lenguaje?
+        <!-- INGRESAR NOMBRE JUGADOR -->
+        <section class="sectionNombre">
+            <div class="nombreContainer">
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" id="nombre" placeholder="ingresar nombre">
             </div>
+            <div class="btnContainer">
+                <button type="button">Empesar a jugar</button>
+            </div>
+        </section>
+        <!-- RONDAS NUMERO -->
+        <section>
+            <div class="rondasContainer">
+                <div class="rondas">Ronda: 1</div>
+                <div class="rondasCantidad">1/10</div>
+            </div>
+        </section>
+        <!-- JUEGO -->
+        <section class="sectionJuego">
+            <!-- PREGUNTAS -->
+            <div class="preguntaContainer">
+                <div class="pregunta">
+                    JavaScript es un lenguaje?
+                </div>
+            </div>
+            <!-- OPCIONES DE LAS PREGUNTAS -->
             <div class="opcionesContainer">
                 <ul>
-                    <li>
-                        hacer q la respuesta correcta cambie de color a verde y la incorrectas a rojo
-                    </li>
+                    <!-- hacer q la respuesta correcta cambie de color a verde y la incorrectas a rojo -->
                     <li>
                         <input type="button" value="Igual que Java">
                     </li>
@@ -36,11 +57,73 @@
                     </li>
                 </ul>
             </div>
-            <div class="respuesta">
-                aca iria la respuesta con una mini explicacion
+        </section>
+        <!-- PUNTOS DEL JUGADOR ACTUAL -->
+        <section class="sectionPuntiacion">
+            <div class="puntuacionContainer">
+                <div class="jugador">Tino</div>
+                <div class="puntos">Puntos : 2</div>
             </div>
         </section>
     </main>
+    <!-- MEJORES JUGADORES -->
+    <section class="top10">
+        <!-- TITULO MEJORES JUGADORES -->
+        <div class="trofeoContainer">
+            <div>
+                <img class="tofeoImg" src="./img/01.png" alt="foto trofeo">
+            </div>
+            <div class="top10Titulo">Mejores jugadores</div>
+            <div>
+                <img class="tofeoImg" src="./img/01.png" alt="foto trofeo">
+            </div>
+        </div>
+        <!-- RANKING -->
+        <div class="top10MejoresJugadores">
+            <ul>
+                <li>
+                    <div class="jugador">Juan</div>
+                    <div class="puntos">10</div>
+                </li>
+                <li>
+                    <div class="jugador">Facu</div>
+                    <div class="puntos">10</div>
+                </li>
+                <li>
+                    <div class="jugador">Martin</div>
+                    <div class="puntos">9</div>
+                </li>
+                <li>
+                    <div class="jugador">Lucho</div>
+                    <div class="puntos">7</div>
+                </li>
+                <li>
+                    <div class="jugador">Yo</div>
+                    <div class="puntos">7</div>
+                </li>
+                <li>
+                    <div class="jugador">Pepe</div>
+                    <div class="puntos">6</div>
+                </li>
+                <li>
+                    <div class="jugador">ElMagician</div>
+                    <div class="puntos">5</div>
+                </li>
+                <li>
+                    <div class="jugador">Lenox</div>
+                    <div class="puntos">3</div>
+                </li>
+                <li>
+                    <div class="jugador">ElPampa</div>
+                    <div class="puntos">3</div>
+                </li>
+                <li>
+                    <div class="jugador">Tatun</div>
+                    <div class="puntos">3</div>
+                </li>
+            </ul>
+        </div>
+    </section>
     <script src="./js/index.js"></script>
 </body>
 </html>
