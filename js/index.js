@@ -284,87 +284,186 @@ const preguntasYRespuestas = [
     // },
 ];
 
-function Jugadores(nombre, puntuacion) {
+function Jugadores(nombre, puntuacion, equipo) {
     this.nombre = nombre;
     this.puntuacion = puntuacion;
+    this.equipo = equipo;
 
     this.puntuacionJugador = function () {
         alert("La puntuacion del jugador " + this.nombre + " es de :" + this.puntuacion);
     }
 }
 
-const jugadoresArray = [
+//Equipos
+const myCodeCoffe = [
     {
-        jugador: new Jugadores("Marta", 8)
+        jugador: new Jugadores("Marta", 8, "myCodeCoffe")
     },
     {
-        jugador: new Jugadores("Ludmi", 4)
+        jugador: new Jugadores("Ludmi", 4, "myCodeCoffe")
 
     },
     {
-        jugador: new Jugadores("Fede", 5)
+        jugador: new Jugadores("Fede", 5, "myCodeCoffe")
 
     },
     {
-        jugador: new Jugadores("Fernando", 2)
+        jugador: new Jugadores("Fernando", 2, "myCodeCoffe")
 
     },
     {
-        jugador: new Jugadores("Maria", 1)
+        jugador: new Jugadores("Maria", 1, "myCodeCoffe")
 
     },
     {
-        jugador: new Jugadores("Luciana", 8)
+        jugador: new Jugadores("Luciana", 8, "myCodeCoffe")
 
     },
     {
-        jugador: new Jugadores("Luciano", 8)
+        jugador: new Jugadores("Luciano", 8, "myCodeCoffe")
 
     },
     {
         nombre: "Juan",
-        puntuacion: 10
+        puntuacion: 10,
+        equipo: "myCodeCoffe"
     },
     {
         nombre: "Facu",
-        puntuacion: 10
+        puntuacion: 10,
+        equipo: "myCodeCoffe"
     },
     {
         nombre: "Martin",
-        puntuacion: 9
+        puntuacion: 9,
+        equipo: "myCodeCoffe"
     },
     {
         nombre: "Lucho",
-        puntuacion: 7
+        puntuacion: 7,
+        equipo: "myCodeCoffe"
     },
     {
         nombre: "Yo",
-        puntuacion: 7
+        puntuacion: 7,
+        equipo: "myCodeCoffe"
     },
     {
         nombre: "Pepe",
-        puntuacion: 6
+        puntuacion: 6,
+        equipo: "myCodeCoffe"
     },
     {
         nombre: "ElMagician",
-        puntuacion: 5
+        puntuacion: 5,
+        equipo: "myCodeCoffe"
     },
     {
         nombre: "Lenox",
-        puntuacion: 3
+        puntuacion: 3,
+        equipo: "myCodeCoffe"
     },
     {
         nombre: "ElPampa",
-        puntuacion: 3
+        puntuacion: 3,
+        equipo: "myCodeCoffe"
     },
     {
         nombre: "Tatun",
-        puntuacion: 3
-    },
+        puntuacion: 3,
+        equipo: "myCodeCoffe"
+    }
 ]
 
-//QUIZ DE PREGUNTAS (DE MOMENTO SOLO 5)
-// const nombreUsuario = prompt("Ingrese su nombre: ");
+const codigoYCafe = [
+    {
+        jugador: new Jugadores("Uli", 10, "codigoYCafe")
+    },
+    {
+        jugador: new Jugadores("Patt", 10, "codigoYCafe")
+    },
+    {
+        jugador: new Jugadores("Bio", 4, "codigoYCafe")
+    },
+    {
+        jugador: new Jugadores("Nicolas", 9, "codigoYCafe")
+    },
+    {
+        jugador: new Jugadores("Niruki", 10, "codigoYCafe")
+    },
+    {
+        jugador: new Jugadores("Josefina", 10, "codigoYCafe")
+    },
+    {
+        jugador: new Jugadores("Messi", 10, "codigoYCafe")
+    },
+    {
+        jugador: new Jugadores("Ariel", 3, "codigoYCafe")
+    },
+    {
+        jugador: new Jugadores("Abril", 5, "codigoYCafe")
+    },
+    {
+        jugador: new Jugadores("Timy", 2, "codigoYCafe")
+    },
+    {
+        jugador: new Jugadores("Tom", 8, "codigoYCafe")
+    },
+    {
+        jugador: new Jugadores("Juanchibiri", 6, "codigoYCafe")
+    }
+]
+
+const iTurnCoffeIntoCode = [
+    {
+        jugador: new Jugadores("Maxi", 10, "codigoYCafe")
+    },
+    {
+        jugador: new Jugadores("Maxi", 10, "codigoYCafe")
+    },
+    {
+        jugador: new Jugadores("Maxi", 10, "codigoYCafe")
+    },
+    {
+        jugador: new Jugadores("Alicia", 9, "codigoYCafe")
+    },
+    {
+        jugador: new Jugadores("Bibi", 2, "codigoYCafe")
+    },
+    {
+        jugador: new Jugadores("Joshep", 3, "codigoYCafe")
+    },
+    {
+        jugador: new Jugadores("Lucy", 6, "codigoYCafe")
+    },
+    {
+        jugador: new Jugadores("Maximiliano", 1, "codigoYCafe")
+    },
+    {
+        jugador: new Jugadores("Marcelo", 5, "codigoYCafe")
+    },
+    {
+        jugador: new Jugadores("Rocio", 8, "codigoYCafe")
+    },
+    {
+        jugador: new Jugadores("Martincho", 10, "codigoYCafe")
+    },
+    {
+        jugador: new Jugadores("Juanchis", 10, "codigoYCafe")
+    }
+]
+
+
+
+//QUIZ DE PREGUNTAS 
+const nombreUsuario = prompt("Ingrese su nombre: ");
+const equipoUsuario = prompt(`
+Elija un equipo: 
+1_MY CODE COFFE
+2_CODIFO Y CAFE
+3_I TURN COFFE INTO CODE
+`);
+
 
 const analizandoRespuesta = (resU, resP, puntuacion) => {
 
@@ -379,8 +478,8 @@ const analizandoRespuesta = (resU, resP, puntuacion) => {
     return puntuacion;
 }
 
-//funcion q se encarga de hacer las preguntas
-const funcionPregunta = (nombre, arr) => {
+//funcion q se encarga de hacer las preguntas y devuelve los puntos del jugador
+const funcionPregunta = (arr) => {
 
     let pregunta = "";
     let respuesta = "";
@@ -406,23 +505,151 @@ const funcionPregunta = (nombre, arr) => {
         puntuacion = analizandoRespuesta(respuestaUsuario, respuesta, puntuacion);
     });
 
-    return (nombre + " tu puntuacion es de:" + " " + puntuacion + " respuestas correctas");
+    return puntuacion;
+}
+
+
+//funcion para agregar al jugador y su puntuacion al equipo elegido
+const agregarAEquipo = (nombre, puntuacion, equipo) => {
+
+    let equipoElegido = "";
+    let aux = "";
+
+    switch (equipo) {
+        case "1":
+
+            equipoElegido = "myCodeCoffe"
+
+            // const jugadorNuevo = {
+            //     nombre: nombre,
+            //     equipo: equipo,
+            //     puntuacion: 0
+            // }
+
+            // myCodeCoffe.push(jugadorNuevo);
+
+            aux = {
+                jugador: new Jugadores(nombre, puntuacion, equipoElegido)
+            };
+
+            myCodeCoffe.push(aux);
+            console.log(myCodeCoffe);
+
+            break;
+
+        case "2":
+
+            equipoElegido = "codigoYCafe";
+
+            aux = {
+                jugador: new Jugadores(nombre, puntuacion, equipoElegido)
+            };
+
+            codigoYCafe.push(aux);
+            console.log(codigoYCafe);
+
+            break;
+
+        case "3":
+
+            equipoElegido = "iTurnCoffeIntoCode";
+
+
+            aux = {
+                jugador: new Jugadores(nombre, puntuacion, equipoElegido)
+            };
+            iTurnCoffeIntoCode.push(aux);
+            console.log(iTurnCoffeIntoCode);
+
+            break;
+
+        default:
+            console.log("error");
+            break;
+    }
+
+    return equipoElegido;
+}
+
+//sumar puntos del equipo pasado
+const sumarPuntos = (equipo) => {
+
+    let puntosTotales = 0;
+
+    puntosTotales = equipo.map((elem) => elem.jugador.puntuacion).reduce((total, valor) => {
+        return total + valor
+    }, 0);
+
+    return puntosTotales;
+}
+
+//funcion q suma los puntos totales del equipo q eligio el jugador
+const puntosDelEquipo = (equipo) => {
+
+    let puntosTotales = 0;
+
+    switch (equipo) {
+        case "1":
+
+            puntosTotales = sumarPuntos(myCodeCoffe);
+
+            break;
+        case "2":
+
+            puntosTotales = sumarPuntos(codigoYCafe);
+
+            break;
+        case "3":
+
+            puntosTotales = sumarPuntos(iTurnCoffeIntoCode);
+
+            break;
+
+        default:
+            console.log("error");
+            break;
+    }
+
+    return puntosTotales;
+}
+
+//funcion q muestra por consola los 10 mejores jugadores del equipo elejido
+const mostrarTop10 = (equipo)=>{
+
+    //hace un filter y un sort aca
+
+    switch (equipo) {
+        case "1":
+
+            puntosTotales = sumarPuntos(myCodeCoffe);
+
+            break;
+        case "2":
+
+            puntosTotales = sumarPuntos(codigoYCafe);
+
+            break;
+        case "3":
+
+            puntosTotales = sumarPuntos(iTurnCoffeIntoCode);
+
+            break;
+
+        default:
+            console.log("error");
+            break;
+    }
+
 }
 
 // llamamos a la funcion para q empeize el quiz
-// const jugador1 = funcionPregunta(nombreUsuario,preguntasYRespuestas);
-// alert(jugador1);
+const puntuacionUsuario = funcionPregunta(preguntasYRespuestas);
+alert(nombreUsuario + " tu puntuacion es de:" + " " + puntuacionUsuario + " respuestas correctas");
 
-console.log(jugadoresArray);
+//agregamos al jugador a su equipo elegido
+const agregandoEquipo = agregarAEquipo(nombreUsuario, puntuacionUsuario, equipoUsuario);
+alert(`el jugador : ${nombreUsuario} q tiene una puntuacion de : ${puntuacionUsuario} a sido agregado al equipo : ${agregandoEquipo}`);
 
-let jugador = new Jugadores(nombreUsuario, 10);
-// jugador.puntuacionJugador();
-console.log(jugador)
-console.log(jugador.nombre + jugador.puntuacion)
-jugadoresArray.push(jugador);
-console.log(jugadoresArray)
-console.log(jugadoresArray[0].jugador.nombre + jugadoresArray[0].jugador.puntuacion)
-
-
-//crea un array en el q vas guardando los valores de puntuacion y luego sumalos todos con reduce
-myAwesomeArray.map(x => x * x).reduce((total, value) => total + value)
+//mostramos los puntos totales de su equipo
+const puntosTotales = puntosDelEquipo(equipoUsuario);
+alert(`Los puntos totales de tu equipo son : ${puntosTotales}`);
