@@ -324,54 +324,73 @@ const myCodeCoffe = [
 
     },
     {
-        nombre: "Juan",
-        puntuacion: 10,
-        equipo: "myCodeCoffe"
+        jugador: new Jugadores("Juan", 10, "myCodeCoffe")
+        // nombre: "Juan",
+        // puntuacion: 10,
+        // equipo: "myCodeCoffe"
     },
     {
-        nombre: "Facu",
-        puntuacion: 10,
-        equipo: "myCodeCoffe"
+        jugador: new Jugadores("Facu", 10, "myCodeCoffe")
+
+        // nombre: "Facu",
+        // puntuacion: 10,
+        // equipo: "myCodeCoffe"
     },
     {
-        nombre: "Martin",
-        puntuacion: 9,
-        equipo: "myCodeCoffe"
+        jugador: new Jugadores("Martin", 9, "myCodeCoffe")
+
+        // nombre: "Martin",
+        // puntuacion: 9,
+        // equipo: "myCodeCoffe"
     },
     {
-        nombre: "Lucho",
-        puntuacion: 7,
-        equipo: "myCodeCoffe"
+        jugador: new Jugadores("Lucho", 7, "myCodeCoffe")
+
+        // nombre: "Lucho",
+        // puntuacion: 7,
+        // equipo: "myCodeCoffe"
     },
     {
-        nombre: "Yo",
-        puntuacion: 7,
-        equipo: "myCodeCoffe"
+        jugador: new Jugadores("Yo", 7, "myCodeCoffe")
+
+        // nombre: "Yo",
+        // puntuacion: 7,
+        // equipo: "myCodeCoffe"
     },
     {
-        nombre: "Pepe",
-        puntuacion: 6,
-        equipo: "myCodeCoffe"
+        jugador: new Jugadores("Pepe", 6, "myCodeCoffe")
+
+        // nombre: "Pepe",
+        // puntuacion: 6,
+        // equipo: "myCodeCoffe"
     },
     {
-        nombre: "ElMagician",
-        puntuacion: 5,
-        equipo: "myCodeCoffe"
+        jugador: new Jugadores("ElMagician", 5, "myCodeCoffe")
+
+        // nombre: "ElMagician",
+        // puntuacion: 5,
+        // equipo: "myCodeCoffe"
     },
     {
-        nombre: "Lenox",
-        puntuacion: 3,
-        equipo: "myCodeCoffe"
+        jugador: new Jugadores("Lenox", 3, "myCodeCoffe")
+
+        // nombre: "Lenox",
+        // puntuacion: 3,
+        // equipo: "myCodeCoffe"
     },
     {
-        nombre: "ElPampa",
-        puntuacion: 3,
-        equipo: "myCodeCoffe"
+        jugador: new Jugadores("ElPampa", 3, "myCodeCoffe")
+
+        // nombre: "ElPampa",
+        // puntuacion: 3,
+        // equipo: "myCodeCoffe"
     },
     {
-        nombre: "Tatun",
-        puntuacion: 3,
-        equipo: "myCodeCoffe"
+        jugador: new Jugadores("Tatun", 3, "myCodeCoffe")
+
+        // nombre: "Tatun",
+        // puntuacion: 3,
+        // equipo: "myCodeCoffe"
     }
 ]
 
@@ -614,24 +633,36 @@ const puntosDelEquipo = (equipo) => {
 }
 
 //funcion q muestra por consola los 10 mejores jugadores del equipo elejido
-const mostrarTop10 = (equipo)=>{
+const mostrarTop10 = (equipo) => {
 
     //hace un filter y un sort aca
+    let mejorsJugadores = [];
 
     switch (equipo) {
         case "1":
 
-            puntosTotales = sumarPuntos(myCodeCoffe);
+            mejorsJugadores = myCodeCoffe.filter((elem) => elem.jugador.puntuacion >= 5);
+            mejorsJugadores.sort((a, b) => b.jugador.puntuacion - a.jugador.puntuacion);
+
+            console.log(mejorsJugadores);
 
             break;
+
         case "2":
 
-            puntosTotales = sumarPuntos(codigoYCafe);
+            mejorsJugadores = codigoYCafe.filter((elem) => elem.jugador.puntuacion >= 5);
+            mejorsJugadores.sort((a, b) => b.jugador.puntuacion - a.jugador.puntuacion);
+
+            console.log(mejorsJugadores);
 
             break;
+
         case "3":
 
-            puntosTotales = sumarPuntos(iTurnCoffeIntoCode);
+            mejorsJugadores = iTurnCoffeIntoCode.filter((elem) => elem.jugador.puntuacion >= 5);
+            mejorsJugadores.sort((a, b) => b.jugador.puntuacion - a.jugador.puntuacion);
+
+            console.log(mejorsJugadores);
 
             break;
 
@@ -653,3 +684,5 @@ alert(`el jugador : ${nombreUsuario} q tiene una puntuacion de : ${puntuacionUsu
 //mostramos los puntos totales de su equipo
 const puntosTotales = puntosDelEquipo(equipoUsuario);
 alert(`Los puntos totales de tu equipo son : ${puntosTotales}`);
+
+mostrarTop10(equipoUsuario)

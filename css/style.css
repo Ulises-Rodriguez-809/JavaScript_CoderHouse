@@ -105,13 +105,13 @@ html {
     width: 50rem;
 }
 
-/* TOP 10 */
-.top10{
+/* TOP jugadores container*/
+.topJugadores{
     background-color: #a2a0a0;
     margin-top: 2rem;
 }
 
-/* TITULO TOP 10 */
+/* TITULO jugadores top */
 .trofeoContainer{
     background-color: #9982f6;
     display: flex;
@@ -119,7 +119,7 @@ html {
     align-items: center;
 }
 
-.top10Titulo{
+.topJugadoresTitulo{
     font-size: 4rem;
     font-weight: 800;
     color: #fbf780;
