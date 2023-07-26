@@ -98,7 +98,7 @@ html {
     background-color: rgb(159, 133, 255);
 }
 
-.jugador,.puntos{
+.jugadorActual,.jugador,.puntos{
     font-size: 3rem;
     font-weight: 800;
     text-align: center;
@@ -188,6 +188,8 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    background-color: #bd3131;
+    padding: 1rem;
 }
 
 .jugadoresContainer ul li{
@@ -195,6 +197,12 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #fff;
+    margin: 1rem 0;
+}
+
+.jugador{
+    background-color: #ff8400;
 }
 
 .puntos{
@@ -204,6 +212,7 @@ html {
 .puntosEuipo{
     margin-top: 2rem;
     display: flex;
+    background-color: #0073d7;
 }
 
 .puntosEuipo p{

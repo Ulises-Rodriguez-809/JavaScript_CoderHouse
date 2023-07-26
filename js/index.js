@@ -289,108 +289,113 @@ function Jugadores(nombre, puntuacion, equipo) {
     this.puntuacion = puntuacion;
     this.equipo = equipo;
 
-    this.puntuacionJugador = function () {
-        alert("La puntuacion del jugador " + this.nombre + " es de :" + this.puntuacion);
+    this.infoJugador = function () {
+        alert(`
+        El jugador fue agregado
+        Jugador : ${this.nombre} 
+        Equipo : ${this.equipo}
+        Puntuacion : ${this.puntuacion}
+        `);
     }
 }
 
 //Equipos
-const myCodeCoffe = [
+const noCoffeNoWorkee = [
     {
-        jugador: new Jugadores("Marta", 8, "myCodeCoffe")
+        jugador: new Jugadores("Marta", 8, "noCoffeNoWorkee")
     },
     {
-        jugador: new Jugadores("Ludmi", 4, "myCodeCoffe")
+        jugador: new Jugadores("Ludmi", 4, "noCoffeNoWorkee")
 
     },
     {
-        jugador: new Jugadores("Fede", 5, "myCodeCoffe")
+        jugador: new Jugadores("Fede", 5, "noCoffeNoWorkee")
 
     },
     {
-        jugador: new Jugadores("Fernando", 2, "myCodeCoffe")
+        jugador: new Jugadores("Fernando", 2, "noCoffeNoWorkee")
 
     },
     {
-        jugador: new Jugadores("Maria", 1, "myCodeCoffe")
+        jugador: new Jugadores("Maria", 1, "noCoffeNoWorkee")
 
     },
     {
-        jugador: new Jugadores("Luciana", 8, "myCodeCoffe")
+        jugador: new Jugadores("Luciana", 8, "noCoffeNoWorkee")
 
     },
     {
-        jugador: new Jugadores("Luciano", 8, "myCodeCoffe")
+        jugador: new Jugadores("Luciano", 8, "noCoffeNoWorkee")
 
     },
     {
-        jugador: new Jugadores("Juan", 10, "myCodeCoffe")
+        jugador: new Jugadores("Juan", 10, "noCoffeNoWorkee")
         // nombre: "Juan",
         // puntuacion: 10,
-        // equipo: "myCodeCoffe"
+        // equipo: "noCoffeNoWorkee"
     },
     {
-        jugador: new Jugadores("Facu", 10, "myCodeCoffe")
+        jugador: new Jugadores("Facu", 10, "noCoffeNoWorkee")
 
         // nombre: "Facu",
         // puntuacion: 10,
-        // equipo: "myCodeCoffe"
+        // equipo: "noCoffeNoWorkee"
     },
     {
-        jugador: new Jugadores("Martin", 9, "myCodeCoffe")
+        jugador: new Jugadores("Martin", 9, "noCoffeNoWorkee")
 
         // nombre: "Martin",
         // puntuacion: 9,
-        // equipo: "myCodeCoffe"
+        // equipo: "noCoffeNoWorkee"
     },
     {
-        jugador: new Jugadores("Lucho", 7, "myCodeCoffe")
+        jugador: new Jugadores("Lucho", 7, "noCoffeNoWorkee")
 
         // nombre: "Lucho",
         // puntuacion: 7,
-        // equipo: "myCodeCoffe"
+        // equipo: "noCoffeNoWorkee"
     },
     {
-        jugador: new Jugadores("Yo", 7, "myCodeCoffe")
+        jugador: new Jugadores("Yo", 7, "noCoffeNoWorkee")
 
         // nombre: "Yo",
         // puntuacion: 7,
-        // equipo: "myCodeCoffe"
+        // equipo: "noCoffeNoWorkee"
     },
     {
-        jugador: new Jugadores("Pepe", 6, "myCodeCoffe")
+        jugador: new Jugadores("Pepe", 6, "noCoffeNoWorkee")
 
         // nombre: "Pepe",
         // puntuacion: 6,
-        // equipo: "myCodeCoffe"
+        // equipo: "noCoffeNoWorkee"
     },
     {
-        jugador: new Jugadores("ElMagician", 5, "myCodeCoffe")
+        jugador: new Jugadores("ElMagician", 5, "noCoffeNoWorkee")
 
         // nombre: "ElMagician",
         // puntuacion: 5,
-        // equipo: "myCodeCoffe"
+        // equipo: "noCoffeNoWorkee"
     },
     {
-        jugador: new Jugadores("Lenox", 3, "myCodeCoffe")
+        jugador: new Jugadores("Lenox", 3, "noCoffeNoWorkee")
 
         // nombre: "Lenox",
         // puntuacion: 3,
-        // equipo: "myCodeCoffe"
+        // equipo: "noCoffeNoWorkee"
     },
     {
-        jugador: new Jugadores("ElPampa", 3, "myCodeCoffe")
+        jugador: new Jugadores("ElPampa", 3, "noCoffeNoWorkee")
 
         // nombre: "ElPampa",
         // puntuacion: 3,
-        // equipo: "myCodeCoffe"
+        // equipo: "noCoffeNoWorkee"
     },
     {
-        jugador: new Jugadores("Tatun", 3, "myCodeCoffe")
+        jugador: new Jugadores("Tatun", 3, "noCoffeNoWorkee")
 
         // nombre: "Tatun",
         // puntuacion: 3,
-        // equipo: "myCodeCoffe"
+        // equipo: "noCoffeNoWorkee"
     }
 ]
 
@@ -435,13 +440,13 @@ const codigoYCafe = [
 
 const iTurnCoffeIntoCode = [
     {
-        jugador: new Jugadores("Maxi", 10, "codigoYCafe")
+        jugador: new Jugadores("Javier", 7, "codigoYCafe")
     },
     {
-        jugador: new Jugadores("Maxi", 10, "codigoYCafe")
+        jugador: new Jugadores("Coco", 10, "codigoYCafe")
     },
     {
-        jugador: new Jugadores("Maxi", 10, "codigoYCafe")
+        jugador: new Jugadores("Laura", 10, "codigoYCafe")
     },
     {
         jugador: new Jugadores("Alicia", 9, "codigoYCafe")
@@ -477,8 +482,8 @@ const iTurnCoffeIntoCode = [
 //QUIZ DE PREGUNTAS 
 const nombreUsuario = prompt("Ingrese su nombre: ");
 const equipoUsuario = prompt(`
-Elija un equipo: 
-1_MY CODE COFFE
+Elija un equipo (ingresar 1,2 o 3): 
+1_NO COFFE NO WORKEE
 2_CODIFO Y CAFE
 3_I TURN COFFE INTO CODE
 `);
@@ -537,7 +542,7 @@ const agregarAEquipo = (nombre, puntuacion, equipo) => {
     switch (equipo) {
         case "1":
 
-            equipoElegido = "myCodeCoffe"
+            equipoElegido = "noCoffeNoWorkee"
 
             // const jugadorNuevo = {
             //     nombre: nombre,
@@ -545,17 +550,17 @@ const agregarAEquipo = (nombre, puntuacion, equipo) => {
             //     puntuacion: 0
             // }
 
-            // myCodeCoffe.push(jugadorNuevo);
+            // noCoffeNoWorkee.push(jugadorNuevo);
 
             aux = {
                 jugador: new Jugadores(nombre, puntuacion, equipoElegido)
             };
 
-            myCodeCoffe.push(aux);
-            console.log(myCodeCoffe);
+            noCoffeNoWorkee.push(aux);
+            console.log(noCoffeNoWorkee);
+            aux.jugador.infoJugador();
 
             break;
-
         case "2":
 
             equipoElegido = "codigoYCafe";
@@ -566,22 +571,22 @@ const agregarAEquipo = (nombre, puntuacion, equipo) => {
 
             codigoYCafe.push(aux);
             console.log(codigoYCafe);
+            aux.jugador.infoJugador();
 
             break;
-
         case "3":
 
             equipoElegido = "iTurnCoffeIntoCode";
 
-
             aux = {
                 jugador: new Jugadores(nombre, puntuacion, equipoElegido)
             };
+
             iTurnCoffeIntoCode.push(aux);
             console.log(iTurnCoffeIntoCode);
+            aux.jugador.infoJugador();
 
             break;
-
         default:
             console.log("error");
             break;
@@ -603,27 +608,26 @@ const sumarPuntos = (equipo) => {
 }
 
 //funcion q suma los puntos totales del equipo q eligio el jugador
-const puntosDelEquipo = (equipo) => {
+const puntosDelEquipo = (equipo,fun) => {
 
     let puntosTotales = 0;
 
     switch (equipo) {
         case "1":
 
-            puntosTotales = sumarPuntos(myCodeCoffe);
+            puntosTotales = fun(noCoffeNoWorkee);
 
             break;
         case "2":
 
-            puntosTotales = sumarPuntos(codigoYCafe);
+            puntosTotales = fun(codigoYCafe);
 
             break;
         case "3":
 
-            puntosTotales = sumarPuntos(iTurnCoffeIntoCode);
+            puntosTotales = fun(iTurnCoffeIntoCode);
 
             break;
-
         default:
             console.log("error");
             break;
@@ -632,22 +636,20 @@ const puntosDelEquipo = (equipo) => {
     return puntosTotales;
 }
 
-//funcion q muestra por consola los 10 mejores jugadores del equipo elejido
-const mostrarTop10 = (equipo) => {
+//funcion q muestra por consola los mejores jugadores del equipo elejido
+const mostrarMejoresJugadores = (equipo) => {
 
-    //hace un filter y un sort aca
     let mejorsJugadores = [];
 
     switch (equipo) {
         case "1":
 
-            mejorsJugadores = myCodeCoffe.filter((elem) => elem.jugador.puntuacion >= 5);
+            mejorsJugadores = noCoffeNoWorkee.filter((elem) => elem.jugador.puntuacion >= 5);
             mejorsJugadores.sort((a, b) => b.jugador.puntuacion - a.jugador.puntuacion);
 
             console.log(mejorsJugadores);
 
             break;
-
         case "2":
 
             mejorsJugadores = codigoYCafe.filter((elem) => elem.jugador.puntuacion >= 5);
@@ -656,7 +658,6 @@ const mostrarTop10 = (equipo) => {
             console.log(mejorsJugadores);
 
             break;
-
         case "3":
 
             mejorsJugadores = iTurnCoffeIntoCode.filter((elem) => elem.jugador.puntuacion >= 5);
@@ -665,7 +666,6 @@ const mostrarTop10 = (equipo) => {
             console.log(mejorsJugadores);
 
             break;
-
         default:
             console.log("error");
             break;
@@ -679,10 +679,11 @@ alert(nombreUsuario + " tu puntuacion es de:" + " " + puntuacionUsuario + " resp
 
 //agregamos al jugador a su equipo elegido
 const agregandoEquipo = agregarAEquipo(nombreUsuario, puntuacionUsuario, equipoUsuario);
-alert(`el jugador : ${nombreUsuario} q tiene una puntuacion de : ${puntuacionUsuario} a sido agregado al equipo : ${agregandoEquipo}`);
+// alert(`el jugador : ${nombreUsuario} q tiene una puntuacion de : ${puntuacionUsuario} a sido agregado al equipo : ${agregandoEquipo}`);
 
 //mostramos los puntos totales de su equipo
-const puntosTotales = puntosDelEquipo(equipoUsuario);
+const puntosTotales = puntosDelEquipo(equipoUsuario,sumarPuntos);
 alert(`Los puntos totales de tu equipo son : ${puntosTotales}`);
 
-mostrarTop10(equipoUsuario)
+//mostrar en consola los mejores jugadores de cada equipo
+mostrarMejoresJugadores(equipoUsuario);
