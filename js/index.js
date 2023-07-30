@@ -274,12 +274,12 @@ const preguntasYRespuestas = [
         pregunta: `array1[3] q elemento es?
         const array1 = ["Hola", 55, true, {nombre : "Juan", edad : 25, altura : 1.80}];
         `,
-        respuesta: 1,
+        respuesta: 4,
         opciones: {
-            opcion1: "undefined",
-            opcion2: { nombre: "Juan", edad: 25, altura: 1.80 },
+            opcion1: "Hola",
+            opcion2: 55,
             opcion3: true,
-            opcion4: 55
+            opcion4: "{ nombre: 'Juan', edad: 25, altura: 1.80 }"
         }
     },
 ];
@@ -557,7 +557,7 @@ const agregarAEquipo = (nombre, puntuacion, equipo) => {
             };
 
             noCoffeNoWorkee.push(aux);
-            console.log(noCoffeNoWorkee);
+            console.log("Jugadore agregado: ",noCoffeNoWorkee);
             aux.jugador.infoJugador();
 
             break;
@@ -570,7 +570,7 @@ const agregarAEquipo = (nombre, puntuacion, equipo) => {
             };
 
             codigoYCafe.push(aux);
-            console.log(codigoYCafe);
+            console.log("Jugadore agregado: ",codigoYCafe);
             aux.jugador.infoJugador();
 
             break;
@@ -583,7 +583,7 @@ const agregarAEquipo = (nombre, puntuacion, equipo) => {
             };
 
             iTurnCoffeIntoCode.push(aux);
-            console.log(iTurnCoffeIntoCode);
+            console.log("Jugadore agregado: ",iTurnCoffeIntoCode);
             aux.jugador.infoJugador();
 
             break;
@@ -647,7 +647,7 @@ const mostrarMejoresJugadores = (equipo) => {
             mejorsJugadores = noCoffeNoWorkee.filter((elem) => elem.jugador.puntuacion >= 5);
             mejorsJugadores.sort((a, b) => b.jugador.puntuacion - a.jugador.puntuacion);
 
-            console.log(mejorsJugadores);
+            console.log("Mejores jugadores:",mejorsJugadores);
 
             break;
         case "2":
@@ -655,7 +655,7 @@ const mostrarMejoresJugadores = (equipo) => {
             mejorsJugadores = codigoYCafe.filter((elem) => elem.jugador.puntuacion >= 5);
             mejorsJugadores.sort((a, b) => b.jugador.puntuacion - a.jugador.puntuacion);
 
-            console.log(mejorsJugadores);
+            console.log("Mejores jugadores:",mejorsJugadores);
 
             break;
         case "3":
@@ -663,7 +663,7 @@ const mostrarMejoresJugadores = (equipo) => {
             mejorsJugadores = iTurnCoffeIntoCode.filter((elem) => elem.jugador.puntuacion >= 5);
             mejorsJugadores.sort((a, b) => b.jugador.puntuacion - a.jugador.puntuacion);
 
-            console.log(mejorsJugadores);
+            console.log("Mejores jugadores:",mejorsJugadores);
 
             break;
         default:
