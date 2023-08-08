@@ -790,6 +790,7 @@ const sectionInfo = document.querySelector(".sectionInfo");
 //pregunta y opciones
 const pregunta = document.getElementById("pregunta");
 const inputOpcion = document.querySelectorAll(".inputOpcion");
+console.log(inputOpcion)
 
 //el section q contiene la pregunta y opciones
 //lo hacemos desasparecer cuando no hay mas preguntas en el array
@@ -798,21 +799,24 @@ const juegoTerminado = document.querySelector(".juegoTerminado");
 
 //se encarga de dar fondo naranja al equipo elegido
 const pintarFondo = (arr) => {
+    
     arr.forEach((element) => {
         
         element.addEventListener("click", (e) => {
 
             const { target } = e;
 
-            // console.dir(e);
+            //primero eliminamos la clase equipoElegido a todas las img de esta manera nunca puede haber 2 equipos pintados al mismo tiempo
+            arr.forEach(elem => {
+                if (elem.classList.contains("equipoElegido")) {
+                    elem.classList.remove("equipoElegido")
+                }
+            })
 
-            if (target.classList.contains("equipoElegido")) {
-                target.classList.remove("equipoElegido");
-            } else {
-                target.classList.add("equipoElegido");
-                //obtenemos el nombre en formato string desde la clase de la img seleccionada
-                equipoSeleccionado = target.classList[0];
-            }
+            //luego una ves removido la clase equipoElegido de todas las img agregamos devuelta esa clase a la ultima img q fue clikeada
+            target.classList.add("equipoElegido");
+            //obtenemos el nombre en formato string desde la clase de la img seleccionada
+            equipoSeleccionado = target.classList[0];
         })
     })
 }
@@ -827,7 +831,6 @@ const agregarAEquipo = (nombre, puntos = 0, equipo) => {
         jugador: new Jugadores(nombre, puntos, equipo)
     }
 
-
     switch (equipoSeleccionado) {
         case "noCoffeNoWorkee":
             auxEquipo = noCoffeNoWorkee;
@@ -839,7 +842,6 @@ const agregarAEquipo = (nombre, puntos = 0, equipo) => {
             auxEquipo = codigoYCafe;
             codigoYCafe.push(jugadorNuevo);
             codigoYCafe[codigoYCafe.length - 1].jugador.infoJugador()
-
 
             break;
         case "iTurnCoffeIntoCode":
@@ -883,18 +885,23 @@ const comenzarJuego = () => {
         equipoInfoImg.src = `./img/${equipoSeleccionado}.png`;
         equipoInfoImg.classList.replace("signoPregunta", "imgEquipoInfo");
 
+        // imgEquipo.forEach(elem => {
+        //     if (elem.classList.contains("equipoElegido")) {
+        //         elem.classList.remove("equipoElegido")
+        //     }
+        // })
+        // if (condition) {
+            
+        // } else {
+        //     alert("Solo puede haber un equipo seleccionado");
+        // }
+
     })
 }
 
-//funcion q carga las 2 funciones anteriorres (esto para q no haya q llamar a tantas funcion al final)
-const cargarEventosMenu = (arr) => {
-    pintarFondo(arr);
-    comenzarJuego();
-    
-}
-
-
+//funcion q analiza las respuestas correctas e incorrectas
 const analizandoRespuesta = (resU, resP, puntuacion, resInc) => {
+    debugger
 
     if (resU === resP) {
         puntuacion++;
@@ -904,9 +911,10 @@ const analizandoRespuesta = (resU, resP, puntuacion, resInc) => {
         respuestasIncorrectas.innerHTML = `Incorrectas : ${resInc}`;
     }
 
-    return puntuacion;
+    return [puntuacion,resInc];
 }
 
+//funcion q actualiza la rondas 
 const rondaActual = (numRondas,rondasCT)=>{
 
     rondas.innerText = `Ronda : ${numRondas+1}`;
@@ -923,15 +931,13 @@ const funcionPregunta = (arr,fun) => {
     let resIncorrectas = 0;
 
     inputOpcion.forEach((element) => {
-
         element.addEventListener("click", () => {
 
             //como tanto la primera pregunta como las opciones se ponene de forma estatica en html restamos 1
             respuesta = arr[opcionIndice - 1].respuesta;
             respuestaUsuario = element.value;
 
-            puntuacion = fun(respuestaUsuario, respuesta, puntuacion, resIncorrectas);
-
+            [puntuacion,resIncorrectas] = fun(respuestaUsuario, respuesta, puntuacion, resIncorrectas);
 
             equipoElegido[equipoElegido.length - 1].jugador.puntuacion = puntuacion;
 
@@ -942,9 +948,13 @@ const funcionPregunta = (arr,fun) => {
                 pregunta.innerText = arr[opcionIndice].pregunta;
                 opcionesAux = arr[opcionIndice].opciones;
 
-                for (let i = 0; i < inputOpcion.length; i++) {
-                    inputOpcion[i].value = opcionesAux[`opcion${i + 1}`];
-                }
+                // for (let i = 0; i < inputOpcion.length; i++) {
+                //     inputOpcion[i].value = opcionesAux[`opcion${i + 1}`];
+                // }
+
+                inputOpcion.forEach((element,index)=>{
+                    element.value = opcionesAux[`opcion${index + 1}`]
+                })
 
                 opcionIndice++;
 
@@ -961,14 +971,12 @@ const funcionPregunta = (arr,fun) => {
     return puntuacion;
 }
 
-
+//funcion q da el evento al btn para jugar devuelta
 const eventoNuevoJuego = () => {
     const btnJuegoNuevo = document.getElementById("btnJuegoNuevo");
+    const primerasOpciones = ["Igual que Java","Interpretado","Un Framework para diseño de sitios y aplicaciones web","Ninguna de las anteriores"];
 
     btnJuegoNuevo.addEventListener("click", () => {
-
-        const primerasOpciones = ["Igual que Java","Interpretado","Un Framework para diseño de sitios y aplicaciones web","Ninguna de las anteriores"];
-
         console.log(equipoElegido)
 
         sectionInfo.style.display = "flex";
@@ -985,15 +993,18 @@ const eventoNuevoJuego = () => {
             }
         })
 
-
         sectionJuego.style.display = "flex";
 
         pregunta.innerText = "JavaScript es un lenguaje?";
 
-        for (let i = 0; i < inputOpcion.length; i++) {
-            inputOpcion[i].value = primerasOpciones[i]; 
+        // for (let i = 0; i < inputOpcion.length; i++) {
+        //     inputOpcion[i].value = primerasOpciones[i]; 
             
-        }
+        // }
+
+        inputOpcion.forEach((element,index)=>{
+            element.value = primerasOpciones[index]; 
+        })
 
         puntosJugador.innerText = "Puntos : 0";
         respuestasIncorrectas.innerText = "Incorrectas : 0";
@@ -1003,12 +1014,31 @@ const eventoNuevoJuego = () => {
     })
 }
 
+//funcion q carga las 2 funciones anteriorres (esto para q no haya q llamar a tantas funcion al final)
+const cargarEventosMenu = (arr) => {
+    pintarFondo(arr);
+    comenzarJuego();
+    let puntuacion = funcionPregunta(preguntasYRespuestas,analizandoRespuesta);
+    eventoNuevoJuego();
+}
 
 cargarEventosMenu(imgEquipo);
 
-let puntuacion = funcionPregunta(preguntasYRespuestas,analizandoRespuesta);
 
-eventoNuevoJuego();
+
+
+
+
+
+
+
+
+
+
+
+
+//falta modificar con eventos
+
 
 //sumar puntos del equipo clikeado
 const sumarPuntosEquipos = (equipo) => {

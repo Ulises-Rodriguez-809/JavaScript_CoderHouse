@@ -133,13 +133,13 @@ html {
 .opcionesContainer ul li {
     list-style: none;
     margin-top: 1rem;
+    margin-bottom: 3rem;
 }
 
 .opcionesContainer ul li input {
     background-color: rgb(255, 146, 4);
     width: 100%;
     font-size: 4rem;
-    margin-top: 2rem;
     padding: 0 .2rem;
 }
 
