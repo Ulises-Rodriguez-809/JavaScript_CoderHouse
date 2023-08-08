@@ -24,11 +24,17 @@ html {
 }
 
 /* INGRESAR NOMBRE JUGADOR */
-.sectionNombre{
-    padding: 1rem;
+.sectionInfo{
     display: flex;
-    /* justify-content: space-around; */
-    align-items: end;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.infoContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .nombreContainer{
@@ -36,8 +42,46 @@ html {
     flex-direction: column;
 }
 
-.nombreContainer label, .sectionNombre input, .btnContainer button{
+.nombreContainer label, .nombreContainer input, .btnContainer button{
     font-size: 2rem;
+}
+
+.equiposPosibles ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.equiposPosibles ul li{
+    width: 15rem;
+    list-style: none;
+    margin: 0 2rem;
+    padding: .2rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.equipo{
+    width: 9rem;
+    height: 9rem;
+}
+
+.equipoElegido{
+    background-color: #ffb464;
+}
+
+.equipoNoElegido{
+    background-color: #fff;
+}
+
+/* esto para hacer desaparecer el input de nombre,equipo y btn de juggar */
+.infoCompleta{
+    display: none;
 }
 
 /* RONDAS */
@@ -55,12 +99,21 @@ html {
 
 
 /* JUEGO */
-.sectionJuego {
+.sectionJuego,.juegoTerminadoMensaje {
     background-color: rgb(251, 221, 160);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.juegoTerminado{
+    display: none;
+}
+
+.juegoTerminadoMensaje p, .juegoTerminadoMensaje button{
+    font-size: 2rem;
+    font-weight: 600;
 }
 
 /* PREGUNTAS */
@@ -88,6 +141,23 @@ html {
     font-size: 4rem;
     margin-top: 2rem;
     padding: 0 .2rem;
+}
+
+/* info jugador */
+.divInfo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signoPregunta{
+    width: 2rem;
+    height: 2rem;
+}
+
+.imgEquipoInfo{
+    width: 8rem;
+    height: 4rem;
 }
 
 /* PUNTOS DEL JUGADOR ACTUAL */

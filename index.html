@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz JS</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
     <main>
         <!-- TITULO -->
@@ -15,56 +17,95 @@
             </div>
         </section>
         <!-- INGRESAR NOMBRE JUGADOR -->
-        <section class="sectionNombre">
-            <div class="nombreContainer">
-                <label for="nombre">Nombre</label>
-                <input type="text" name="nombre" id="nombre" placeholder="ingresar nombre">
-                <label for="equipo">Equipo</label>
-                <input type="text" name="equipo" id="equipo" placeholder="Eliga el equipo">
+        <section class="sectionInfo">
+            <div class="infoContainer">
+                <div class="nombreContainer">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" name="nombre" id="nombre" placeholder="ingresar nombre">
+                </div>
+                <div class="equiposPosibles">
+                    <ul>
+                        <li>
+                            <p>NO COFFE NO WORKEE</p>
+                            <img src="./img/noCoffeNoWorkee.png" alt="my code coffe team" class="noCoffeNoWorkee equipo">
+                        </li>
+                        <li>
+                            <p>CODIFO Y CAFE</p>
+                            <img src="./img/codigoYCafe.png" alt="codigo y cafge team" class="codigoYCafe equipo">
+                        </li>
+                        <li>
+                            <p>I TURN COFFE INTO CODE</p>
+                            <img src="./img/iTurnCoffeIntoCode.png" alt="i turn coffe into code team"
+                                class="iTurnCoffeIntoCode equipo">
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="btnContainer">
-                <button type="button">Empesar a jugar</button>
+                <button type="button" id="btnJugar">Empesar a jugar</button>
             </div>
         </section>
         <!-- RONDAS NUMERO -->
         <section>
             <div class="rondasContainer">
-                <div class="rondas">Ronda: 1</div>
-                <div class="rondasCantidad">1/10</div>
+                <div class="rondas">Ronda: ---</div>
+                <div class="rondasCantidad">---</div>
             </div>
         </section>
         <!-- JUEGO -->
         <section class="sectionJuego">
             <!-- PREGUNTAS -->
             <div class="preguntaContainer">
-                <div class="pregunta">
+                <p id="pregunta">
                     JavaScript es un lenguaje?
-                </div>
+                </p>
             </div>
             <!-- OPCIONES DE LAS PREGUNTAS -->
             <div class="opcionesContainer">
                 <ul>
                     <!-- hacer q la respuesta correcta cambie de color a verde y la incorrectas a rojo -->
                     <li>
-                        <input type="button" value="Igual que Java">
+                        <input type="button" value="Igual que Java" class="inputOpcion">
                     </li>
                     <li>
-                        <input type="button" value="Interpretado">
+                        <input type="button" value="Interpretado" class="inputOpcion">
                     </li>
                     <li>
-                        <input type="button" value="Un Framework para diseño de sitios y aplicaciones web">
+                        <input type="button" value="Un Framework para diseño de sitios y aplicaciones web" class="inputOpcion">
                     </li>
                     <li>
-                        <input type="button" value="Ninguna de las anteriores">
+                        <input type="button" value="Ninguna de las anteriores" class="inputOpcion">
                     </li>
                 </ul>
+            </div>
+        </section>
+        <section class="juegoTerminado">
+            <div class="juegoTerminadoMensaje">
+                <p>El juego termino</p>
+                <button type="button" id="btnJuegoNuevo">Nuevo Jugador</button>
             </div>
         </section>
         <!-- PUNTOS DEL JUGADOR ACTUAL -->
         <section class="sectionPuntiacion">
             <div class="puntuacionContainer">
-                <div class="jugadorActual">Tino</div>
-                <div class="puntos">Puntos : 2</div>
+                <div class="jugadorActual">
+                    <div class="divInfo">
+                        <div>Nombre:</div>
+                        <div class="nombreInfo">
+                            <img src="./img/signoPregunta.png" alt="signo pregunta" class="signoPregunta">
+                        </div>
+                    </div>
+                    <div class="divInfo">
+                        <div>Equipo:</div>
+                        <div>
+                            <img src="./img/signoPregunta.png" alt="signo pregunta" class="equipoInfoImg signoPregunta">
+                        </div>
+                    </div>
+                </div>  
+                <div class="puntos">
+                    <p class="puntosJugador">Puntos : 0</p>
+                    <p class="incorrectas">incorrectas : 0</p>
+                </div>
             </div>
         </section>
     </main>
@@ -92,15 +133,15 @@
                     <ul>
                         <li>
                             <p>NO COFFE NO WORKEE</p>
-                            <img src="./img/no_coffee_no_workee-removebg-preview (1).png" alt="my code coffe team">
-                        </li>
+                            <img src="./img/noCoffeNoWorkee.png" alt="my code coffe team" class="equipoLista">
+                        </li>   
                         <li>
                             <p>CODIFO Y CAFE</p>
-                            <img src="./img/cafe2-removebg-preview.png" alt="codigo y cafge team">
+                            <img src="./img/codigoYCafe.png" alt="codigo y cafge team" class="equipoLista">
                         </li>
                         <li>
                             <p>I TURN COFFE INTO CODE</p>
-                            <img src="./img/cafe3-removebg-preview.png" alt="i turn coffe into code team">
+                            <img src="./img/iTurnCoffeIntoCode.png" alt="i turn coffe into code team" class="equipoLista">
                         </li>
                     </ul>
                 </div>
@@ -157,4 +198,5 @@
     </section>
     <script src="./js/index.js"></script>
 </body>
+
 </html>
