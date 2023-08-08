@@ -283,7 +283,6 @@ const preguntasYRespuestas = [
     //     }
     // },
 ];
-//     {
 //         pregunta: "JavaScript es un lenguaje?",
 //         respuesta: "Interpretado",
 //         opciones: {
@@ -772,7 +771,6 @@ let equipoElegido = [];
 
 const arrLength = preguntasYRespuestas.length;
 
-
 //obtenemos las img de los equipos q podes seleccionar
 const imgEquipo = document.querySelectorAll(".equipo");
 
@@ -790,11 +788,15 @@ const sectionInfo = document.querySelector(".sectionInfo");
 //pregunta y opciones
 const pregunta = document.getElementById("pregunta");
 const inputOpcion = document.querySelectorAll(".inputOpcion");
-console.log(inputOpcion)
 
 //el section q contiene la pregunta y opciones
 //lo hacemos desasparecer cuando no hay mas preguntas en el array
 const sectionJuego = document.querySelector(".sectionJuego");
+//div intrucciones
+const instruccionesContainer = document.querySelector(".instruccionesContainer");
+//div juego
+const juegoContainer = document.querySelector(".juegoContainer");
+//section juego nuevo
 const juegoTerminado = document.querySelector(".juegoTerminado");
 
 //se encarga de dar fondo naranja al equipo elegido
@@ -866,9 +868,11 @@ const agregarAEquipo = (nombre, puntos = 0, equipo) => {
 const comenzarJuego = () => {
 
     const btnJugar = document.getElementById("btnJugar");
-    // let aux = ""
 
     btnJugar.addEventListener("click", () => {
+
+        instruccionesContainer.style.display = "none";
+        juegoContainer.style.display = "block";
         
         let nombre = nombreUsuario.value;
 
@@ -884,17 +888,6 @@ const comenzarJuego = () => {
         nombreInfo.innerHTML = nombre;
         equipoInfoImg.src = `./img/${equipoSeleccionado}.png`;
         equipoInfoImg.classList.replace("signoPregunta", "imgEquipoInfo");
-
-        // imgEquipo.forEach(elem => {
-        //     if (elem.classList.contains("equipoElegido")) {
-        //         elem.classList.remove("equipoElegido")
-        //     }
-        // })
-        // if (condition) {
-            
-        // } else {
-        //     alert("Solo puede haber un equipo seleccionado");
-        // }
 
     })
 }
@@ -994,6 +987,8 @@ const eventoNuevoJuego = () => {
         })
 
         sectionJuego.style.display = "flex";
+        instruccionesContainer.style.display = "block";
+        juegoContainer.style.display = "none";
 
         pregunta.innerText = "JavaScript es un lenguaje?";
 
@@ -1023,16 +1018,6 @@ const cargarEventosMenu = (arr) => {
 }
 
 cargarEventosMenu(imgEquipo);
-
-
-
-
-
-
-
-
-
-
 
 
 

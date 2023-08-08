@@ -116,8 +116,13 @@ html {
     font-weight: 600;
 }
 
-/* PREGUNTAS */
-.preguntaContainer {
+/* JUEEGO */
+.juegoContainer{
+    display: none;
+}
+
+/* PREGUNTAS E INSTRUCCIONES */
+.preguntaContainer,.instruccionesContainer{
     font-size: 4rem;
     font-weight: 800;
     text-align: center;
