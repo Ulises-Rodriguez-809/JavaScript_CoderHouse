@@ -799,6 +799,9 @@ const juegoContainer = document.querySelector(".juegoContainer");
 //section juego nuevo
 const juegoTerminado = document.querySelector(".juegoTerminado");
 
+const nombreInfo = document.querySelector(".nombreInfo");
+const equipoInfoImg = document.querySelector(".equipoInfoImg");
+
 //se encarga de dar fondo naranja al equipo elegido
 const pintarFondo = (arr) => {
     
@@ -876,15 +879,14 @@ const comenzarJuego = () => {
         
         let nombre = nombreUsuario.value;
 
-        //cambiamos la info q se ve en cuadro abajo de las preguntas
-        const nombreInfo = document.querySelector(".nombreInfo");
-        const equipoInfoImg = document.querySelector(".equipoInfoImg");
+        
 
         equipoElegido = agregarAEquipo(nombre, 0, equipoSeleccionado);
 
         rondas.innerText = `Ronda : 1`
         rondasCantidad.innerText = `1/${arrLength}`;
 
+        //cambiamos la info q se ve en cuadro abajo de las preguntas
         nombreInfo.innerHTML = nombre;
         equipoInfoImg.src = `./img/${equipoSeleccionado}.png`;
         equipoInfoImg.classList.replace("signoPregunta", "imgEquipoInfo");
@@ -894,8 +896,6 @@ const comenzarJuego = () => {
 
 //funcion q analiza las respuestas correctas e incorrectas
 const analizandoRespuesta = (resU, resP, puntuacion, resInc) => {
-    debugger
-
     if (resU === resP) {
         puntuacion++;
         puntosJugador.innerHTML = `Puntos : ${puntuacion}`;
@@ -1000,6 +1000,11 @@ const eventoNuevoJuego = () => {
         inputOpcion.forEach((element,index)=>{
             element.value = primerasOpciones[index]; 
         })
+
+        //cambiamos la info q se ve en cuadro abajo de las preguntas
+        nombreInfo.innerHTML = `<img src="./img/signoPregunta.png" alt="signo pregunta" class="equipoInfoImg signoPregunta">`;
+        equipoInfoImg.src = `./img/signoPregunta.png`;
+        equipoInfoImg.classList.replace("imgEquipoInfo", "signoPregunta");
 
         puntosJugador.innerText = "Puntos : 0";
         respuestasIncorrectas.innerText = "Incorrectas : 0";
