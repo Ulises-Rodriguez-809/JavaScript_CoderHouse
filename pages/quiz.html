@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz JS</title>
+    <!-- link de Boostrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar navbar-expand-xl navBar">
+            <div class="container-fluid divContainerNavBar">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="./ranking.html" class="nav-link">Ranking</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <!-- TITULO -->
+        <section class="sectionTitulo">
+            <div class="tituloContainer">
+                <h1 class="titulo">Quiz de preguntas</h1>
+            </div>
+        </section>
+        <!-- INGRESAR NOMBRE JUGADOR -->
+        <section class="sectionInfo">
+            <div class="infoContainer">
+                <div class="nombreContainer">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" name="nombre" id="nombre" placeholder="ingresar nombre">
+                </div>
+                <div class="equiposPosibles">
+                    <ul>
+                        <li>
+                            <p>NO COFFE NO WORKEE</p>
+                            <img src="../img/noCoffeNoWorkee.png" alt="my code coffe team"
+                                class="noCoffeNoWorkee equipo">
+                        </li>
+                        <li>
+                            <p>CODIFO Y CAFE</p>
+                            <img src="../img/codigoYCafe.png" alt="codigo y cafge team" class="codigoYCafe equipo">
+                        </li>
+                        <li>
+                            <p>I TURN COFFE INTO CODE</p>
+                            <img src="../img/iTurnCoffeIntoCode.png" alt="i turn coffe into code team"
+                                class="iTurnCoffeIntoCode equipo">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="btnContainer">
+                <button type="button" id="btnJugar">Empesar a jugar</button>
+            </div>
+        </section>
+        <!-- RONDAS NUMERO -->
+        <section>
+            <div class="rondasContainer">
+                <div class="rondas">Ronda: ---</div>
+                <div class="rondasCantidad">---</div>
+            </div>
+        </section>
+        <!-- JUEGO -->
+        <section class="sectionJuego">
+            <!-- INSTRUCCIONES -->
+            <div class="instruccionesContainer">
+                <p class="instruccionesTitulo">
+                    INSTRUCCIONES:
+                </p>
+                <p class="instrucciones">
+                    Ingrese su nombre y eleiga uno de los 3 equipos disponibles. Luego al darle al boton para emepezar a
+                    jugar.<br>
+                    El juego consta de una serie de preguntas y 4 opciones por cada pregunta, se debe seleccionar 1 de
+                    las
+                    opciones.
+                </p>
+            </div>
+            <div class="juegoContainer">
+                <div class="preguntaContainer">
+                    <p id="pregunta">
+                        JavaScript es un lenguaje?
+                    </p>
+                </div>
+                <!-- OPCIONES DE LAS PREGUNTAS -->
+                <div class="opcionesContainer">
+                    <ul>
+                        <!-- hacer q la respuesta correcta cambie de color a verde y la incorrectas a rojo -->
+                        <li>
+                            <input type="button" value="Igual que Java" class="inputOpcion">
+                        </li>
+                        <li>
+                            <input type="button" value="Interpretado" class="inputOpcion">
+                        </li>
+                        <li>
+                            <input type="button" value="Un Framework para diseño de sitios y aplicaciones web"
+                                class="inputOpcion">
+                        </li>
+                        <li>
+                            <input type="button" value="Ninguna de las anteriores" class="inputOpcion">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- PREGUNTAS -->
+        </section>
+        <section class="juegoTerminado">
+            <div class="juegoTerminadoMensaje">
+                <p>El juego termino</p>
+                <button type="button" id="btnJuegoNuevo">Nuevo Jugador</button>
+            </div>
+        </section>
+        <!-- PUNTOS DEL JUGADOR ACTUAL -->
+        <section class="sectionPuntiacion">
+            <div class="puntuacionContainer">
+                <div class="jugadorActual">
+                    <div class="divInfo">
+                        <div>Nombre: </div>
+                        <div class="nombreInfo">
+                            <img src="../img/signoPregunta.png" alt="signo pregunta" class="signoPregunta">
+                        </div>
+                    </div>
+                    <div class="divInfo">
+                        <div>Equipo: </div>
+                        <div>
+                            <img src="../img/signoPregunta.png" alt="signo pregunta" class="equipoInfoImg signoPregunta">
+                        </div>
+                    </div>
+                </div>
+                <div class="puntos">
+                    <p class="puntosJugador">Puntos : 0</p>
+                    <p class="incorrectas">incorrectas : 0</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- MEJORES JUGADORES -->
+    <section class="topJugadores">
+        <!-- TITULO MEJORES JUGADORES -->
+        <div class="trofeoContainer">
+            <div>
+                <img class="tofeoImg" src="../img/01.png" alt="foto trofeo">
+            </div>
+            <div class="topJugadoresTitulo">Mejores jugadores</div>
+            <div>
+                <img class="tofeoImg" src="../img/01.png" alt="foto trofeo">
+            </div>
+        </div>
+        <!-- RANKING -->
+        <div class="equiposRanking">
+            <div class="equipos">
+                <div class="equiposTitulo">
+                    <p>
+                        Equipos
+                    </p>
+                </div>
+                <div class="equiposLista">
+                    <ul>
+                        <li>
+                            <p>NO COFFE NO WORKEE</p>
+                            <img src="../img/noCoffeNoWorkee.png" alt="my code coffe team" class="equipoLista">
+                        </li>
+                        <li>
+                            <p>CODIFO Y CAFE</p>
+                            <img src="../img/codigoYCafe.png" alt="codigo y cafge team" class="equipoLista">
+                        </li>
+                        <li>
+                            <p>I TURN COFFE INTO CODE</p>
+                            <img src="../img/iTurnCoffeIntoCode.png" alt="i turn coffe into code team"
+                                class="equipoLista">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="jugadoresContainer">
+                <ul>
+                    <li>
+                        <div class="jugador">Juan</div>
+                        <div class="puntos">10</div>
+                    </li>
+                    <li>
+                        <div class="jugador">Facu</div>
+                        <div class="puntos">10</div>
+                    </li>
+                    <li>
+                        <div class="jugador">Martin</div>
+                        <div class="puntos">9</div>
+                    </li>
+                    <li>
+                        <div class="jugador">Lucho</div>
+                        <div class="puntos">7</div>
+                    </li>
+                    <li>
+                        <div class="jugador">Yo</div>
+                        <div class="puntos">7</div>
+                    </li>
+                    <li>
+                        <div class="jugador">Pepe</div>
+                        <div class="puntos">6</div>
+                    </li>
+                    <li>
+                        <div class="jugador">ElMagician</div>
+                        <div class="puntos">5</div>
+                    </li>
+                    <li>
+                        <div class="jugador">Lenox</div>
+                        <div class="puntos">3</div>
+                    </li>
+                    <li>
+                        <div class="jugador">ElPampa</div>
+                        <div class="puntos">3</div>
+                    </li>
+                    <li>
+                        <div class="jugador">Tatun</div>
+                        <div class="puntos">3</div>
+                    </li>
+                </ul>
+                <div class="puntosEuipo">
+                    <p>Puntos totales del Equipo:</p>
+                    <p>63</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- script de Boostrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+    <script src="../js/quiz.js" type="module"></script>
+</body>
+
+</html>

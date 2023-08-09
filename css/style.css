@@ -9,6 +9,43 @@ html {
     font-size: 62.5%;
 }
 
+/* NAVBAR */
+.header {
+    overflow: hidden;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.header nav {
+    margin: 0;
+    padding: 0;
+    background-color: #f66666;
+    width: 100%;
+}
+
+.header nav .divContainerNavBar {
+    padding: 0;
+}
+
+.navBar ul {
+    display: flex;
+    flex-grow: 1;
+    flex-wrap: nowrap;
+    text-align: center;
+}
+
+.navBar ul li {
+    list-style: none;
+    flex-grow: 1;
+    font-size: 2rem;
+    padding: 1rem;
+    border: solid 0.1rem #000;
+}
+
+/* LOGIN.html */
+
+/* QUIZ.HTML */
 /* TITULO */
 .tituloContainer {
     display: flex;
@@ -116,7 +153,6 @@ html {
     font-weight: 600;
 }
 
-/* JUEEGO */
 .juegoContainer{
     display: none;
 }
@@ -180,6 +216,8 @@ html {
     width: 50rem;
 }
 
+
+/* RANKING.HTLM */
 /* TOP jugadores container*/
 .topJugadores{
     background-color: #a2a0a0;
