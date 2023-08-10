@@ -147,7 +147,7 @@ ul{
 }
 
 /* MENSAJE */
-.msg{
+.msg, .msg2{
     display: none;
     font-size: 2rem;
     font-weight: 500;
@@ -163,6 +163,15 @@ ul{
 
 .msgInc{
     background-color: #f17979;
+}
+
+.msg p, .msg a, .msg2 p, .msg2 a{
+    font-size: 2rem;
+    padding: .2rem;
+}
+
+.msg a , .msg2 a{
+    text-decoration: none;
 }
 
 /* QUIZ.HTML */
