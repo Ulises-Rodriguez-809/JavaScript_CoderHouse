@@ -10,40 +10,160 @@ html {
 }
 
 /* NAVBAR */
-.header {
-    overflow: hidden;
-    position: sticky;
-    top: 0;
-    z-index: 1;
-}
-
-.header nav {
-    margin: 0;
-    padding: 0;
-    background-color: #f66666;
-    width: 100%;
-}
-
-.header nav .divContainerNavBar {
-    padding: 0;
-}
-
-.navBar ul {
+.header{
     display: flex;
-    flex-grow: 1;
-    flex-wrap: nowrap;
-    text-align: center;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #4f438e;
 }
 
-.navBar ul li {
-    list-style: none;
-    flex-grow: 1;
-    font-size: 2rem;
+nav{
     padding: 1rem;
-    border: solid 0.1rem #000;
+    height: 100%;
+}
+
+ul{
+    list-style: none;
+    height: 100%;
+}
+
+.liPage{
+    height: 100%;
+}
+
+.link{
+    font-size: 2rem;
+    text-decoration: none;
+    color: #fff;
+    height: fit-content;
+    padding: 1rem;
+}
+
+.liPage a:hover{
+    background-color: hotpink;
+}
+
+#close button{
+    font-size: 2rem;
+}
+
+#close button:hover{
+    background-color: hotpink;
 }
 
 /* LOGIN.html */
+#logYRegContainer{
+    height: 100vh;
+    background-color: #6ca6d8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loginContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    background-color: #046fcc;
+    border-radius: 5%;
+    padding: 1rem;
+    height: 80%;
+}
+
+.btnOpcion button{
+    font-size: 2rem;
+    margin: 1rem;
+    padding: .2rem;
+}
+
+#login{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 80%;
+}
+
+
+#iniciarSesion,#registrarse{
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+#registrarse{
+    display: none;
+}
+
+#logTitulo p,#regTitulo p{
+    font-size: 3.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+#logDatos,#regDatos{
+    margin-bottom: 1.5rem;
+}
+
+#logDatos div,#regDatos div{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+#logDatos div label,#regDatos div label {
+    font-size: 3rem;
+    margin: .5rem 0;
+}
+
+#logDatos div input,#regDatos div input {
+    font-size: 3rem;
+    margin: .5rem 0;
+}
+
+.btnLogContainer,.btnRegContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#btnLog,#btnReg{
+    border-radius: 10%;
+}
+
+#btnLog:hover,#btnReg:hover {
+    border-radius: 10%;
+    background-color: #bd3131;
+}
+
+#btnLog,#btnReg{
+    color: #000;
+    font-size: 2.5rem;
+}
+
+/* MENSAJE */
+.msg{
+    display: none;
+    font-size: 2rem;
+    font-weight: 500;
+    border: #000 solid .1rem;
+    padding: .2rem;
+    text-align: center;
+    display: none;
+}
+
+.msgCor{
+    background-color: #7df179;
+}
+
+.msgInc{
+    background-color: #f17979;
+}
 
 /* QUIZ.HTML */
 /* TITULO */

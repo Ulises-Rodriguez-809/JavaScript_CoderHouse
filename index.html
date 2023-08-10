@@ -12,47 +12,57 @@
     <main>
         <section id="logYRegContainer">
             <article id="loginContainer">
-                <div class="login">
-                    <div id="logTitulo">
-                        <p>Iniciar sesion</p>
-                    </div>
-                    <div id="logDatos">
-                        <div>
-                            <label for="logNombre">Nombre</label>
-                            <input type="text" name="logNombre" id="logNombre" placeholder="Escriba su Nombre">
-                        </div>
-                        <div>
-                            <label for="logContraseña">Contraseña</label>
-                            <input type="password" name="logContraseña" id="logContraseña" placeholder="Escriba su contraseña">
-                        </div>
-                    </div>
-                    <button id="btnLog">
-                        <a href="./pages/quiz.html">Iniciar sesion</a>
-                    </button>
+                <div class="btnOpcion">
+                    <button type="button" id="btnOpcion__iniciarSesion">Iniciar sesion</button>
+                    <button type="button" id="btnOpcion__registrarse">Registrarse</button>
                 </div>
-            </article>
-            <article id="registrarseContainer">
-                <div class="registrarse">
-                    <div id="regTitulo">
-                        <p>Registrarse</p>
+                <div id="login">
+                    <div id="iniciarSesion">
+                        <div id="logTitulo">
+                            <p>Iniciar sesion</p>
+                        </div>
+                        <div id="logDatos">
+                            <div>
+                                <label for="logNombre">Nombre</label>
+                                <input type="text" name="usuario" id="logNombre" class="inputLog"
+                                    placeholder="Escriba su Nombre">
+                            </div>
+                            <div>
+                                <label for="logContraseña">Contraseña</label>
+                                <input type="password" name="contraseña" id="logContraseña" class="inputLog"
+                                    placeholder="Escriba su contraseña">
+                            </div>
+                        </div>
+                        <div class="msg msgInc"></div>
+                        <div class="btnLogContainer">
+                            <button id="btnLog">Iniciar sesion</button>
+                        </div>
                     </div>
-                    <div id="regDatos">
-                        <div>
-                            <label for="regNombre">Nombre</label>
-                            <input type="text" name="regNombre" id="regNombre" placeholder="Escriba su Nombre">
+                    <div id="registrarse">
+                        <div id="regTitulo">
+                            <p>Registrarse</p>
                         </div>
-                        <div>
-                            <label for="regContraseña">Contraseña</label>
-                            <input type="password" name="regContraseña" id="regContraseña" placeholder="Escriba su contraseña">
+                        <div id="regDatos">
+                            <div>
+                                <label for="regNombre">Nombre</label>
+                                <input type="text" name="usuario" id="regNombre" class="inputReg"
+                                    placeholder="Escriba su Nombre">
+                            </div>
+                            <div>
+                                <label for="regContraseña">Contraseña</label>
+                                <input type="password" name="contraseña" id="regContraseña" class="inputReg"
+                                    placeholder="Escriba su contraseña">
+                            </div>
+                            <div>
+                                <label for="regConConfirmar">Confirmar Contraseña</label>
+                                <input type="password" name="ConfirmarCont" id="regConConfirmar" class="inputReg"
+                                    placeholder="Confirmar Contraseña">
+                            </div>
                         </div>
-                        <div>
-                            <label for="regConConfirmar">Confirmar Contraseña</label>
-                            <input type="password" name="regConConfirmar" id="regConConfirmar" placeholder="Confirmar Contraseña">
+                        <div class="btnRegContainer">
+                            <button id="btnReg">Registrarse</button>
                         </div>
                     </div>
-                    <button id="btnReg">
-                        <a href="./pages/quiz.html">Registrarse</a>
-                    </button>
                 </div>
             </article>
         </section>
