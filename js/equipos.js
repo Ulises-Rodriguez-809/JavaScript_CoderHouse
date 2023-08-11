@@ -3,6 +3,7 @@ export function Jugadores(nombre, puntuacion, equipo) {
     this.puntuacion = puntuacion;
     this.equipo = equipo;
 
+    //ESTO CAMBIALO CON UN SWEET ALERT O TOSTIFY
     this.infoJugador = function () {
         alert(`
         El jugador fue agregado

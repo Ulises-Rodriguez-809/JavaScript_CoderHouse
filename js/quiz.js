@@ -1,9 +1,17 @@
 import preguntasYRespuestas from "./pregYRes.js"
 import {Jugadores,noCoffeNoWorkee,codigoYCafe,iTurnCoffeIntoCode} from "./equipos.js";
 
+//esto para poder modificar los datos en el ranking
+let datosJugadorActual = {
+    usuario: '',
+    equipo: '',
+    puntuacion: 0
+}
+
 //QUIZ DE PREGUNTAS 
-//input nombre
-const nombreUsuario = document.querySelector("#nombre");
+
+const infoContainer = document.querySelector(".infoContainer");
+const btnContainer = document.querySelector(".btnContainer");
 
 //var q va a guardar el nombre de la clase de la foto del equipo seleccionado
 let equipoSeleccionado = "";
@@ -12,6 +20,7 @@ let equipoElegido = [];
 
 const arrLength = preguntasYRespuestas.length;
 
+let algunoPintado = false;
 //obtenemos las img de los equipos q podes seleccionar
 const imgEquipo = document.querySelectorAll(".equipo");
 
@@ -43,13 +52,23 @@ const juegoTerminado = document.querySelector(".juegoTerminado");
 const nombreInfo = document.querySelector(".nombreInfo");
 const equipoInfoImg = document.querySelector(".equipoInfoImg");
 
+const cargarStorageJugadorActual = () => {
+    //cargamos al local storage algunos usuarios 
+    localStorage.setItem("jugadorActual", JSON.stringify(datosJugadorActual));
+}
+
+//traemos el contenido del localStorage para obtener el nombre del jugador
+const getLocalStorage = ()=>{
+    let contenidoLocStorage = JSON.parse(localStorage.getItem("usuarios"));
+
+    return contenidoLocStorage;
+}
+
 //se encarga de dar fondo naranja al equipo elegido
 const pintarFondo = (arr) => {
     
     arr.forEach((element) => {
-        
         element.addEventListener("click", (e) => {
-
             const { target } = e;
 
             //primero eliminamos la clase equipoElegido a todas las img de esta manera nunca puede haber 2 equipos pintados al mismo tiempo
@@ -63,8 +82,12 @@ const pintarFondo = (arr) => {
             target.classList.add("equipoElegido");
             //obtenemos el nombre en formato string desde la clase de la img seleccionada
             equipoSeleccionado = target.classList[0];
+
+            algunoPintado = true
         })
     })
+
+    return algunoPintado;
 }
 
 //push al equipo elegido y oculta el input de nombre. los equipos y el btn de empezar a jugar
@@ -77,34 +100,36 @@ const agregarAEquipo = (nombre, puntos = 0, equipo) => {
         jugador: new Jugadores(nombre, puntos, equipo)
     }
 
-    //FIJATE SI PODES HACERLO ESCALABLE A ESTO CON EL EJEM Q DIO EL PROFE EN LA CLASE 13
     switch (equipoSeleccionado) {
         case "noCoffeNoWorkee":
             auxEquipo = noCoffeNoWorkee;
             noCoffeNoWorkee.push(jugadorNuevo);
-            noCoffeNoWorkee[noCoffeNoWorkee.length - 1].jugador.infoJugador()
+            // noCoffeNoWorkee[noCoffeNoWorkee.length - 1].jugador.infoJugador()
 
             break;
         case "codigoYCafe":
             auxEquipo = codigoYCafe;
             codigoYCafe.push(jugadorNuevo);
-            codigoYCafe[codigoYCafe.length - 1].jugador.infoJugador()
+            // codigoYCafe[codigoYCafe.length - 1].jugador.infoJugador()
 
             break;
         case "iTurnCoffeIntoCode":
             auxEquipo = iTurnCoffeIntoCode;
             iTurnCoffeIntoCode.push(jugadorNuevo);
-            iTurnCoffeIntoCode[iTurnCoffeIntoCode.length - 1].jugador.infoJugador()
-
+            // iTurnCoffeIntoCode[iTurnCoffeIntoCode.length - 1].jugador.infoJugador()
 
             break;
         default:
-            alert("ese equipo no esta");
             break;
     }
 
+    //ESTO PARA EL PROYECTO FINAL CAMBIALO POR UN TOASTIFY O UN SWEET ALERT 
+    infoContainer.innerHTML = `
+    <div class="msgJuegoIniciado">Jugador: ${nombre} fue agregado con exito al equipo : ${equipo}</div>
+    `;
+
     //desaparecemos el menu de eleccion de equipo y nombre
-    sectionInfo.style.display = "none";
+    btnContainer.style.display = "none";
 
     return auxEquipo;
 }
@@ -116,21 +141,34 @@ const comenzarJuego = () => {
 
     btnJugar.addEventListener("click", () => {
 
-        instruccionesContainer.style.display = "none";
-        juegoContainer.style.display = "block";
-        
-        let nombre = nombreUsuario.value;
+        //con esta condicion evito q el jugador empise a jugar sin haber elegido un equipo
+        if (algunoPintado) {
+            instruccionesContainer.style.display = "none";
+            juegoContainer.style.display = "block";
+            
+            let arrLocalStorage = getLocalStorage();
+            let nombre = arrLocalStorage[arrLocalStorage.length-1]["usuario"] //arrLocalStorage[...].usuario
+    
+            equipoElegido = agregarAEquipo(nombre, 0, equipoSeleccionado);
+    
+            rondas.innerText = `Ronda : 1`
+            rondasCantidad.innerText = `1/${arrLength}`;
+    
+            //cambiamos la info q se ve en cuadro abajo de las preguntas
+            nombreInfo.innerHTML = nombre;
+            equipoInfoImg.src = `../img/${equipoSeleccionado}.png`;
+            equipoInfoImg.classList.replace("signoPregunta", "imgEquipoInfo");
 
-        equipoElegido = agregarAEquipo(nombre, 0, equipoSeleccionado);
+            //modificiamos los datos del jugador actual
+            datosJugadorActual = {
+                ...datosJugadorActual,
+                usuario : nombre,
+                equipo : equipoSeleccionado,
+            }
 
-        rondas.innerText = `Ronda : 1`
-        rondasCantidad.innerText = `1/${arrLength}`;
-
-        //cambiamos la info q se ve en cuadro abajo de las preguntas
-        nombreInfo.innerHTML = nombre;
-        equipoInfoImg.src = `../img/${equipoSeleccionado}.png`;
-        equipoInfoImg.classList.replace("signoPregunta", "imgEquipoInfo");
-
+            //cargamos los datos al localStorage
+            localStorage.setItem("jugadorActual",JSON.stringify(datosJugadorActual));
+        }
     })
 }
 
@@ -149,7 +187,6 @@ const analizandoRespuesta = (resU, resP, puntuacion, resInc) => {
 
 //funcion q actualiza la rondas 
 const rondaActual = (numRondas,rondasCT)=>{
-
     rondas.innerText = `Ronda : ${numRondas+1}`;
     rondasCantidad.innerText = `${numRondas+1}/${rondasCT}`;
 }
@@ -173,6 +210,14 @@ const funcionPregunta = (arr,fun) => {
             [puntuacion,resIncorrectas] = fun(respuestaUsuario, respuesta, puntuacion, resIncorrectas);
 
             equipoElegido[equipoElegido.length - 1].jugador.puntuacion = puntuacion;
+
+            datosJugadorActual = {
+                ...datosJugadorActual,
+                puntuacion : puntuacion
+            }
+
+            //cargamos los datos al localStorage
+            localStorage.setItem("jugadorActual",JSON.stringify(datosJugadorActual));
 
             //con este if evito q cuando no hay mas preguntas ya no intante actualizar
             if (opcionIndice < arr.length) {
@@ -206,25 +251,27 @@ const eventoNuevoJuego = () => {
     const primerasOpciones = ["Igual que Java","Interpretado","Un Framework para diseño de sitios y aplicaciones web","Ninguna de las anteriores"];
 
     btnJuegoNuevo.addEventListener("click", () => {
-        // console.log(equipoElegido)
 
-        sectionInfo.style.display = "flex";
-        nombreUsuario.value = "";
-        equipoSeleccionado = "";
-        equipoElegido = [];
+        infoContainer.innerHTML = `
+        <div class="msgJuegoIniciado">Jugador: ${datosJugadorActual.usuario} listo para jugar devuelta?</div>
+        `;
+
+        //desaparecemos el menu de eleccion de equipo y nombre
+        btnContainer.style.display = "block";
 
         rondas.innerText = "Ronda: ---";
         rondasCantidad.innerText = "---";
 
-        imgEquipo.forEach(elem => {
-            if (elem.classList.contains("equipoElegido")) {
-                elem.classList.remove("equipoElegido")
-            }
-        })
-
         sectionJuego.style.display = "flex";
         instruccionesContainer.style.display = "block";
         juegoContainer.style.display = "none";
+
+        datosJugadorActual = {
+            ...datosJugadorActual,
+            puntuacion : 0
+        }
+
+        localStorage.setItem("jugadorActual",JSON.stringify(datosJugadorActual));
 
         pregunta.innerText = "JavaScript es un lenguaje?";
 
@@ -233,9 +280,9 @@ const eventoNuevoJuego = () => {
         })
 
         //cambiamos la info q se ve en cuadro abajo de las preguntas
-        nombreInfo.innerHTML = `<img src="../img/signoPregunta.png" alt="signo pregunta" class="equipoInfoImg signoPregunta">`;
-        equipoInfoImg.src = `../img/signoPregunta.png`;
-        equipoInfoImg.classList.replace("imgEquipoInfo", "signoPregunta");
+        // nombreInfo.innerHTML = `<img src="../img/signoPregunta.png" alt="signo pregunta" class="equipoInfoImg signoPregunta">`;
+        // equipoInfoImg.src = `../img/signoPregunta.png`;
+        // equipoInfoImg.classList.replace("imgEquipoInfo", "signoPregunta");
 
         puntosJugador.innerText = "Puntos : 0";
         respuestasIncorrectas.innerText = "Incorrectas : 0";
@@ -252,4 +299,5 @@ const cargarEventosMenu = (arr) => {
     eventoNuevoJuego();
 }
 
+cargarStorageJugadorActual();
 cargarEventosMenu(imgEquipo);
