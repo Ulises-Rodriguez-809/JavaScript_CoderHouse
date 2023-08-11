@@ -18,6 +18,7 @@ html {
 }
 
 nav{
+    flex-grow: 4;
     padding: 1rem;
     height: 100%;
 }
@@ -25,30 +26,40 @@ nav{
 ul{
     list-style: none;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .liPage{
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.link{
+.liPage a{
     font-size: 2rem;
-    text-decoration: none;
     color: #fff;
-    height: fit-content;
-    padding: 1rem;
+    text-decoration: none;
 }
 
 .liPage a:hover{
     background-color: hotpink;
 }
 
-#close button{
-    font-size: 2rem;
+#headersBtnContainer{
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1rem;
 }
 
-#close button:hover{
-    background-color: hotpink;
+#headersBtnContainer button{
+    font-size: 2rem;
+    padding: .2rem;
+    margin-left: .8rem;
 }
 
 /* LOGIN.html */
@@ -84,7 +95,6 @@ ul{
     flex-direction: column;
     height: 80%;
 }
-
 
 #iniciarSesion,#registrarse{
     height: 90%;
@@ -234,6 +244,10 @@ ul{
     background-color: #fff;
 }
 
+#btnJugar{
+    font-size: 2rem;
+}
+
 /* esto para hacer desaparecer el input de nombre,equipo y btn de juggar */
 .infoCompleta{
     display: none;
@@ -348,7 +362,6 @@ ul{
 /* TOP jugadores container*/
 .topJugadores{
     background-color: #a2a0a0;
-    margin-top: 2rem;
 }
 
 /* TITULO jugadores top */
@@ -419,6 +432,7 @@ ul{
     height: 15rem;
 }
 
+/* tabla de posiciones */
 .jugadoresContainer, .equipos{
     margin-top: 1rem;
     width: 500px;
