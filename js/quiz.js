@@ -1,12 +1,16 @@
 import preguntasYRespuestas from "./pregYRes.js"
 import {Jugadores,noCoffeNoWorkee,codigoYCafe,iTurnCoffeIntoCode} from "./equipos.js";
+import cerrarSesion from "./cerrarSesion.js";
 
 //esto para poder modificar los datos en el ranking
-let datosJugadorActual = {
+let datosAux = {
+    id : 0,
     usuario: '',
     equipo: '',
     puntuacion: 0
 }
+
+let jugadorDatos = JSON.parse(localStorage.getItem("jugadorDatos")) || datosAux;
 
 //QUIZ DE PREGUNTAS 
 
@@ -32,9 +36,6 @@ const rondasCantidad = document.querySelector(".rondasCantidad");
 const puntosJugador = document.querySelector(".puntosJugador");
 const respuestasIncorrectas = document.querySelector(".incorrectas");
 
-//obtenemos todo el section q contiene el juego
-const sectionInfo = document.querySelector(".sectionInfo");
-
 //pregunta y opciones
 const pregunta = document.getElementById("pregunta");
 const inputOpcion = document.querySelectorAll(".inputOpcion");
@@ -52,14 +53,10 @@ const juegoTerminado = document.querySelector(".juegoTerminado");
 const nombreInfo = document.querySelector(".nombreInfo");
 const equipoInfoImg = document.querySelector(".equipoInfoImg");
 
-const cargarStorageJugadorActual = () => {
-    //cargamos al local storage algunos usuarios 
-    localStorage.setItem("jugadorActual", JSON.stringify(datosJugadorActual));
-}
 
 //traemos el contenido del localStorage para obtener el nombre del jugador
 const getLocalStorage = ()=>{
-    let contenidoLocStorage = JSON.parse(localStorage.getItem("usuarios"));
+    let contenidoLocStorage = JSON.parse(localStorage.getItem("jugadorActual"));
 
     return contenidoLocStorage;
 }
@@ -87,7 +84,6 @@ const pintarFondo = (arr) => {
         })
     })
 
-    return algunoPintado;
 }
 
 //push al equipo elegido y oculta el input de nombre. los equipos y el btn de empezar a jugar
@@ -96,24 +92,40 @@ const agregarAEquipo = (nombre, puntos = 0, equipo) => {
     let auxEquipo = [];
 
     //creo el nuevo jugador
-    const jugadorNuevo = {
+    let jugadorNuevo = {
+        id : 0,
         jugador: new Jugadores(nombre, puntos, equipo)
     }
 
-    switch (equipoSeleccionado) {
+    switch (equipo) {
         case "noCoffeNoWorkee":
+            jugadorNuevo = {
+                ...jugadorNuevo,
+                id : noCoffeNoWorkee.length+1
+            }
+
             auxEquipo = noCoffeNoWorkee;
             noCoffeNoWorkee.push(jugadorNuevo);
             // noCoffeNoWorkee[noCoffeNoWorkee.length - 1].jugador.infoJugador()
 
             break;
         case "codigoYCafe":
+            jugadorNuevo = {
+                ...jugadorNuevo,
+                id : codigoYCafe.length+1
+            }
+            
             auxEquipo = codigoYCafe;
             codigoYCafe.push(jugadorNuevo);
             // codigoYCafe[codigoYCafe.length - 1].jugador.infoJugador()
 
             break;
         case "iTurnCoffeIntoCode":
+            jugadorNuevo = {
+                ...jugadorNuevo,
+                id : iTurnCoffeIntoCode.length+1
+            }
+
             auxEquipo = iTurnCoffeIntoCode;
             iTurnCoffeIntoCode.push(jugadorNuevo);
             // iTurnCoffeIntoCode[iTurnCoffeIntoCode.length - 1].jugador.infoJugador()
@@ -122,6 +134,13 @@ const agregarAEquipo = (nombre, puntos = 0, equipo) => {
         default:
             break;
     }
+
+    jugadorDatos = {
+        ...jugadorDatos,
+        id : jugadorNuevo.id
+    }
+
+    localStorage.setItem(equipoSeleccionado,JSON.stringify(auxEquipo));
 
     //ESTO PARA EL PROYECTO FINAL CAMBIALO POR UN TOASTIFY O UN SWEET ALERT 
     infoContainer.innerHTML = `
@@ -140,15 +159,15 @@ const comenzarJuego = () => {
     const btnJugar = document.getElementById("btnJugar");
 
     btnJugar.addEventListener("click", () => {
-
+        
         //con esta condicion evito q el jugador empise a jugar sin haber elegido un equipo
         if (algunoPintado) {
+            let objLocalStorage = getLocalStorage();
+            let nombre = objLocalStorage["usuario"] //arrLocalStorage[...].usuario
+
             instruccionesContainer.style.display = "none";
             juegoContainer.style.display = "block";
             
-            let arrLocalStorage = getLocalStorage();
-            let nombre = arrLocalStorage[arrLocalStorage.length-1]["usuario"] //arrLocalStorage[...].usuario
-    
             equipoElegido = agregarAEquipo(nombre, 0, equipoSeleccionado);
     
             rondas.innerText = `Ronda : 1`
@@ -160,14 +179,15 @@ const comenzarJuego = () => {
             equipoInfoImg.classList.replace("signoPregunta", "imgEquipoInfo");
 
             //modificiamos los datos del jugador actual
-            datosJugadorActual = {
-                ...datosJugadorActual,
+            jugadorDatos = {
+                ...jugadorDatos,
                 usuario : nombre,
                 equipo : equipoSeleccionado,
+                puntuacion : 0
             }
 
             //cargamos los datos al localStorage
-            localStorage.setItem("jugadorActual",JSON.stringify(datosJugadorActual));
+            localStorage.setItem("jugadorDatos",JSON.stringify(jugadorDatos));
         }
     })
 }
@@ -209,15 +229,27 @@ const funcionPregunta = (arr,fun) => {
 
             [puntuacion,resIncorrectas] = fun(respuestaUsuario, respuesta, puntuacion, resIncorrectas);
 
-            equipoElegido[equipoElegido.length - 1].jugador.puntuacion = puntuacion;
+            let indiceJugador = equipoElegido.findIndex((element)=> element.id === jugadorDatos.id);
 
-            datosJugadorActual = {
-                ...datosJugadorActual,
+            //lo modifica en el array
+            equipoElegido[indiceJugador].jugador.puntuacion = puntuacion;
+            console.log(equipoElegido)
+
+            //actualizamos los datos
+            jugadorDatos = {
+                ...jugadorDatos,
                 puntuacion : puntuacion
             }
 
             //cargamos los datos al localStorage
-            localStorage.setItem("jugadorActual",JSON.stringify(datosJugadorActual));
+            localStorage.setItem("jugadorDatos",JSON.stringify(jugadorDatos));
+
+            //obtenemos el array del equipo elegido
+            let auxArr = JSON.parse(localStorage.getItem(equipoSeleccionado));
+
+            auxArr[indiceJugador].jugador.puntuacion = puntuacion;
+
+            localStorage.setItem(equipoSeleccionado,JSON.stringify(auxArr));
 
             //con este if evito q cuando no hay mas preguntas ya no intante actualizar
             if (opcionIndice < arr.length) {
@@ -233,7 +265,17 @@ const funcionPregunta = (arr,fun) => {
                 opcionIndice++;
                 
             } else {//este else se encarga de q cuando no hay mas preguntas resetea los valores para el proximo jugador y ocualta el juego
-                // console.log(puntuacion)
+                
+                const msgJuegoTerminado = document.getElementById("msgJuegoTerminado");
+
+                msgJuegoTerminado.innerText = `Felicidades ${jugadorDatos.usuario} lograste responder todas las preguntas
+                
+                Tu puntuacion final fue de ${jugadorDatos.puntuacion}
+
+                Si queres volver a intentarlo y conseguir mejor puntuacion
+                Dale al boton de "Nuevo Juego"`;
+
+
                 sectionJuego.style.display = "none";
                 juegoTerminado.style.display = "block";
                 opcionIndice = 1;
@@ -253,7 +295,7 @@ const eventoNuevoJuego = () => {
     btnJuegoNuevo.addEventListener("click", () => {
 
         infoContainer.innerHTML = `
-        <div class="msgJuegoIniciado">Jugador: ${datosJugadorActual.usuario} listo para jugar devuelta?</div>
+        <div class="msgJuegoIniciado">Jugador: ${jugadorDatos.usuario} listo para jugar devuelta?</div>
         `;
 
         //desaparecemos el menu de eleccion de equipo y nombre
@@ -266,23 +308,32 @@ const eventoNuevoJuego = () => {
         instruccionesContainer.style.display = "block";
         juegoContainer.style.display = "none";
 
-        datosJugadorActual = {
-            ...datosJugadorActual,
+        jugadorDatos = {
+            ...jugadorDatos,
             puntuacion : 0
         }
 
-        localStorage.setItem("jugadorActual",JSON.stringify(datosJugadorActual));
+        localStorage.setItem("jugadorDatos",JSON.stringify(jugadorDatos));
 
+        let indiceJugador = equipoElegido.findIndex((element)=> element.id === jugadorDatos.id);
+
+        //lo modifica en el array
+        equipoElegido[indiceJugador].jugador.puntuacion = jugadorDatos.puntuacion;
+        console.log(equipoElegido)
+
+        //obtenemos el array del equipo elegido
+        let auxArr = JSON.parse(localStorage.getItem(equipoSeleccionado));
+
+        auxArr[indiceJugador].jugador.puntuacion = jugadorDatos.puntuacion;
+
+        localStorage.setItem(equipoSeleccionado,JSON.stringify(auxArr));
+
+        //cargamos la primera pregunta
         pregunta.innerText = "JavaScript es un lenguaje?";
 
         inputOpcion.forEach((element,index)=>{
             element.value = primerasOpciones[index]; 
         })
-
-        //cambiamos la info q se ve en cuadro abajo de las preguntas
-        // nombreInfo.innerHTML = `<img src="../img/signoPregunta.png" alt="signo pregunta" class="equipoInfoImg signoPregunta">`;
-        // equipoInfoImg.src = `../img/signoPregunta.png`;
-        // equipoInfoImg.classList.replace("imgEquipoInfo", "signoPregunta");
 
         puntosJugador.innerText = "Puntos : 0";
         respuestasIncorrectas.innerText = "Incorrectas : 0";
@@ -299,5 +350,5 @@ const cargarEventosMenu = (arr) => {
     eventoNuevoJuego();
 }
 
-cargarStorageJugadorActual();
 cargarEventosMenu(imgEquipo);
+cerrarSesion();

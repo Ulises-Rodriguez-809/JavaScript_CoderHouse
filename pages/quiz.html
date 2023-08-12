@@ -22,10 +22,14 @@
         </nav>
         <div id="headersBtnContainer">
             <div id="cambiarInfo">
-                <button type="button">cambiar Info</button>
+                <button type="button" id="cambiarInfo">
+                    <a href="./cambiarInfo.html">Cambiar Info</a>
+                </button>
             </div>
             <div id="close">
-                <button type="button">Cerrar sesion</button>
+                <button type="button" id="cerrarSesion">
+                    <a href="../index.html">Cerrar sesion</a>
+                </button>
             </div>
         </div>
     </header>
@@ -77,14 +81,13 @@
                     INSTRUCCIONES:
                 </p>
                 <p class="instrucciones">
-                    Ingrese su nombre y eleiga uno de los 3 equipos disponibles. Luego al darle al boton para emepezar a
+                    Eleiga uno de los 3 equipos disponibles. Luego al darle al boton para emepezar a
                     jugar.<br>
-                    El juego consta de una serie de preguntas y 4 opciones por cada pregunta, se debe seleccionar 1 de
-                    las
-                    opciones.
+                    El juego consta de una serie de preguntas y 4 opciones por cada pregunta, se debe seleccionar 1 de lasopciones.
                 </p>
             </div>
             <div class="juegoContainer">
+                <!-- PREGUNTAS -->
                 <div class="preguntaContainer">
                     <p id="pregunta">
                         JavaScript es un lenguaje?
@@ -110,12 +113,11 @@
                     </ul>
                 </div>
             </div>
-            <!-- PREGUNTAS -->
         </section>
         <section class="juegoTerminado">
             <div class="juegoTerminadoMensaje">
-                <p>El juego termino</p>
-                <button type="button" id="btnJuegoNuevo">Nuevo Jugador</button>
+                <p id="msgJuegoTerminado"></p>
+                <button type="button" id="btnJuegoNuevo">Nuevo Jugo</button>
             </div>
         </section>
         <!-- PUNTOS DEL JUGADOR ACTUAL -->

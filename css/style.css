@@ -23,7 +23,7 @@ nav{
     height: 100%;
 }
 
-ul{
+nav ul{
     list-style: none;
     height: 100%;
     display: flex;
@@ -60,6 +60,11 @@ ul{
     font-size: 2rem;
     padding: .2rem;
     margin-left: .8rem;
+}
+
+#cambiarInfo a,#cerrarSesion a{
+    text-decoration: none;
+    color: #000;
 }
 
 /* LOGIN.html */
@@ -289,11 +294,30 @@ ul{
     display: none;
 }
 
-.juegoTerminadoMensaje p, .juegoTerminadoMensaje button{
+/* .juegoTerminadoMensaje p, .juegoTerminadoMensaje button{
     font-size: 2rem;
     font-weight: 600;
+} */
+
+/* NUEVO JUEGO */
+#msgJuegoTerminado {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 2rem 0;
+    padding: 1rem;
 }
 
+#btnJuegoNuevo {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    width: 30rem;
+    height: 5rem;
+    border-radius: 10%;
+}
+
+#btnJuegoNuevo:hover {
+    background-color: hotpink;
+}
 .juegoContainer{
     display: none;
 }
@@ -310,12 +334,17 @@ ul{
 /* OPCIONES */
 .opcionesContainer ul{
     margin: 3rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .opcionesContainer ul li {
     list-style: none;
     margin-top: 1rem;
     margin-bottom: 3rem;
+    width: 100%;
 }
 
 .opcionesContainer ul li input {
@@ -330,6 +359,7 @@ ul{
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 2rem 0 .5rem 0;
 }
 
 .signoPregunta{
@@ -357,6 +387,9 @@ ul{
     width: 50rem;
 }
 
+.puntosJugador,.incorrectas{
+    margin: 2rem 0 .5rem 0;
+}
 
 /* RANKING.HTLM */
 /* TOP jugadores container*/
@@ -385,6 +418,10 @@ ul{
 }
 
 /* MEJORES JUGADORES */
+
+
+
+
 .equiposRanking{
     display: flex;
     justify-content: space-around;
@@ -446,11 +483,15 @@ ul{
     padding: 1rem;
 }
 
-.jugadoresContainer ul li{
-    list-style: none;
+.jugadoresContainer ul{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.jugadoresContainer ul li{
+    list-style: none;
     background-color: #fff;
     margin: 1rem 0;
 }

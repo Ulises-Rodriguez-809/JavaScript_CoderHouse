@@ -1,5 +1,9 @@
-//falta modificar con eventos
+let infoJugadorActual = {}
 
+const obtenerLocalStorage = ()=>{
+    infoJugadorActual = JSON.parse(localStorage.getItem("jugadorDatos"));
+    console.log(infoJugadorActual)
+}
 
 //sumar puntos del equipo clikeado
 const sumarPuntosEquipos = (equipo) => {
@@ -44,7 +48,6 @@ const puntosDelEquipo = (equipo, fun) => {
 
 
 
-
 //funcion q muestra por consola los mejores jugadores del equipo elejido
 const mostrarMejoresJugadores = (equipo) => {
 
@@ -81,3 +84,5 @@ const mostrarMejoresJugadores = (equipo) => {
     }
 
 }
+
+obtenerLocalStorage();

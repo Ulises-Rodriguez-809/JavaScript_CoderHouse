@@ -1,13 +1,15 @@
 const usuariosRegistrados = [
     {
         usuario: 'Ulises',
-        contraseña: '12345',
+        contraseña: '12345'
     },
     {
         usuario: 'Tino',
         contraseña: '54321'
     }
 ]
+// https://github.com/Znt77/Proyecto-coder
+// const aux = document.querySelector("#contenedo-" + objeto.id)
 
 let usuarioIn = {
     usuario: "",
@@ -106,7 +108,7 @@ const opcion = () => {
 
 const cargarStorage = (arr) => {
     //cargamos al local storage algunos usuarios 
-    localStorage.setItem("usuarios", JSON.stringify(arr));
+    JSON.parse(localStorage.getItem("usuarios")) || localStorage.setItem("usuarios", JSON.stringify(arr));
 }
 
 const capturarValores = (arr, nombreObjeto) => {
@@ -180,6 +182,9 @@ const casoLogin = () => {
             msg.classList.replace("msgInc", "msgCor");
             msg.style.display = "block";
 
+            //este localStorage es para tener los datos del ultimo jugador q inicio sesion o se registro
+            localStorage.setItem("jugadorActual",JSON.stringify(usuarioIn));
+
         } else {
             msg.innerHTML = `
                 Usuario no encontrado<br>
@@ -236,6 +241,9 @@ const casoReg = () => {
             //guardamos los cambios en el local storage
             //sin olvidar convertir a texto el arrUsuarios ya q los arrays y objetos si no los convertis a texto no se guardan bien en el localStorage 
             localStorage.setItem("usuarios", JSON.stringify(arrUsuarios));
+
+            //este localStorage es para tener los datos del ultimo jugador q inicio sesion o se registro
+            localStorage.setItem("jugadorActual",JSON.stringify(aux));
 
             regDatos.innerHTML = "";
 
