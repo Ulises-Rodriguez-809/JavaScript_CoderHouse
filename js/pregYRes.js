@@ -148,7 +148,7 @@ const preguntasYRespuestas = [
     },
     {
         pregunta: "console.log() nos permite?",
-        respuesta:  "Escribir un mensaje en consola",
+        respuesta: "Escribir un mensaje en consola",
         opciones: {
             opcion1: "Muestra un texto y espera hasta que el usuario cierre la ventana de texto",
             opcion2: "Se usa para mostrar un cuadro texto que le pide al usuario ingresar datos",
@@ -168,7 +168,7 @@ const preguntasYRespuestas = [
     },
     {
         pregunta: "if y else?",
-        respuesta:  "Ejecuta una sentencia si una condición específicada es evaluada como verdadera",
+        respuesta: "Ejecuta una sentencia si una condición específicada es evaluada como verdadera",
         opciones: {
             opcion1: "Ejecuta una sentencia si una condición específicada es evaluada como verdadera",
             opcion2: "Ejecuta una sentencia si una condición específicada es evaluada como falsa",
@@ -179,7 +179,7 @@ const preguntasYRespuestas = [
     },
     {
         pregunta: "El metodo push() nos permite?",
-        respuesta:  "Nos permite agragar un o varios elemento al final de un array",
+        respuesta: "Nos permite agragar un o varios elemento al final de un array",
         opciones: {
             opcion1: "Nos permite agragar un elemento al principio de un array",
             opcion2: "Nos permite agragar un elemento al final de un array",

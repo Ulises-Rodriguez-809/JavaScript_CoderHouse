@@ -1,11 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
-    
+    <header class="header">
+        <nav>
+            <ul>
+                <li class="liPage">
+                    <a href="./quiz.html">Quiz</a>
+                </li>
+                <li class="liPage">
+                    <a href="./ranking.html">Ranking</a>
+                </li>
+                <li class="liPage">
+                    <a href="https://github.com/Ulises-Rodriguez-809/JavaScript_CoderHouse" target="_blank">GitHub</a>
+                </li>
+            </ul>
+        </nav>
+        <div id="headersBtnContainer">
+            <div id="close">
+                <button type="button" id="cerrarSesion">
+                    <a href="../index.html">Cerrar sesion</a>
+                </button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section id="sectionNuevaInfo">
+            <div id="nuevaInfoContainer">
+                <div id="nuevaInfoTitulo">
+                    <p>Cambiar infomacion del jugador</p>
+                </div>
+                <div id="nuevosDatos">
+                    <div>
+                        <label for="nuevoNombre">Nuevo nombre</label>
+                        <input type="text" name="usuario" id="nuevoNombre" class="input"
+                            placeholder="Escriba su Nombre">
+                    </div>
+                    <div>
+                        <label for="nuevaContraseña">Nueva Contraseña</label>
+                        <input type="password" name="contraseña" id="nuevaContraseña" class="input"
+                            placeholder="Escriba su contraseña">
+                    </div>
+                    <div>
+                        <label for="nuevaConConfirmar">Confirmar Contraseña</label>
+                        <input type="password" name="ConfirmarCont" id="nuevaConConfirmar" class="input"
+                            placeholder="Confirmar Contraseña">
+                    </div>
+                </div>
+                <div class="msg3 msgInc"></div>
+                <div class="btnCambioContainer">
+                    <button id="btnCambiar">Guardar Info</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="../js/cambiarInfo.js"></script>
 </body>
+
 </html>

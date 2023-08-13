@@ -10,20 +10,20 @@ html {
 }
 
 /* NAVBAR */
-.header{
+.header {
     display: flex;
     justify-content: space-around;
     align-items: center;
     background-color: #4f438e;
 }
 
-nav{
+nav {
     flex-grow: 4;
     padding: 1rem;
     height: 100%;
 }
 
-nav ul{
+nav ul {
     list-style: none;
     height: 100%;
     display: flex;
@@ -31,24 +31,24 @@ nav ul{
     justify-content: space-around;
 }
 
-.liPage{
+.liPage {
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.liPage a{
+.liPage a {
     font-size: 2rem;
     color: #fff;
     text-decoration: none;
 }
 
-.liPage a:hover{
+.liPage a:hover {
     background-color: hotpink;
 }
 
-#headersBtnContainer{
+#headersBtnContainer {
     flex-grow: 1;
     display: flex;
     justify-content: flex-end;
@@ -56,19 +56,20 @@ nav ul{
     padding: 1rem;
 }
 
-#headersBtnContainer button{
+#headersBtnContainer button {
     font-size: 2rem;
     padding: .2rem;
     margin-left: .8rem;
 }
 
-#cambiarInfo a,#cerrarSesion a{
+#cambiarInfo a,
+#cerrarSesion a {
     text-decoration: none;
     color: #000;
 }
 
 /* LOGIN.html */
-#logYRegContainer{
+#logYRegContainer {
     height: 100vh;
     background-color: #6ca6d8;
     display: flex;
@@ -76,7 +77,7 @@ nav ul{
     align-items: center;
 }
 
-#loginContainer{
+#loginContainer {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -87,13 +88,13 @@ nav ul{
     height: 80%;
 }
 
-.btnOpcion button{
+.btnOpcion button {
     font-size: 2rem;
     margin: 1rem;
     padding: .2rem;
 }
 
-#login{
+#login {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -101,7 +102,8 @@ nav ul{
     height: 80%;
 }
 
-#iniciarSesion,#registrarse{
+#iniciarSesion,
+#registrarse {
     height: 90%;
     display: flex;
     align-items: center;
@@ -109,60 +111,70 @@ nav ul{
     flex-direction: column;
 }
 
-#registrarse{
+#registrarse {
     display: none;
 }
 
-#logTitulo p,#regTitulo p{
+#logTitulo p,
+#regTitulo p {
     font-size: 3.5rem;
     font-weight: 600;
     text-align: center;
     margin: 1rem 0;
 }
 
-#logDatos,#regDatos{
+#logDatos,
+#regDatos {
     margin-bottom: 1.5rem;
 }
 
-#logDatos div,#regDatos div{
+#logDatos div,
+#regDatos div {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
 }
 
-#logDatos div label,#regDatos div label {
+#logDatos div label,
+#regDatos div label {
     font-size: 3rem;
     margin: .5rem 0;
 }
 
-#logDatos div input,#regDatos div input {
+#logDatos div input,
+#regDatos div input {
     font-size: 3rem;
     margin: .5rem 0;
 }
 
-.btnLogContainer,.btnRegContainer{
+.btnLogContainer,
+.btnRegContainer {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#btnLog,#btnReg{
+#btnLog,
+#btnReg {
     border-radius: 10%;
 }
 
-#btnLog:hover,#btnReg:hover {
+#btnLog:hover,
+#btnReg:hover {
     border-radius: 10%;
     background-color: #bd3131;
 }
 
-#btnLog,#btnReg{
+#btnLog,
+#btnReg {
     color: #000;
     font-size: 2.5rem;
 }
 
 /* MENSAJE */
-.msg, .msg2{
+.msg,
+.msg2 {
     font-size: 2rem;
     font-weight: 500;
     border: #000 solid .1rem;
@@ -171,20 +183,24 @@ nav ul{
     display: none;
 }
 
-.msgCor{
+.msgCor {
     background-color: #7df179;
 }
 
-.msgInc{
+.msgInc {
     background-color: #f17979;
 }
 
-.msg p, .msg a, .msg2 p, .msg2 a{
+.msg p,
+.msg a,
+.msg2 p,
+.msg2 a {
     font-size: 2rem;
     padding: .2rem;
 }
 
-.msg a , .msg2 a{
+.msg a,
+.msg2 a {
     text-decoration: none;
 }
 
@@ -204,26 +220,26 @@ nav ul{
 }
 
 /* INGRESAR NOMBRE JUGADOR */
-.sectionInfo{
+.sectionInfo {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 1rem;
 }
 
-.infoContainer{
+.infoContainer {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.equiposPosibles ul{
+.equiposPosibles ul {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.equiposPosibles ul li{
+.equiposPosibles ul li {
     width: 15rem;
     list-style: none;
     margin: 0 2rem;
@@ -236,29 +252,29 @@ nav ul{
 
 }
 
-.equipo{
+.equipo {
     width: 9rem;
     height: 9rem;
 }
 
-.equipoElegido{
+.equipoElegido {
     background-color: #ffb464;
 }
 
-.equipoNoElegido{
+.equipoNoElegido {
     background-color: #fff;
 }
 
-#btnJugar{
+#btnJugar {
     font-size: 2rem;
 }
 
 /* esto para hacer desaparecer el input de nombre,equipo y btn de juggar */
-.infoCompleta{
+.infoCompleta {
     display: none;
 }
 
-.msgJuegoIniciado{
+.msgJuegoIniciado {
     font-size: 2rem;
     font-weight: 500;
     border: #000 solid .1rem;
@@ -282,7 +298,8 @@ nav ul{
 
 
 /* JUEGO */
-.sectionJuego,.juegoTerminadoMensaje {
+.sectionJuego,
+.juegoTerminadoMensaje {
     background-color: rgb(251, 221, 160);
     display: flex;
     flex-direction: column;
@@ -290,7 +307,7 @@ nav ul{
     align-items: center;
 }
 
-.juegoTerminado{
+.juegoTerminado {
     display: none;
 }
 
@@ -318,12 +335,14 @@ nav ul{
 #btnJuegoNuevo:hover {
     background-color: hotpink;
 }
-.juegoContainer{
+
+.juegoContainer {
     display: none;
 }
 
 /* PREGUNTAS E INSTRUCCIONES */
-.preguntaContainer,.instruccionesContainer{
+.preguntaContainer,
+.instruccionesContainer {
     font-size: 4rem;
     font-weight: 800;
     text-align: center;
@@ -332,7 +351,7 @@ nav ul{
 }
 
 /* OPCIONES */
-.opcionesContainer ul{
+.opcionesContainer ul {
     margin: 3rem 0;
     display: flex;
     justify-content: center;
@@ -355,19 +374,19 @@ nav ul{
 }
 
 /* info jugador */
-.divInfo{
+.divInfo {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 2rem 0 .5rem 0;
 }
 
-.signoPregunta{
+.signoPregunta {
     width: 2rem;
     height: 2rem;
 }
 
-.imgEquipoInfo{
+.imgEquipoInfo {
     width: 8rem;
     height: 4rem;
 }
@@ -380,60 +399,62 @@ nav ul{
     background-color: rgb(159, 133, 255);
 }
 
-.jugadorActual,.jugador,.puntos{
+.jugadorActual,
+.jugador,
+.puntos {
     font-size: 3rem;
     font-weight: 800;
     text-align: center;
     width: 50rem;
 }
 
-.puntosJugador,.incorrectas{
+.puntosJugador,
+.incorrectas {
     margin: 2rem 0 .5rem 0;
 }
 
+
+
 /* RANKING.HTLM */
 /* TOP jugadores container*/
-.topJugadores{
+.topJugadores {
     background-color: #a2a0a0;
 }
 
 /* TITULO jugadores top */
-.trofeoContainer{
+.trofeoContainer {
     background-color: #9982f6;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
 
-.topJugadoresTitulo{
+.topJugadoresTitulo {
     font-size: 4rem;
     font-weight: 800;
     color: #fbf780;
     border-bottom: solid .2rem rgb(255, 0, 0);
 }
 
-.tofeoImg{
+.tofeoImg {
     width: 8rem;
     height: 8rem;
 }
 
 /* MEJORES JUGADORES */
 
-
-
-
-.equiposRanking{
+.equiposRanking {
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
 }
 
-.equipos{
+.equipos {
     background-color: #fff;
     margin-bottom: 1rem;
 }
 
-.equiposTitulo p{
+.equiposTitulo p {
     background-color: #ff8400;
     font-size: 4rem;
     font-weight: 800;
@@ -441,7 +462,7 @@ nav ul{
     margin-bottom: 2rem;
 }
 
-.equiposLista ul{
+.equiposLista ul {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -449,7 +470,7 @@ nav ul{
     padding: .2rem 1rem;
 }
 
-.equiposLista ul li{
+.equiposLista ul li {
     list-style: none;
     font-size: 3rem;
     font-weight: 800;
@@ -470,12 +491,13 @@ nav ul{
 }
 
 /* tabla de posiciones */
-.jugadoresContainer, .equipos{
+.jugadoresContainer,
+.equipos {
     margin-top: 1rem;
     width: 500px;
 }
 
-.jugadoresContainer{
+.jugadoresContainer {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -483,35 +505,93 @@ nav ul{
     padding: 1rem;
 }
 
-.jugadoresContainer ul{
+.jugadoresContainer ul {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.jugadoresContainer ul li{
+.jugadoresContainer ul li {
     list-style: none;
     background-color: #fff;
     margin: 1rem 0;
 }
 
-.jugador{
+.jugador {
     background-color: #ff8400;
 }
 
-.puntos{
+.puntos {
     text-align: center;
 }
 
-.puntosEuipo{
+.puntosEuipo {
     margin-top: 2rem;
     display: flex;
     background-color: #0073d7;
 }
 
-.puntosEuipo p{
+.puntosEuipo p {
     margin-left: .5rem;
     font-size: 3rem;
     font-weight: 800;
+}
+
+
+/* CAMBIAR INFORMACION JUGADOR */
+#sectionNuevaInfo {
+    height: 100vh;
+    background-color: #74baf7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#nuevaInfoContainer {
+    background-color: #0073d7;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+#nuevaInfoTitulo {
+    font-size: 3rem;
+    font-weight: 800;
+    padding: 1rem;
+}
+
+#nuevosDatos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#nuevosDatos div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+#nuevosDatos label,
+#nuevosDatos input {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-top: 1rem;
+}
+
+.msg3 {
+    display: none;
+    font-size: 2.5rem;
+    padding: .2rem;
+}
+
+#btnCambiar {
+    font-size: 2rem;
+    padding: 1rem;
 }

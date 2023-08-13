@@ -1,10 +1,10 @@
 import preguntasYRespuestas from "./pregYRes.js"
-import {Jugadores,noCoffeNoWorkee,codigoYCafe,iTurnCoffeIntoCode} from "./equipos.js";
+import { Jugadores, noCoffeNoWorkee, codigoYCafe, iTurnCoffeIntoCode } from "./equipos.js";
 import cerrarSesion from "./cerrarSesion.js";
 
 //esto para poder modificar los datos en el ranking
 let datosAux = {
-    id : 0,
+    id: 0,
     usuario: '',
     equipo: '',
     puntuacion: 0
@@ -53,9 +53,8 @@ const juegoTerminado = document.querySelector(".juegoTerminado");
 const nombreInfo = document.querySelector(".nombreInfo");
 const equipoInfoImg = document.querySelector(".equipoInfoImg");
 
-
 //traemos el contenido del localStorage para obtener el nombre del jugador
-const getLocalStorage = ()=>{
+const getLocalStorage = () => {
     let contenidoLocStorage = JSON.parse(localStorage.getItem("jugadorActual"));
 
     return contenidoLocStorage;
@@ -63,7 +62,7 @@ const getLocalStorage = ()=>{
 
 //se encarga de dar fondo naranja al equipo elegido
 const pintarFondo = (arr) => {
-    
+
     arr.forEach((element) => {
         element.addEventListener("click", (e) => {
             const { target } = e;
@@ -78,7 +77,8 @@ const pintarFondo = (arr) => {
             //luego una ves removido la clase equipoElegido de todas las img agregamos devuelta esa clase a la ultima img q fue clikeada
             target.classList.add("equipoElegido");
             //obtenemos el nombre en formato string desde la clase de la img seleccionada
-            equipoSeleccionado = target.classList[0];
+            // equipoSeleccionado = target.classList[0];
+            equipoSeleccionado = target.name;
 
             algunoPintado = true
         })
@@ -93,7 +93,7 @@ const agregarAEquipo = (nombre, puntos = 0, equipo) => {
 
     //creo el nuevo jugador
     let jugadorNuevo = {
-        id : 0,
+        id: 0,
         jugador: new Jugadores(nombre, puntos, equipo)
     }
 
@@ -101,7 +101,7 @@ const agregarAEquipo = (nombre, puntos = 0, equipo) => {
         case "noCoffeNoWorkee":
             jugadorNuevo = {
                 ...jugadorNuevo,
-                id : noCoffeNoWorkee.length+1
+                id: noCoffeNoWorkee.length + 1
             }
 
             auxEquipo = noCoffeNoWorkee;
@@ -112,9 +112,9 @@ const agregarAEquipo = (nombre, puntos = 0, equipo) => {
         case "codigoYCafe":
             jugadorNuevo = {
                 ...jugadorNuevo,
-                id : codigoYCafe.length+1
+                id: codigoYCafe.length + 1
             }
-            
+
             auxEquipo = codigoYCafe;
             codigoYCafe.push(jugadorNuevo);
             // codigoYCafe[codigoYCafe.length - 1].jugador.infoJugador()
@@ -123,7 +123,7 @@ const agregarAEquipo = (nombre, puntos = 0, equipo) => {
         case "iTurnCoffeIntoCode":
             jugadorNuevo = {
                 ...jugadorNuevo,
-                id : iTurnCoffeIntoCode.length+1
+                id: iTurnCoffeIntoCode.length + 1
             }
 
             auxEquipo = iTurnCoffeIntoCode;
@@ -137,10 +137,10 @@ const agregarAEquipo = (nombre, puntos = 0, equipo) => {
 
     jugadorDatos = {
         ...jugadorDatos,
-        id : jugadorNuevo.id
+        id: jugadorNuevo.id
     }
 
-    localStorage.setItem(equipoSeleccionado,JSON.stringify(auxEquipo));
+    localStorage.setItem(equipoSeleccionado, JSON.stringify(auxEquipo));
 
     //ESTO PARA EL PROYECTO FINAL CAMBIALO POR UN TOASTIFY O UN SWEET ALERT 
     infoContainer.innerHTML = `
@@ -159,7 +159,7 @@ const comenzarJuego = () => {
     const btnJugar = document.getElementById("btnJugar");
 
     btnJugar.addEventListener("click", () => {
-        
+
         //con esta condicion evito q el jugador empise a jugar sin haber elegido un equipo
         if (algunoPintado) {
             let objLocalStorage = getLocalStorage();
@@ -167,12 +167,13 @@ const comenzarJuego = () => {
 
             instruccionesContainer.style.display = "none";
             juegoContainer.style.display = "block";
-            
+
+
             equipoElegido = agregarAEquipo(nombre, 0, equipoSeleccionado);
-    
+
             rondas.innerText = `Ronda : 1`
             rondasCantidad.innerText = `1/${arrLength}`;
-    
+
             //cambiamos la info q se ve en cuadro abajo de las preguntas
             nombreInfo.innerHTML = nombre;
             equipoInfoImg.src = `../img/${equipoSeleccionado}.png`;
@@ -181,13 +182,13 @@ const comenzarJuego = () => {
             //modificiamos los datos del jugador actual
             jugadorDatos = {
                 ...jugadorDatos,
-                usuario : nombre,
-                equipo : equipoSeleccionado,
-                puntuacion : 0
+                usuario: nombre,
+                equipo: equipoSeleccionado,
+                puntuacion: 0
             }
 
             //cargamos los datos al localStorage
-            localStorage.setItem("jugadorDatos",JSON.stringify(jugadorDatos));
+            localStorage.setItem("jugadorDatos", JSON.stringify(jugadorDatos));
         }
     })
 }
@@ -202,17 +203,17 @@ const analizandoRespuesta = (resU, resP, puntuacion, resInc) => {
         respuestasIncorrectas.innerHTML = `Incorrectas : ${resInc}`;
     }
 
-    return [puntuacion,resInc];
+    return [puntuacion, resInc];
 }
 
 //funcion q actualiza la rondas 
-const rondaActual = (numRondas,rondasCT)=>{
-    rondas.innerText = `Ronda : ${numRondas+1}`;
-    rondasCantidad.innerText = `${numRondas+1}/${rondasCT}`;
+const rondaActual = (numRondas, rondasCT) => {
+    rondas.innerText = `Ronda : ${numRondas + 1}`;
+    rondasCantidad.innerText = `${numRondas + 1}/${rondasCT}`;
 }
 
 //funcion q se encarga de hacer las preguntas y devuelve los puntos del jugador
-const funcionPregunta = (arr,fun) => {
+const funcionPregunta = (arr, fun) => {
     let respuesta = "";
     let opcionesAux = "";
     let opcionIndice = 1;
@@ -227,9 +228,9 @@ const funcionPregunta = (arr,fun) => {
             respuesta = arr[opcionIndice - 1].respuesta;
             respuestaUsuario = element.value;
 
-            [puntuacion,resIncorrectas] = fun(respuestaUsuario, respuesta, puntuacion, resIncorrectas);
+            [puntuacion, resIncorrectas] = fun(respuestaUsuario, respuesta, puntuacion, resIncorrectas);
 
-            let indiceJugador = equipoElegido.findIndex((element)=> element.id === jugadorDatos.id);
+            let indiceJugador = equipoElegido.findIndex((element) => element.id === jugadorDatos.id);
 
             //lo modifica en el array
             equipoElegido[indiceJugador].jugador.puntuacion = puntuacion;
@@ -238,34 +239,34 @@ const funcionPregunta = (arr,fun) => {
             //actualizamos los datos
             jugadorDatos = {
                 ...jugadorDatos,
-                puntuacion : puntuacion
+                puntuacion: puntuacion
             }
 
             //cargamos los datos al localStorage
-            localStorage.setItem("jugadorDatos",JSON.stringify(jugadorDatos));
+            localStorage.setItem("jugadorDatos", JSON.stringify(jugadorDatos));
 
             //obtenemos el array del equipo elegido
             let auxArr = JSON.parse(localStorage.getItem(equipoSeleccionado));
 
             auxArr[indiceJugador].jugador.puntuacion = puntuacion;
 
-            localStorage.setItem(equipoSeleccionado,JSON.stringify(auxArr));
+            localStorage.setItem(equipoSeleccionado, JSON.stringify(auxArr));
 
             //con este if evito q cuando no hay mas preguntas ya no intante actualizar
             if (opcionIndice < arr.length) {
-                rondaActual(opcionIndice,arrLength);
+                rondaActual(opcionIndice, arrLength);
 
                 pregunta.innerText = arr[opcionIndice].pregunta;
                 opcionesAux = arr[opcionIndice].opciones;
 
-                inputOpcion.forEach((element,index)=>{
+                inputOpcion.forEach((element, index) => {
                     element.value = opcionesAux[`opcion${index + 1}`]
                 })
 
                 opcionIndice++;
-                
+
             } else {//este else se encarga de q cuando no hay mas preguntas resetea los valores para el proximo jugador y ocualta el juego
-                
+
                 const msgJuegoTerminado = document.getElementById("msgJuegoTerminado");
 
                 msgJuegoTerminado.innerText = `Felicidades ${jugadorDatos.usuario} lograste responder todas las preguntas
@@ -290,7 +291,7 @@ const funcionPregunta = (arr,fun) => {
 //funcion q da el evento al btn para jugar devuelta
 const eventoNuevoJuego = () => {
     const btnJuegoNuevo = document.getElementById("btnJuegoNuevo");
-    const primerasOpciones = ["Igual que Java","Interpretado","Un Framework para diseño de sitios y aplicaciones web","Ninguna de las anteriores"];
+    const primerasOpciones = ["Igual que Java", "Interpretado", "Un Framework para diseño de sitios y aplicaciones web", "Ninguna de las anteriores"];
 
     btnJuegoNuevo.addEventListener("click", () => {
 
@@ -310,12 +311,12 @@ const eventoNuevoJuego = () => {
 
         jugadorDatos = {
             ...jugadorDatos,
-            puntuacion : 0
+            puntuacion: 0
         }
 
-        localStorage.setItem("jugadorDatos",JSON.stringify(jugadorDatos));
+        localStorage.setItem("jugadorDatos", JSON.stringify(jugadorDatos));
 
-        let indiceJugador = equipoElegido.findIndex((element)=> element.id === jugadorDatos.id);
+        let indiceJugador = equipoElegido.findIndex((element) => element.id === jugadorDatos.id);
 
         //lo modifica en el array
         equipoElegido[indiceJugador].jugador.puntuacion = jugadorDatos.puntuacion;
@@ -326,13 +327,13 @@ const eventoNuevoJuego = () => {
 
         auxArr[indiceJugador].jugador.puntuacion = jugadorDatos.puntuacion;
 
-        localStorage.setItem(equipoSeleccionado,JSON.stringify(auxArr));
+        localStorage.setItem(equipoSeleccionado, JSON.stringify(auxArr));
 
         //cargamos la primera pregunta
         pregunta.innerText = "JavaScript es un lenguaje?";
 
-        inputOpcion.forEach((element,index)=>{
-            element.value = primerasOpciones[index]; 
+        inputOpcion.forEach((element, index) => {
+            element.value = primerasOpciones[index];
         })
 
         puntosJugador.innerText = "Puntos : 0";
@@ -346,7 +347,7 @@ const eventoNuevoJuego = () => {
 const cargarEventosMenu = (arr) => {
     pintarFondo(arr);
     comenzarJuego();
-    funcionPregunta(preguntasYRespuestas,analizandoRespuesta);
+    funcionPregunta(preguntasYRespuestas, analizandoRespuesta);
     eventoNuevoJuego();
 }
 

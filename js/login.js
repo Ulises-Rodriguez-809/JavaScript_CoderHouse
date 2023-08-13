@@ -152,7 +152,7 @@ const datosIn = () => {
     capturarValores(inputDatos, "usuarioIn");
 }
 
-const datosReg = ()=>{
+const datosReg = () => {
     const inputDatos = document.querySelectorAll(".inputReg");
     capturarValores(inputDatos, "usuarioReg");
 }
@@ -183,7 +183,7 @@ const casoLogin = () => {
             msg.style.display = "block";
 
             //este localStorage es para tener los datos del ultimo jugador q inicio sesion o se registro
-            localStorage.setItem("jugadorActual",JSON.stringify(usuarioIn));
+            localStorage.setItem("jugadorActual", JSON.stringify(usuarioIn));
 
         } else {
             msg.innerHTML = `
@@ -204,7 +204,7 @@ const casoReg = () => {
 
     let arrUsuarios = JSON.parse(localStorage.getItem("usuarios"));
 
-    btnReg.addEventListener("click",()=>{
+    btnReg.addEventListener("click", () => {
 
         let usuarioEncontrado = arrUsuarios.find((element) => element.usuario === usuarioReg.usuario);
 
@@ -228,22 +228,22 @@ const casoReg = () => {
             msg2.classList.replace("msgCor", "msgInc");
             msg2.style.display = "block";
         }
-        else{
+        else {
             //creamos el nuevo usuario
             let aux = {
-                usuario : usuarioReg.usuario,
-                contraseña : usuarioReg.contraseña
+                usuario: usuarioReg.usuario,
+                contraseña: usuarioReg.contraseña
             }
-            
+
             //lo pusheamos dentro del array q nos devuelve al hacer el JSON.parse(localStorage.getItem("usuarios"))
             arrUsuarios.push(aux);
-            
+
             //guardamos los cambios en el local storage
             //sin olvidar convertir a texto el arrUsuarios ya q los arrays y objetos si no los convertis a texto no se guardan bien en el localStorage 
             localStorage.setItem("usuarios", JSON.stringify(arrUsuarios));
 
             //este localStorage es para tener los datos del ultimo jugador q inicio sesion o se registro
-            localStorage.setItem("jugadorActual",JSON.stringify(aux));
+            localStorage.setItem("jugadorActual", JSON.stringify(aux));
 
             regDatos.innerHTML = "";
 

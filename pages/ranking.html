@@ -22,27 +22,18 @@
         </nav>
         <div id="headersBtnContainer">
             <div id="cambiarInfo">
-                <button type="button">cambiar Info</button>
+                <button type="button">
+                    <a href="./cambiarInfo.html">Cambiar Info</a>
+                </button>
             </div>
             <div id="close">
-                <button type="button">Cerrar sesion</button>
+                <button type="button" id="cerrarSesion">
+                    <a href="../index.html">Cerrar sesion</a>
+                </button>
             </div>
         </div>
     </header>
     <main>
-        <section class="sectionJugAct">
-            <div class="jugActContainer">
-                <div class="jugActNomContainer">
-                    <p class="jugActNombre">Pepe</p>
-                </div>
-                <div class="jugActImgContainer">
-                    <img src="../img/iTurnCoffeIntoCode.png" alt="" class="jugActImg">
-                </div>
-                <div class="jugActPuntContainer">
-                    <p class="jugActPuntos">3</p>
-                </div>
-            </div>
-        </section>
         <!-- MEJORES JUGADORES -->
         <section class="topJugadores">
             <!-- TITULO MEJORES JUGADORES -->
@@ -67,67 +58,71 @@
                         <ul>
                             <li>
                                 <p>NO COFFE NO WORKEE</p>
-                                <img src="../img/noCoffeNoWorkee.png" alt="my code coffe team" class="equipoLista">
+                                <img src="../img/noCoffeNoWorkee.png" name="noCoffeNoWorkee" alt="my code coffe team"
+                                    class="equipoLista">
                             </li>
                             <li>
                                 <p>CODIFO Y CAFE</p>
-                                <img src="../img/codigoYCafe.png" alt="codigo y cafge team" class="equipoLista">
+                                <img src="../img/codigoYCafe.png" name="codigoYCafe" alt="codigo y cafge team"
+                                    class="equipoLista">
                             </li>
                             <li>
                                 <p>I TURN COFFE INTO CODE</p>
-                                <img src="../img/iTurnCoffeIntoCode.png" alt="i turn coffe into code team"
-                                    class="equipoLista">
+                                <img src="../img/iTurnCoffeIntoCode.png" name="iTurnCoffeIntoCode"
+                                    alt="i turn coffe into code team" class="equipoLista">
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="jugadoresContainer">
                     <div class="puntosEuipo">
-                        <p>Puntos totales del Equipo:</p>
-                        <p>63</p>
+                        <p>Puntos del Equipo: </p>
+                        <p id="puntosTotales"></p>
                     </div>
-                    <ul>
-                        <li>
-                            <div class="jugador">Juan</div>
-                            <div class="puntos">10</div>
-                        </li>
-                        <li>
-                            <div class="jugador">Facu</div>
-                            <div class="puntos">10</div>
-                        </li>
-                        <li>
-                            <div class="jugador">Martin</div>
-                            <div class="puntos">9</div>
-                        </li>
-                        <li>
-                            <div class="jugador">Lucho</div>
-                            <div class="puntos">7</div>
-                        </li>
-                        <li>
-                            <div class="jugador">Yo</div>
-                            <div class="puntos">7</div>
-                        </li>
-                        <li>
-                            <div class="jugador">Pepe</div>
-                            <div class="puntos">6</div>
-                        </li>
-                        <li>
-                            <div class="jugador">ElMagician</div>
-                            <div class="puntos">5</div>
-                        </li>
-                        <li>
-                            <div class="jugador">Lenox</div>
-                            <div class="puntos">3</div>
-                        </li>
-                        <li>
-                            <div class="jugador">ElPampa</div>
-                            <div class="puntos">3</div>
-                        </li>
-                        <li>
-                            <div class="jugador">Tatun</div>
-                            <div class="puntos">3</div>
-                        </li>
-                    </ul>
+                    <div class="listaContainer">
+                        <ul id="listaMejJug">
+                            <li>
+                                <div class="jugador"></div>
+                                <div class="puntos"></div>
+                            </li>
+                            <li>
+                                <div class="jugador"></div>
+                                <div class="puntos"></div>
+                            </li>
+                            <li>
+                                <div class="jugador"></div>
+                                <div class="puntos"></div>
+                            </li>
+                            <li>
+                                <div class="jugador"></div>
+                                <div class="puntos"></div>
+                            </li>
+                            <li>
+                                <div class="jugador"></div>
+                                <div class="puntos"></div>
+                            </li>
+                            <li>
+                                <div class="jugador"></div>
+                                <div class="puntos"></div>
+                            </li>
+                            <li>
+                                <div class="jugador"></div>
+                                <div class="puntos"></div>
+                            </li>
+                            <li>
+                                <div class="jugador"></div>
+                                <div class="puntos"></div>
+                            </li>
+                            <li>
+                                <div class="jugador"></div>
+                                <div class="puntos"></div>
+                            </li>
+                            <li>
+                                <div class="jugador"></div>
+                                <div class="puntos"></div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
