@@ -1,15 +1,4 @@
-const usuariosRegistrados = [
-    {
-        usuario: 'Ulises',
-        contraseña: '12345'
-    },
-    {
-        usuario: 'Tino',
-        contraseña: '54321'
-    }
-]
-// https://github.com/Znt77/Proyecto-coder
-// const aux = document.querySelector("#contenedo-" + objeto.id)
+const usuariosRegistrados = [];
 
 let usuarioIn = {
     usuario: "",
@@ -136,8 +125,6 @@ const capturarValores = (arr, nombreObjeto) => {
                         ...usuarioReg,
                         [name]: value
                     }
-
-                    console.log(usuarioReg)
 
                     break;
                 default:

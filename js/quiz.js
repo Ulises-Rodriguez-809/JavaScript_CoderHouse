@@ -234,7 +234,6 @@ const funcionPregunta = (arr, fun) => {
 
             //lo modifica en el array
             equipoElegido[indiceJugador].jugador.puntuacion = puntuacion;
-            console.log(equipoElegido)
 
             //actualizamos los datos
             jugadorDatos = {
@@ -320,7 +319,6 @@ const eventoNuevoJuego = () => {
 
         //lo modifica en el array
         equipoElegido[indiceJugador].jugador.puntuacion = jugadorDatos.puntuacion;
-        console.log(equipoElegido)
 
         //obtenemos el array del equipo elegido
         let auxArr = JSON.parse(localStorage.getItem(equipoSeleccionado));
