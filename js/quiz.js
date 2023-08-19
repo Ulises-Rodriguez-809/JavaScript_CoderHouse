@@ -293,51 +293,62 @@ const eventoNuevoJuego = () => {
     const primerasOpciones = ["Igual que Java", "Interpretado", "Un Framework para diseño de sitios y aplicaciones web", "Ninguna de las anteriores"];
 
     btnJuegoNuevo.addEventListener("click", () => {
+        Swal.fire({
+            title: 'Estas seguro de querer jugar de nuevo?',
+            text: "La puntuacion anteriror sera borrada!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Confirmar!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                infoContainer.innerHTML = `
+                <div class="msgJuegoIniciado">Jugador: ${jugadorDatos.usuario} listo para jugar devuelta?</div>
+                `;
 
-        infoContainer.innerHTML = `
-        <div class="msgJuegoIniciado">Jugador: ${jugadorDatos.usuario} listo para jugar devuelta?</div>
-        `;
+                //desaparecemos el menu de eleccion de equipo y nombre
+                btnContainer.style.display = "block";
 
-        //desaparecemos el menu de eleccion de equipo y nombre
-        btnContainer.style.display = "block";
+                rondas.innerText = "Ronda: ---";
+                rondasCantidad.innerText = "---";
 
-        rondas.innerText = "Ronda: ---";
-        rondasCantidad.innerText = "---";
+                sectionJuego.style.display = "flex";
+                instruccionesContainer.style.display = "block";
+                juegoContainer.style.display = "none";
 
-        sectionJuego.style.display = "flex";
-        instruccionesContainer.style.display = "block";
-        juegoContainer.style.display = "none";
+                jugadorDatos = {
+                    ...jugadorDatos,
+                    puntuacion: 0
+                }
 
-        jugadorDatos = {
-            ...jugadorDatos,
-            puntuacion: 0
-        }
+                localStorage.setItem("jugadorDatos", JSON.stringify(jugadorDatos));
 
-        localStorage.setItem("jugadorDatos", JSON.stringify(jugadorDatos));
+                let indiceJugador = equipoElegido.findIndex((element) => element.id === jugadorDatos.id);
 
-        let indiceJugador = equipoElegido.findIndex((element) => element.id === jugadorDatos.id);
+                //lo modifica en el array
+                equipoElegido[indiceJugador].jugador.puntuacion = jugadorDatos.puntuacion;
 
-        //lo modifica en el array
-        equipoElegido[indiceJugador].jugador.puntuacion = jugadorDatos.puntuacion;
+                //obtenemos el array del equipo elegido
+                let auxArr = JSON.parse(localStorage.getItem(equipoSeleccionado));
 
-        //obtenemos el array del equipo elegido
-        let auxArr = JSON.parse(localStorage.getItem(equipoSeleccionado));
+                auxArr[indiceJugador].jugador.puntuacion = jugadorDatos.puntuacion;
 
-        auxArr[indiceJugador].jugador.puntuacion = jugadorDatos.puntuacion;
+                localStorage.setItem(equipoSeleccionado, JSON.stringify(auxArr));
 
-        localStorage.setItem(equipoSeleccionado, JSON.stringify(auxArr));
+                //cargamos la primera pregunta
+                pregunta.innerText = "JavaScript es un lenguaje?";
 
-        //cargamos la primera pregunta
-        pregunta.innerText = "JavaScript es un lenguaje?";
+                inputOpcion.forEach((element, index) => {
+                    element.value = primerasOpciones[index];
+                })
 
-        inputOpcion.forEach((element, index) => {
-            element.value = primerasOpciones[index];
+                puntosJugador.innerText = "Puntos : 0";
+                respuestasIncorrectas.innerText = "Incorrectas : 0";
+
+                juegoTerminado.style.display = "none";
+            }
         })
-
-        puntosJugador.innerText = "Puntos : 0";
-        respuestasIncorrectas.innerText = "Incorrectas : 0";
-
-        juegoTerminado.style.display = "none";
     })
 }
 

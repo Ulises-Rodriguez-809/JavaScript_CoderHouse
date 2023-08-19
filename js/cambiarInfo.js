@@ -32,19 +32,21 @@ const cambiarInfo = () => {
 
                     Swal.fire(
                         'Los cambios se realizaron con exito!'
+
                     )
+
+                    msg3.innerHTML = `Los datos se cambiaron con exito`;
+                    msg3.classList.replace("msgInc", "msgCor");
+
+                    jugActual = {
+                        usuario: nuevoNombre.value,
+                        contraseña: nuevaContraseña.value,
+                    }
+
+                    localStorage.setItem("jugadorActual", JSON.stringify(jugActual));
                 }
             })
 
-            msg3.innerHTML = `Los datos se cambiaron con exito`;
-            msg3.classList.replace("msgInc", "msgCor");
-
-            jugActual = {
-                usuario: nuevoNombre.value,
-                contraseña: nuevaContraseña.value,
-            }
-
-            localStorage.setItem("jugadorActual", JSON.stringify(jugActual));
         }
 
         msg3.style.display = "block";
