@@ -106,7 +106,7 @@ const agregarAEquipo = (nombre, puntos = 0, equipo) => {
 
             auxEquipo = noCoffeNoWorkee;
             noCoffeNoWorkee.push(jugadorNuevo);
-            // noCoffeNoWorkee[noCoffeNoWorkee.length - 1].jugador.infoJugador()
+            noCoffeNoWorkee[noCoffeNoWorkee.length - 1].jugador.infoJugador()
 
             break;
         case "codigoYCafe":
@@ -117,7 +117,7 @@ const agregarAEquipo = (nombre, puntos = 0, equipo) => {
 
             auxEquipo = codigoYCafe;
             codigoYCafe.push(jugadorNuevo);
-            // codigoYCafe[codigoYCafe.length - 1].jugador.infoJugador()
+            codigoYCafe[codigoYCafe.length - 1].jugador.infoJugador()
 
             break;
         case "iTurnCoffeIntoCode":
@@ -128,7 +128,7 @@ const agregarAEquipo = (nombre, puntos = 0, equipo) => {
 
             auxEquipo = iTurnCoffeIntoCode;
             iTurnCoffeIntoCode.push(jugadorNuevo);
-            // iTurnCoffeIntoCode[iTurnCoffeIntoCode.length - 1].jugador.infoJugador()
+            iTurnCoffeIntoCode[iTurnCoffeIntoCode.length - 1].jugador.infoJugador()
 
             break;
         default:

@@ -20,6 +20,22 @@ const cambiarInfo = () => {
             msg3.classList.replace("msgCor", "msgInc");
         }
         else {
+            Swal.fire({
+                title: 'Estas seguro de realizar los cambios?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Confirmar!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    Swal.fire(
+                        'Los cambios se realizaron con exito!'
+                    )
+                }
+            })
+
             msg3.innerHTML = `Los datos se cambiaron con exito`;
             msg3.classList.replace("msgInc", "msgCor");
 

@@ -2,94 +2,28 @@ const usuariosRegistrados = [];
 
 let usuarioIn = {
     usuario: "",
-    contraseña: ""
+    contraseña: "",
 }
 
 let usuarioReg = {
     usuario: "",
     contraseña: "",
-    ConfirmarCont: ""
+    ConfirmarCont: "",
 }
 
 const opcion = () => {
     const btnOpcion__iniciarSesion = document.getElementById("btnOpcion__iniciarSesion");
     const btnOpcion__registrarse = document.getElementById("btnOpcion__registrarse");
 
-    //forma 1
-    // const login = document.getElementById("login");
-
-    //forma 2
     const iniciarSesion = document.getElementById("iniciarSesion");
     const registrarse = document.getElementById("registrarse");
 
     btnOpcion__iniciarSesion.addEventListener("click", () => {
-
-        //forma 1 
-        // en ves de tener tanto el apartado de iniciar sesion como el de registrarse en el html 
-        //dejo 1 de los 2
-        //y luego lo voy creando dependiendo del btn q se pulsa
-        // login.innerHTML = `
-        // <div id="iniciarSesion">
-        //     <div id="logTitulo">
-        //         <p>Iniciar sesion</p>
-        //     </div>
-        //     <div id="logDatos">
-        //         <div>
-        //             <label for="logNombre">Nombre</label>
-        //             <input type="text" name="usuario" id="logNombre" class="inputLog"
-        //                 placeholder="Escriba su Nombre">
-        //         </div>
-        //         <div>
-        //             <label for="logContraseña">Contraseña</label>
-        //             <input type="password" name="contraseña" id="logContraseña" class="inputLog"
-        //                 placeholder="Escriba su contraseña">
-        //         </div>
-        //     </div>
-        //     <div class="msg msgInc"></div>
-        //     <div class="btnLogContainer">
-        //         <button id="btnLog">Iniciar sesion</button>
-        //     </div>
-        // </div>
-        // `;
-
-        //la otra forma de hacerlo es dejando todo estatico en el html y cambiar el display
         iniciarSesion.style.display = "flex";
         registrarse.style.display = "none";
-
-        //la diferencia entre forma 1 y 2 es q forma_1 cuando te inicias sesion te muestra un mensaje pero si volves a tocar el btn de iniciar sesion te muestra todo el formulario devuelta
-        //miesntras q la forma_2 una ves iniciado sesion por mas q toques el btn iniciar sesion sigue mostrando el mensaje de q ya iniciaste sesion
     })
 
     btnOpcion__registrarse.addEventListener("click", () => {
-
-        // login.innerHTML = `
-        // <div id="registrarse">
-        //     <div id="regTitulo">
-        //         <p>Registrarse</p>
-        //     </div>
-        //     <div id="regDatos">
-        //         <div>
-        //             <label for="regNombre">Nombre</label>
-        //             <input type="text" name="usuario" id="regNombre" class="inputReg"
-        //                 placeholder="Escriba su Nombre">
-        //         </div>
-        //         <div>
-        //             <label for="regContraseña">Contraseña</label>
-        //             <input type="password" name="contraseña" id="regContraseña" class="inputReg"
-        //                 placeholder="Escriba su contraseña">
-        //         </div>
-        //         <div>
-        //             <label for="regConConfirmar">Confirmar Contraseña</label>
-        //             <input type="password" name="ConfirmarCont" id="regConConfirmar" class="inputReg"
-        //                 placeholder="Confirmar Contraseña">
-        //         </div>
-        //     </div>
-        //     <div class="btnRegContainer">
-        //         <button id="btnReg">Registrarse</button>
-        //     </div>
-        // </div>
-        // `;
-
         iniciarSesion.style.display = "none";
         registrarse.style.display = "flex";
     })
@@ -169,6 +103,20 @@ const casoLogin = () => {
             msg.classList.replace("msgInc", "msgCor");
             msg.style.display = "block";
 
+
+            //modal de sweet alert
+            Swal.fire({
+                title: '<h1>Se inicio sesion con exito</h1>',
+                icon: 'success',
+                html:
+                    '<h2>Para ir al juego darle click a este enlace ---> <a href="./pages/quiz.html" class="link">Jugar</a></h2><br>' +
+                    '<h2>O puede cerrar esta ventana y darle click a "Ir al juego"</h2>',
+                showCloseButton: true,
+                showCancelButton: true,
+                focusConfirm: false,
+            })
+
+
             //este localStorage es para tener los datos del ultimo jugador q inicio sesion o se registro
             localStorage.setItem("jugadorActual", JSON.stringify(usuarioIn));
 
@@ -180,6 +128,16 @@ const casoLogin = () => {
 
             msg.classList.replace("msgCor", "msgInc");
             msg.style.display = "block";
+
+            Swal.fire({
+                title: '<h1>No se logro iniciar sesion</h1>',
+                icon: 'error',
+                html:
+                    '<h2>Compruebe Nombre o Contraseña</h2>',
+                showCloseButton: true,
+                showCancelButton: true,
+                focusConfirm: false,
+            })
         }
     })
 }
@@ -206,6 +164,17 @@ const casoReg = () => {
             msg2.classList.replace("msgCor", "msgInc");
             msg2.style.display = "block";
 
+            Swal.fire({
+                title: '<h1>No se logro completar el registro</h1>',
+                icon: 'error',
+                html:
+                    '<h2>El usuario ya existe</h2><br>"' + 
+                    '<h2>Vaya al apartado de "iniciar sesion" o eliga otro nombre</h2>',
+                showCloseButton: true,
+                showCancelButton: true,
+                focusConfirm: false,
+            })
+
         }
         else if (regContraseña.value !== regConConfirmar.value) {
             msg2.innerHTML = `
@@ -214,6 +183,16 @@ const casoReg = () => {
 
             msg2.classList.replace("msgCor", "msgInc");
             msg2.style.display = "block";
+
+            Swal.fire({
+                title: '<h1>No se logro completar el registro</h1>',
+                icon: 'warning',
+                html:
+                    '<h2>Las contraseñas no coinciden</h2>"',
+                showCloseButton: true,
+                showCancelButton: true,
+                focusConfirm: false,
+            })
         }
         else {
             //creamos el nuevo usuario
@@ -241,6 +220,17 @@ const casoReg = () => {
 
             msg2.classList.replace("msgInc", "msgCor");
             msg2.style.display = "block";
+
+            Swal.fire({
+                title: '<h1>El registro se completo con exito</h1>',
+                icon: 'succes',
+                html:
+                    '<h2>Para ir al juego darle click a este enlace ---> <a href="./pages/quiz.html" class="link">Jugar</a></h2><br>' +
+                    '<h2>O puede cerrar esta ventana y darle click a "Ir al juego"</h2>',
+                showCloseButton: true,
+                showCancelButton: true,
+                focusConfirm: false,
+            })
         }
     })
 }

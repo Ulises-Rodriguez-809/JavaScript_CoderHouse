@@ -3,14 +3,17 @@ export function Jugadores(nombre, puntuacion, equipo) {
     this.puntuacion = puntuacion;
     this.equipo = equipo;
 
-    //ESTO CAMBIALO CON UN SWEET ALERT O TOSTIFY
     this.infoJugador = function () {
-        alert(`
-        El jugador fue agregado
-        Jugador : ${this.nombre} 
-        Equipo : ${this.equipo}
-        Puntuacion : ${this.puntuacion}
-        `);
+        Swal.fire({
+            title: '<h1>El jugador fue añadido</h1>',
+            icon: 'success',
+            html:
+                `<p class="sweetAlertP">El jugador : ${this.nombre}</p><br>` +
+                `<p class="sweetAlertP">Fue añadido al equipo : ${this.equipo}</p><br>`,
+            showCloseButton: true,
+            showCancelButton: true,
+            focusConfirm: false,
+        })
     }
 }
 
