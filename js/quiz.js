@@ -1,6 +1,22 @@
-import preguntasYRespuestas from "./pregYRes.js"
+// import preguntasYRespuestas from "./pregYRes.js"
 import { Jugadores, noCoffeNoWorkee, codigoYCafe, iTurnCoffeIntoCode } from "./equipos.js";
 import cerrarSesion from "./cerrarSesion.js";
+
+// Utilizarás AJAX y JSON para obtener datos y diversas herramientas de JS como librerías, promises y asincronía para controlar eventos en la interfaz y producir animaciones en respuesta
+
+//Utilizar asincronía y fetch para cargar datos estáticos o consumir una API.
+
+// Se debe entregar
+
+// Objetos y Arrays. Métodos de Arrays.
+// Funciones y condicionales.
+// Generación del DOM de forma dinámica. Eventos.
+// Sintaxis avanzada.
+// Al menos una librería de uso relevante para el proyecto.
+// Manejo de promesas con fetch. 
+// Carga de datos desde un JSON local o desde una API externa.
+
+
 
 //esto para poder modificar los datos en el ranking
 let datosAux = {
@@ -21,8 +37,6 @@ const btnContainer = document.querySelector(".btnContainer");
 let equipoSeleccionado = "";
 
 let equipoElegido = [];
-
-const arrLength = preguntasYRespuestas.length;
 
 let algunoPintado = false;
 //obtenemos las img de los equipos q podes seleccionar
@@ -53,11 +67,23 @@ const juegoTerminado = document.querySelector(".juegoTerminado");
 const nombreInfo = document.querySelector(".nombreInfo");
 const equipoInfoImg = document.querySelector(".equipoInfoImg");
 
+const peticionFetch = async () => {
+    const peticion = await fetch('../data/pregYres.json');
+    const arrPreguntasYrespuestas = await peticion.json();
+    const arrLength = await arrPreguntasYrespuestas.length;
+
+    return [arrLength,arrPreguntasYrespuestas];
+}
+
 //traemos el contenido del localStorage para obtener el nombre del jugador
-const getLocalStorage = () => {
-    let contenidoLocStorage = JSON.parse(localStorage.getItem("jugadorActual"));
+const getLocalStorage = (lSNombre) => {
+    let contenidoLocStorage = JSON.parse(localStorage.getItem(lSNombre));
 
     return contenidoLocStorage;
+}
+
+const setLocalStorage = (lSNombre, elemento) => {
+    localStorage.setItem(lSNombre, JSON.stringify(elemento));
 }
 
 //se encarga de dar fondo naranja al equipo elegido
@@ -140,7 +166,7 @@ const agregarAEquipo = (nombre, puntos = 0, equipo) => {
         id: jugadorNuevo.id
     }
 
-    localStorage.setItem(equipoSeleccionado, JSON.stringify(auxEquipo));
+    setLocalStorage(equipoSeleccionado, auxEquipo);
 
     //ESTO PARA EL PROYECTO FINAL CAMBIALO POR UN TOASTIFY O UN SWEET ALERT 
     infoContainer.innerHTML = `
@@ -154,15 +180,15 @@ const agregarAEquipo = (nombre, puntos = 0, equipo) => {
 }
 
 //funcion q le da al btn (empezar a jugar su evento)
-const comenzarJuego = () => {
+const comenzarJuego = (arrLength) => {
 
     const btnJugar = document.getElementById("btnJugar");
 
-    btnJugar.addEventListener("click", () => {
+    btnJugar.addEventListener("click", async () => {
 
         //con esta condicion evito q el jugador empise a jugar sin haber elegido un equipo
         if (algunoPintado) {
-            let objLocalStorage = getLocalStorage();
+            let objLocalStorage = getLocalStorage("jugadorActual");
             let nombre = objLocalStorage["usuario"] //arrLocalStorage[...].usuario
 
             instruccionesContainer.style.display = "none";
@@ -171,8 +197,8 @@ const comenzarJuego = () => {
 
             equipoElegido = agregarAEquipo(nombre, 0, equipoSeleccionado);
 
-            rondas.innerText = `Ronda : 1`
-            rondasCantidad.innerText = `1/${arrLength}`;
+            rondas.textContent = `Ronda : 1`
+            rondasCantidad.textContent = `1/${arrLength}`;
 
             //cambiamos la info q se ve en cuadro abajo de las preguntas
             nombreInfo.innerHTML = nombre;
@@ -188,7 +214,8 @@ const comenzarJuego = () => {
             }
 
             //cargamos los datos al localStorage
-            localStorage.setItem("jugadorDatos", JSON.stringify(jugadorDatos));
+            setLocalStorage("jugadorDatos", jugadorDatos);
+            // localStorage.setItem("jugadorDatos", JSON.stringify(jugadorDatos));
         }
     })
 }
@@ -208,12 +235,12 @@ const analizandoRespuesta = (resU, resP, puntuacion, resInc) => {
 
 //funcion q actualiza la rondas 
 const rondaActual = (numRondas, rondasCT) => {
-    rondas.innerText = `Ronda : ${numRondas + 1}`;
-    rondasCantidad.innerText = `${numRondas + 1}/${rondasCT}`;
+    rondas.textContent = `Ronda : ${numRondas + 1}`;
+    rondasCantidad.textContent = `${numRondas + 1}/${rondasCT}`;
 }
 
 //funcion q se encarga de hacer las preguntas y devuelve los puntos del jugador
-const funcionPregunta = (arr, fun) => {
+const funcionPregunta = (arr, fun, arrLength) => {
     let respuesta = "";
     let opcionesAux = "";
     let opcionIndice = 1;
@@ -222,7 +249,7 @@ const funcionPregunta = (arr, fun) => {
     let resIncorrectas = 0;
 
     inputOpcion.forEach((element) => {
-        element.addEventListener("click", () => {
+        element.addEventListener("click", async () => {
 
             //como tanto la primera pregunta como las opciones se ponene de forma estatica en html restamos 1
             respuesta = arr[opcionIndice - 1].respuesta;
@@ -242,17 +269,21 @@ const funcionPregunta = (arr, fun) => {
             }
 
             //cargamos los datos al localStorage
-            localStorage.setItem("jugadorDatos", JSON.stringify(jugadorDatos));
+            setLocalStorage("jugadorDatos", jugadorDatos);
+            // localStorage.setItem("jugadorDatos", JSON.stringify(jugadorDatos));
 
             //obtenemos el array del equipo elegido
-            let auxArr = JSON.parse(localStorage.getItem(equipoSeleccionado));
+            let auxArr = getLocalStorage(equipoSeleccionado);
+            // let auxArr = JSON.parse(localStorage.getItem(equipoSeleccionado));
 
             auxArr[indiceJugador].jugador.puntuacion = puntuacion;
 
-            localStorage.setItem(equipoSeleccionado, JSON.stringify(auxArr));
+            setLocalStorage(equipoSeleccionado, auxArr);
+            // localStorage.setItem(equipoSeleccionado, JSON.stringify(auxArr));
 
             //con este if evito q cuando no hay mas preguntas ya no intante actualizar
             if (opcionIndice < arr.length) {
+
                 rondaActual(opcionIndice, arrLength);
 
                 pregunta.innerText = arr[opcionIndice].pregunta;
@@ -264,7 +295,7 @@ const funcionPregunta = (arr, fun) => {
 
                 opcionIndice++;
 
-            } else {//este else se encarga de q cuando no hay mas preguntas resetea los valores para el proximo jugador y ocualta el juego
+            } else {
 
                 const msgJuegoTerminado = document.getElementById("msgJuegoTerminado");
 
@@ -322,7 +353,8 @@ const eventoNuevoJuego = () => {
                     puntuacion: 0
                 }
 
-                localStorage.setItem("jugadorDatos", JSON.stringify(jugadorDatos));
+                setLocalStorage("jugadorDatos", jugadorDatos);
+                // localStorage.setItem("jugadorDatos", JSON.stringify(jugadorDatos));
 
                 let indiceJugador = equipoElegido.findIndex((element) => element.id === jugadorDatos.id);
 
@@ -330,21 +362,23 @@ const eventoNuevoJuego = () => {
                 equipoElegido[indiceJugador].jugador.puntuacion = jugadorDatos.puntuacion;
 
                 //obtenemos el array del equipo elegido
-                let auxArr = JSON.parse(localStorage.getItem(equipoSeleccionado));
+                let auxArr = getLocalStorage(equipoSeleccionado)
+                // let auxArr = JSON.parse(localStorage.getItem(equipoSeleccionado));
 
                 auxArr[indiceJugador].jugador.puntuacion = jugadorDatos.puntuacion;
 
-                localStorage.setItem(equipoSeleccionado, JSON.stringify(auxArr));
+                setLocalStorage(equipoSeleccionado, auxArr);
+                // localStorage.setItem(equipoSeleccionado, JSON.stringify(auxArr));
 
                 //cargamos la primera pregunta
-                pregunta.innerText = "JavaScript es un lenguaje?";
+                pregunta.textContent = "JavaScript es un lenguaje?";
 
                 inputOpcion.forEach((element, index) => {
                     element.value = primerasOpciones[index];
                 })
 
-                puntosJugador.innerText = "Puntos : 0";
-                respuestasIncorrectas.innerText = "Incorrectas : 0";
+                puntosJugador.textContent = "Puntos : 0";
+                respuestasIncorrectas.textContent = "Incorrectas : 0";
 
                 juegoTerminado.style.display = "none";
             }
@@ -353,10 +387,11 @@ const eventoNuevoJuego = () => {
 }
 
 //funcion q carga las 2 funciones anteriorres (esto para q no haya q llamar a tantas funcion al final)
-const cargarEventosMenu = (arr) => {
+const cargarEventosMenu = async (arr) => {
+    const [arrLength,arrPreguntasYrespuestas] = await peticionFetch();
     pintarFondo(arr);
-    comenzarJuego();
-    funcionPregunta(preguntasYRespuestas, analizandoRespuesta);
+    comenzarJuego(arrLength);
+    funcionPregunta(arrPreguntasYrespuestas, analizandoRespuesta,arrLength);
     eventoNuevoJuego();
 }
 

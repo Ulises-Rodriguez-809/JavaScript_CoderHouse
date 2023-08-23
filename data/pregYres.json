@@ -25,12 +25,12 @@
         "opciones": {
             "opcion1": "Crear clases",
             "opcion2": "Intanciar objetos",
-            "opcion3": "Alamcenar multiples valores de un mismo tipo en una sola varibale",
+            "opcion3": "Alamcenar multiples valores de un mismo tipo \n en una sola varibale",
             "opcion4": "Ninguna de las anteriores"
         }
     },
     {
-        "pregunta": "Bootstrap se debe linkear antes o despues de nuestro archivo .css?",
+        "pregunta": "Bootstrap se debe linkear antes o \n despues de nuestro archivo .css?",
         "respuesta": "Antes",
         "opciones": {
             "opcion1": "No importa",
@@ -40,7 +40,7 @@
         }
     },
     {
-        "pregunta": "Que se imprime en consola el sigueinte codigo? let num1 = '34'; let num2 = 10; const resultado = num1 + num2; ",
+        "pregunta": "Cula es el resultado del sigueinte codigo? \n let num1 = '34'; \n let num2 = 10; \n const resultado = num1 + num2;",
         "respuesta": "3410",
         "opciones": {
             "opcion1": "3410",
@@ -51,16 +51,16 @@
     },
     {
         "pregunta": "Bootstrap es ?",
-        "respuesta": "Conjunto de herramientas para diseño de sitios y aplicaciones web",
+        "respuesta": "Conjunto de herramientas para diseño de sitios \n y aplicaciones web",
         "opciones": {
-            "opcion1": "Conjunto de herramientas para diseño de sitios y aplicaciones web",
+            "opcion1": "Conjunto de herramientas para diseño de sitios \n y aplicaciones web",
             "opcion2": "Un lenguaje de programacion",
-            "opcion3": "Conjunto de herramientas para hacer sitios y aplicaciones web responsive",
+            "opcion3": "Conjunto de herramientas para hacer sitios \n y aplicaciones web responsive",
             "opcion4": "Ninguna de las anteriores"
         }
     },
     {
-        "pregunta": "Cuantas formas de declarar una varibale hay en JavaScript?",
+        "pregunta": "Cuantas formas de declarar una varibale hay en \n JavaScript?",
         "respuesta": 3,
         "opciones": {
             "opcion1": 1,
@@ -80,17 +80,17 @@
         }
     },
     {
-        "pregunta": "For y While?",
-        "respuesta": "Un bucle que ejecuta la misma sentencia una cierta cantidad de veces",
+        "pregunta": "For nos permite ?",
+        "respuesta": "Un bucle que ejecuta la misma sentencia una cierta \n cantidad de veces",
         "opciones": {
-            "opcion1": "Ejecuta una sentencia si una condición específicada es evaluada como verdadera",
-            "opcion2": "Un bucle que ejecuta la misma sentencia una cierta cantidad de veces",
+            "opcion1": "Ejecuta una sentencia si una condición específicada \n es evaluada como verdadera",
+            "opcion2": "Un bucle que ejecuta la misma sentencia una cierta \n cantidad de veces",
             "opcion3": "Palabra reservada para crear objetos y clases",
             "opcion4": "Ninguna de las anteriores"
         }
     },
     {
-        "pregunta": "En un archivo .css cuantas formas hay de seleccionar un elemento?",
+        "pregunta": "En un archivo .css cuantas formas hay de \n seleccionar un elemento?",
         "respuesta": "Clases, ID, Elemento(Tags), Atributo, etc",
         "opciones": {
             "opcion1": "Clases, ID, Elemento(Tags), Atributo, etc",
@@ -121,16 +121,16 @@
     },
     {
         "pregunta": "Una funcion en JS es?",
-        "respuesta": "Un conjunto de instrucciones reutilizable que realiza una tarea o calcula un valor",
+        "respuesta": "Un conjunto de instrucciones reutilizable que \n realiza una tarea o calcula un valor",
         "opciones": {
-            "opcion1": "Un conjunto de instrucciones reutilizable que realiza una tarea o calcula un valor",
-            "opcion2": "Un bucle que permite repetir intrucciones una cierta cantidad de veces",
+            "opcion1": "Un conjunto de instrucciones reutilizable que \n realiza una tarea o calcula un valor",
+            "opcion2": "Un bucle que permite repetir intrucciones una \n cierta cantidad de veces",
             "opcion3": "Palabra reservada para crear objetos",
             "opcion4": "Ninguna de las anteriores"
         }
     },
     {
-        "pregunta": "Una funcion es obligatorio que tenga parametros declarados?",
+        "pregunta": "Una funcion es obligatorio que tenga \n parametros declarados?",
         "respuesta": "No",
         "opciones": {
             "opcion1": "Si",
@@ -143,39 +143,39 @@
         "pregunta": "console.log() nos permite?",
         "respuesta": "Escribir un mensaje en consola",
         "opciones": {
-            "opcion1": "Muestra un texto y espera hasta que el usuario cierre la ventana de texto",
-            "opcion2": "Se usa para mostrar un cuadro texto que le pide al usuario ingresar datos",
+            "opcion1": "Muestra un texto y espera hasta que el usuario \n cierre la ventana de texto",
+            "opcion2": "Se usa para mostrar un cuadro texto que le pide \n al usuario ingresar datos",
             "opcion3": "Escribir un mensaje en consola",
             "opcion4": "Ninguna de las anteriores"
         }
     },
     {
         "pregunta": "Un alert() muestra?",
-        "respuesta": "Muestra un texto y espera hasta que el usuario cierre la ventana de texto",
+        "respuesta": "Muestra un texto y espera hasta que el usuario \n cierre la ventana de texto",
         "opciones": {
-            "opcion1": "Muestra un texto y espera hasta que el usuario cierre la ventana de texto",
-            "opcion2": "Se usa para mostrar un cuadro texto que le pide al usuario ingresar datos",
+            "opcion1": "Muestra un texto y espera hasta que el usuario \n cierre la ventana de texto",
+            "opcion2": "Se usa para mostrar un cuadro texto que le pide \n al usuario ingresar datos",
             "opcion3": "Escribir un mensaje en consola",
             "opcion4": "Ninguna de las anteriores"
         }
     },
     {
-        "pregunta": "if y else?",
-        "respuesta": "Ejecuta una sentencia si una condición específicada es evaluada como verdadera",
+        "pregunta": "if nos permite ?",
+        "respuesta": "Ejecuta una sentencia si una condición específicada \n es evaluada como verdadera",
         "opciones": {
-            "opcion1": "Ejecuta una sentencia si una condición específicada es evaluada como verdadera",
-            "opcion2": "Ejecuta una sentencia si una condición específicada es evaluada como falsa",
-            "opcion3": "Ejecuta una sentencia si una condición específicada sin importar si esta es evaluada como verdadera o falsa",
+            "opcion1": "Ejecuta una sentencia si una condición específicada \n es evaluada como verdadera",
+            "opcion2": "Ejecuta una sentencia si una condición específicada \n es evaluada como falsa",
+            "opcion3": "Ejecuta una sentencia si una condición específicada \n sin importar si esta es evaluada como true o false",
             "opcion4": "Ninguna de las anteriores"
         }
     },
     {
         "pregunta": "El metodo push() nos permite?",
-        "respuesta": "Nos permite agragar un o varios elemento al final de un array",
+        "respuesta": "Nos permite agragar un o varios elemento al \n final de un array",
         "opciones": {
-            "opcion1": "Nos permite agragar un elemento al principio de un array",
-            "opcion2": "Nos permite agragar un elemento al final de un array",
-            "opcion3": "Nos permite agragar un o varios elemento al final de un array",
+            "opcion1": "Nos permite agragar un elemento al \n principio de un array",
+            "opcion2": "Nos permite agragar un elemento al \n final de un array",
+            "opcion3": "Nos permite agragar uno o varios elemento al \n final de un array",
             "opcion4": "Ninguna de las anteriores"
         }
     },
@@ -191,30 +191,30 @@
     },
     {
         "pregunta": "Los objetos son?",
-        "respuesta": "Un objeto es una colección de datos que se agrupan de manera clave-valor",
+        "respuesta": "Un objeto es una colección de datos que se \n agrupan de manera clave-valor",
         "opciones": {
-            "opcion1": "Un objeto es una colección de datos que se agrupan de manera clave-valor pero todos sus atributos deben de ser del mismo tipo",
+            "opcion1": "Un objeto es una colección de datos que se \n agrupan de manera clave-valor \n pero todos sus atributos deben de ser del mismo tipo",
             "opcion2": "Un objeto es una clase",
             "opcion3": "Un objeto es un funciones constructoras",
-            "opcion4": "Un objeto es una colección de datos que se agrupan de manera clave-valor"
+            "opcion4": "Un objeto es una colección de datos que se \n agrupan de manera clave-valor"
         }
     },
     {
-        "pregunta": "El siguiente codigo tiene error cual es? const sumar = (a,b)=>{ return a+b;} let res = sumar(5;6); console.log(res);",
-        "respuesta": "Al llamar a la funcion los argumentos deben separarse con ,",
+        "pregunta": "El siguiente codigo tiene error cual es? \n const sumar = (a,b)=>{ \n return a+b; \n} \n let res = sumar(5 ; 6); \n console.log(res);",
+        "respuesta": "Al llamar a la funcion los argumentos \n deben separarse con ,",
         "opciones": {
-            "opcion1": "Al llamar a la funcion los argumentos deben ser pasados como objetos",
-            "opcion2": "Al llamar a la funcion los argumentos deben separarse con :",
+            "opcion1": "Al llamar a la funcion los argumentos \n deben ser pasados como objetos",
+            "opcion2": "Al llamar a la funcion los argumentos \n deben separarse con :",
             "opcion3": "No tiene ningun error",
-            "opcion4": "Al llamar a la funcion los argumentos deben separarse con ,"
+            "opcion4": "Al llamar a la funcion los argumentos \n deben separarse con ,"
         }
     },
     {
         "pregunta": "Usamos media queries para?",
-        "respuesta": "Aplicar estilos CSS según el tamaño de pantalla del dispositivo",
+        "respuesta": "Aplicar estilos CSS según el tamaño de \n pantalla del dispositivo",
         "opciones": {
             "opcion1": "Intanciar un objeto",
-            "opcion2": "Aplicar estilos CSS según el tamaño de pantalla del dispositivo",
+            "opcion2": "Aplicar estilos CSS según el tamaño de \n pantalla del dispositivo",
             "opcion3": "Intanciar una clase",
             "opcion4": "Ninguna de las anteriores"
         }
@@ -241,61 +241,61 @@
     },
     {
         "pregunta": "El metodo .map() ?",
-        "respuesta": "Crea un nuevo array con los resultados de la llamada a la función indicada aplicados a cada uno de sus elementos",
+        "respuesta": "Crea un nuevo array con los resultados de la función\n indicada aplicados a cada uno de sus elementos",
         "opciones": {
-            "opcion1": "Crea un nuevo array con los resultados de la llamada a la función indicada aplicados a cada uno de sus elementos",
+            "opcion1": "Crea un nuevo array con los resultados de la función\n indicada aplicados a cada uno de sus elementos",
             "opcion2": "Copia los elementos de un array en otro nuevo",
-            "opcion3": "Crea un nuevo array con todos los elementos que cumplen una condicion",
+            "opcion3": "Crea un nuevo array con todos los elementos \n que cumplen una condicion",
             "opcion4": "Ninguna de las anteriores"
         }
     },
     {
         "pregunta": "El metodo .filter() ?",
-        "respuesta": "crea un nuevo array con todos los elementos que cumplan la condición implementada por la función dada",
+        "respuesta": "Crea un nuevo array con todos los elementos que \ncumplan la condición implementada por la función",
         "opciones": {
-            "opcion1": "Filtra los elementos de un array que cumplen determinada condicion",
-            "opcion2": "Crea un nuevo array con todos los elementos que cumplan la condición implementada por la función dada",
-            "opcion3": "Encuenta un elemento dentro de un array que cumpla cierta codicion",
+            "opcion1": "Filtra los elementos de un array que cumplen \n determinada condicion",
+            "opcion2": "Crea un nuevo array con todos los elementos que \ncumplan la condición implementada por la función",
+            "opcion3": "Encuenta un elemento dentro de un array que \n cumpla cierta codicion",
             "opcion4": "Ninguna de las anteriores"
         }
     },
     {
         "pregunta": "El metodo .find() ?",
-        "respuesta": "Devuelve el primer elemento de un array que cumpla determinada condicion o -1 si no lo encuentra",
+        "respuesta": "Devuelve el primer elemento de un array que cumpla \n determinada condicion o -1 si no lo encuentra",
         "opciones": {
-            "opcion1": "Devuelve el indice de un elemento en un array que cumpla determinada condicion o -1 si no lo encuentra",
-            "opcion2": "Devuelve el primer elemento de un array que cumpla determinada condicion o -1 si no lo encuentra",
-            "opcion3": "Ejecuta la función indicada una vez por cada elemento del array",
+            "opcion1": "Devuelve el indice de un elemento en un array que \n cumpla determinada condicion o -1 si no lo encuentra",
+            "opcion2": "Devuelve el primer elemento de un array que cumpla \n determinada condicion o -1 si no lo encuentra",
+            "opcion3": "Ejecuta la función indicada una vez por cada \n elemento del array",
             "opcion4": "Ninguna de las anteriores"
         }
     },
     {
         "pregunta": "El metodo .forEach() ?",
-        "respuesta": "Ejecuta la función indicada una vez por cada elemento del array",
+        "respuesta": "Ejecuta la función indicada una vez por cada \n elemento del array",
         "opciones": {
-            "opcion1": "Ejecuta la función indicada una vez por cada elemento del array",
-            "opcion2": "Encuenta un elemento dentro de un array que cumpla cierta codicion",
-            "opcion3": "Ejecuta la función indicada una vez por cada elemento del array y crea un nuevo array con el resultado",
+            "opcion1": "Ejecuta la función indicada una vez por cada \n elemento del array",
+            "opcion2": "Encuenta un elemento dentro de un array que \n cumpla cierta codicion",
+            "opcion3": "Ejecuta la función indicada una vez por cada elemento \n del array y crea un nuevo array con el resultado",
             "opcion4": "Ninguna de las anteriores"
         }
     },
     {
-        "pregunta": "Pormesas",
-        "respuesta": "Objeto que representa la terminación o el fracaso de una operación asíncrona",
+        "pregunta": "Pormesas es ?",
+        "respuesta": "Objeto que representa la terminación o \n el fracaso de una operación asíncrona",
         "opciones": {
-            "opcion1": "Hacer peticiones a un servidor",
-            "opcion2": "Objeto que representa la terminación o el fracaso de una operación síncrona",
-            "opcion3": "Objeto que representa la terminación o el fracaso de una operación asíncrona",
+            "opcion1": "Metodo para hacer peticiones a un servidor",
+            "opcion2": "Objeto que representa la terminación o \n el fracaso de una operación síncrona",
+            "opcion3": "Objeto que representa la terminación o \n el fracaso de una operación asíncrona",
             "opcion4": "Ninguna de las anteriores"
         }
     },
     {
-        "pregunta": "Fetch",
-        "respuesta": "",
+        "pregunta": "Fetch es ?",
+        "respuesta": "Permite hacer peticiones a servidores o rutas relativas",
         "opciones": {
             "opcion1": "Permite hacer peticiones solo a servidores",
             "opcion2": "Permite hacer peticiones solo a rutas realitivas",
-            "opcion3": "Permite hacer peticiones solo a servidores o rutas relativas",
+            "opcion3": "Permite hacer peticiones a \n servidores o rutas relativas",
             "opcion4": "Ninguna de las anteriores"
         }
     }

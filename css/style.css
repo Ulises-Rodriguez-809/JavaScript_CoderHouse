@@ -311,11 +311,6 @@ nav ul {
     display: none;
 }
 
-/* .juegoTerminadoMensaje p, .juegoTerminadoMensaje button{
-    font-size: 2rem;
-    font-weight: 600;
-} */
-
 /* NUEVO JUEGO */
 #msgJuegoTerminado {
     font-size: 3rem;
@@ -350,6 +345,10 @@ nav ul {
     width: 100%;
 }
 
+.instruccionesTitulo,.instrucciones{
+    margin-bottom: 2rem;
+}
+
 /* OPCIONES */
 .opcionesContainer ul {
     margin: 3rem 0;
@@ -363,7 +362,7 @@ nav ul {
     list-style: none;
     margin-top: 1rem;
     margin-bottom: 3rem;
-    width: 100%;
+    width: 95vw;
 }
 
 .opcionesContainer ul li input {
@@ -371,6 +370,7 @@ nav ul {
     width: 100%;
     font-size: 4rem;
     padding: 0 .2rem;
+    height: 10rem;
 }
 
 /* info jugador */

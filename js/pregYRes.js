@@ -5,7 +5,8 @@ const preguntasYRespuestas = [
         opciones: {
             opcion1: "Igual q Java",
             opcion2: "Interpretado",
-            opcion3: "Un Framework para diseño de sitios y aplicaciones web",
+            opcion3: `Un Framework para diseño de sitios y aplicaciones web
+            `,
             opcion4: "Ninguna de las anteriores"
         }
     },
@@ -86,7 +87,7 @@ const preguntasYRespuestas = [
         }
     },
     {
-        pregunta: "For y While?",
+        pregunta: "For nos permite ?",
         respuesta: "Un bucle que ejecuta la misma sentencia una cierta cantidad de veces",
         opciones: {
             opcion1: "Ejecuta una sentencia si una condición específicada es evaluada como verdadera",
@@ -96,8 +97,7 @@ const preguntasYRespuestas = [
         }
     },
     {
-        pregunta:
-            "En un archivo .css cuantas formas hay de seleccionar un elemento?",
+        pregunta: "En un archivo .css cuantas formas hay de seleccionar un elemento?",
         respuesta: "Clases, ID, Elemento(Tags), Atributo, etc",
         opciones: {
             opcion1: "Clases, ID, Elemento(Tags), Atributo, etc",
@@ -167,13 +167,13 @@ const preguntasYRespuestas = [
         }
     },
     {
-        pregunta: "if y else?",
+        pregunta: "if nos permite ?",
         respuesta: "Ejecuta una sentencia si una condición específicada es evaluada como verdadera",
         opciones: {
             opcion1: "Ejecuta una sentencia si una condición específicada es evaluada como verdadera",
             opcion2: "Ejecuta una sentencia si una condición específicada es evaluada como falsa",
             opcion3: `Ejecuta una sentencia si una condición específicada sin importar 
-            si esta es evaluada como verdadera o falsa`,
+            si esta es evaluada como true o false`,
             opcion4: "Ninguna de las anteriores"
         }
     },
@@ -183,7 +183,7 @@ const preguntasYRespuestas = [
         opciones: {
             opcion1: "Nos permite agragar un elemento al principio de un array",
             opcion2: "Nos permite agragar un elemento al final de un array",
-            opcion3: "Nos permite agragar un o varios elemento al final de un array",
+            opcion3: "Nos permite agragar uno o varios elemento al final de un array",
             opcion4: "Ninguna de las anteriores"
         }
     },

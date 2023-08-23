@@ -1,14 +1,36 @@
 const btnCambiar = document.getElementById("btnCambiar");
 
-const cambiarInfo = () => {
-    let jugActual = JSON.parse(localStorage.getItem("jugadorActual"));
+const actualizarInfoEquipo = (nombreJug,id,equipo)=>{
+    debugger
+    let arrAux = JSON.parse(localStorage.getItem(equipo));
 
+
+    arrAux.forEach(element => {
+        console.log(element)
+        debugger
+        if (element.id === id) {
+            element.jugador = {
+                ...element.jugador,
+                ["nombre"] : nombreJug
+            }
+            debugger
+        }
+    });
+
+    localStorage.setItem(equipo,JSON.stringify(arrAux));
+    console.log(JSON.parse(localStorage.getItem(equipo)))
+}
+
+const cambiarInfo = () => {
     const nuevoNombre = document.getElementById("nuevoNombre");
     const nuevaContraseña = document.getElementById("nuevaContraseña");
     const nuevaConConfirmar = document.getElementById("nuevaConConfirmar");
 
     const msg3 = document.querySelector(".msg3");
     msg3.style.display = "none";
+
+    let jugActual = JSON.parse(localStorage.getItem("jugadorActual"));
+    let jugDatos = JSON.parse(localStorage.getItem("jugadorDatos"));
 
     btnCambiar.addEventListener("click", () => {
         if (nuevoNombre.value === "" && nuevaContraseña.value === "" && nuevaConConfirmar.value === "") {
@@ -32,7 +54,6 @@ const cambiarInfo = () => {
 
                     Swal.fire(
                         'Los cambios se realizaron con exito!'
-
                     )
 
                     msg3.innerHTML = `Los datos se cambiaron con exito`;
@@ -43,10 +64,17 @@ const cambiarInfo = () => {
                         contraseña: nuevaContraseña.value,
                     }
 
+                    jugDatos = {
+                        ...jugDatos,
+                        ["usuario"] : nuevoNombre.value
+                    }
+
                     localStorage.setItem("jugadorActual", JSON.stringify(jugActual));
+                    localStorage.setItem("jugadorDatos",JSON.stringify(jugDatos));
+
+                    actualizarInfoEquipo(jugDatos.usuario,jugDatos.id,jugDatos.equipo);
                 }
             })
-
         }
 
         msg3.style.display = "block";
@@ -54,4 +82,4 @@ const cambiarInfo = () => {
     })
 }
 
-cambiarInfo()
+cambiarInfo();

@@ -3,6 +3,9 @@ import { noCoffeNoWorkee, codigoYCafe, iTurnCoffeIntoCode } from "./equipos.js";
 
 const equipoPorDefecto = "noCoffeNoWorkee";
 
+const listaMejJug = document.getElementById("listaMejJug");
+
+//fun q setea el local storage
 const setLocalStorage = (arrNombre) => {
     switch (arrNombre) {
         case "noCoffeNoWorkee":
@@ -17,32 +20,34 @@ const setLocalStorage = (arrNombre) => {
             localStorage.setItem(arrNombre, JSON.stringify(iTurnCoffeIntoCode));
 
             break;
-
         default:
             break;
     }
 }
 
+//fun q obtiene el local storage del equipo clickeado
 const obtenerEquiposLocalStorage = (arrNombre) => {
-    let equipoLS = [];
-    let aux = JSON.parse(localStorage.getItem(arrNombre));
 
-    if (aux) { //no null
-        equipoLS = aux;
+    let equipoLS = JSON.parse(localStorage.getItem(arrNombre));
+
+    if (equipoLS) {
         equipoLS.sort((a, b) => b.jugador.puntuacion - a.jugador.puntuacion);
+
     } else {
         setLocalStorage(arrNombre);
+
+        equipoLS = JSON.parse(localStorage.getItem(arrNombre));
     }
-    // equipoLS = equipoLS.filter((elem) => elem.jugador.puntuacion >= 5);
+
     return equipoLS;
 }
 
-//sumar puntos del equipo clikeado
+//fun q suma los puntos totales del equipo
 const sumarPuntosEquipos = (equipoNombre) => {
 
     let puntosTotales = 0;
 
-    let equipoLS = obtenerEquiposLocalStorage(equipoNombre)
+    let equipoLS = obtenerEquiposLocalStorage(equipoNombre);
 
     puntosTotales = equipoLS.map((element) => element.jugador.puntuacion).reduce((total, valor) => {
         return total + valor
@@ -51,7 +56,7 @@ const sumarPuntosEquipos = (equipoNombre) => {
     return puntosTotales;
 }
 
-//funcion q suma los puntos totales del equipo q eligio el jugador
+//fun q analiza el equipo clickeado
 const puntosDelEquipo = (equipo, fun) => {
 
     let puntosTotales = 0;
@@ -76,26 +81,44 @@ const puntosDelEquipo = (equipo, fun) => {
     return puntosTotales;
 }
 
+//fun q cambia la info q se ve en pantalla de los puntos totales del equipo clikeado
 const cambiarPuntosTotales = (num) => {
     const puntosTotales = document.getElementById("puntosTotales");
     puntosTotales.innerText = num;
 }
 
+//crea y agrega los elementos de la lista
+const crearElementos = (equipo) => {
+
+    let aux = [];
+
+    aux = equipo.filter((element) => element.jugador.puntuacion >= 8);
+
+    aux.forEach((element) => {
+        const li = document.createElement("li");
+        const divJ = document.createElement("div");
+        const divP = document.createElement("div");
+
+        divJ.classList.add("jugador");
+        divP.classList.add("puntos");
+
+        divJ.textContent = element.jugador.nombre;
+        divP.textContent = element.jugador.puntuacion;
+
+        li.append(divJ, divP);
+
+        listaMejJug.append(li);
+    })
+}
+
+//fun q carga la lista de los equipos clikeado
 const cargarLista = (arrNombre) => {
     let lSEquipo = obtenerEquiposLocalStorage(arrNombre);
 
-    const jugadorNombre = document.querySelectorAll(".jugador");
-    const puntos = document.querySelectorAll(".puntos");
-
-    jugadorNombre.forEach((element, index) => {
-        element.textContent = lSEquipo[index].jugador.nombre;
-    });
-
-    puntos.forEach((element, index) => {
-        element.textContent = lSEquipo[index].jugador.puntuacion;
-    });
+    crearElementos(lSEquipo);
 }
 
+//funcion q analiza el equipo a cargar su info
 const cambiarInfoLista = (nombreEquipo) => {
 
     switch (nombreEquipo) {
@@ -116,14 +139,19 @@ const cambiarInfoLista = (nombreEquipo) => {
     }
 }
 
+//info por defecto para q asi se muestre un equipo y la info de ese equipo al entrar al ranking
 const infoPorDefecto = (equipoPorDefecto) => {
+
     let puntosPorDefecto = 0;
 
     puntosPorDefecto = puntosDelEquipo(equipoPorDefecto, sumarPuntosEquipos);
+
     cambiarPuntosTotales(puntosPorDefecto);
+
     cambiarInfoLista(equipoPorDefecto);
 }
 
+//funcion q se encarga de darle el evento a los equipos
 const mostrarInfoEquipoClick = () => {
     const equiposImg = document.querySelectorAll(".equipoLista");
     const jugadoresContainer = document.querySelector(".jugadoresContainer");
@@ -137,77 +165,23 @@ const mostrarInfoEquipoClick = () => {
             jugadoresContainer.style.display = "block";
 
             let puntosTotalesEquipo = 0;
+            listaMejJug.innerHTML = "";
 
-            //obtenemos los puntos del equipo clickeado
             puntosTotalesEquipo = puntosDelEquipo(name, sumarPuntosEquipos);
 
             cambiarPuntosTotales(puntosTotalesEquipo);
 
             cambiarInfoLista(name);
-
         })
-
     });
 }
 
-infoPorDefecto(equipoPorDefecto);
-mostrarInfoEquipoClick();
-cerrarSesion();
+//fun q carga la funcionalidad de ranking
+const cargarFuncionalidad = () => {
+    infoPorDefecto(equipoPorDefecto);
+    mostrarInfoEquipoClick();
+    //funcionalidad para cerrar sesion
+    cerrarSesion();
+}
 
-
-// const obtenerNombresEquipos = (nodeList)=>{
-
-//     //https://stackoverflow.com/questions/2600343/why-does-document-queryselectorall-return-a-staticnodelist-rather-than-a-real-ar
-//     //map es un metodo para arrays pero "equipos" es un nodeList por lo cual primero tenes q convertirlo a array
-//     //creas un array q podrias ser una variable o un array sin nombre (como abajo) y usuas el spread para copiar todo el contenido del nodeList
-//     return [...nodeList].map((element)=> element.name);
-// }
-
-// const obtenerLocalStorage = ()=>{
-//     const infoAux = {
-//         id : 0,
-//         usuario : "",
-//         equipo : "",
-//         puntuacion : 0
-//     }
-
-//     let infoJugadorActual = JSON.parse(localStorage.getItem("jugadorDatos")) || infoAux;
-
-//     return infoJugadorActual
-// }
-
-// const mostrarMejoresJugadores = (equipo) => {
-
-//     let mejorsJugadores = [];
-
-//     switch (equipo) {
-//         case "1":
-
-//             mejorsJugadores = noCoffeNoWorkee.filter((elem) => elem.jugador.puntuacion >= 5);
-//             mejorsJugadores.sort((a, b) => b.jugador.puntuacion - a.jugador.puntuacion);
-
-//             console.log("Mejores jugadores:", mejorsJugadores);
-
-//             break;
-//         case "2":
-
-//             mejorsJugadores = codigoYCafe.filter((elem) => elem.jugador.puntuacion >= 5);
-//             mejorsJugadores.sort((a, b) => b.jugador.puntuacion - a.jugador.puntuacion);
-
-//             console.log("Mejores jugadores:", mejorsJugadores);
-
-//             break;
-//         case "3":
-
-//             mejorsJugadores = iTurnCoffeIntoCode.filter((elem) => elem.jugador.puntuacion >= 5);
-//             mejorsJugadores.sort((a, b) => b.jugador.puntuacion - a.jugador.puntuacion);
-
-//             console.log("Mejores jugadores:", mejorsJugadores);
-
-//             break;
-//         default:
-//             console.log("error");
-//             break;
-//     }
-
-// }
+cargarFuncionalidad();

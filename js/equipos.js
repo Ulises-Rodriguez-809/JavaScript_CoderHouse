@@ -11,7 +11,6 @@ export function Jugadores(nombre, puntuacion, equipo) {
                 `<p class="sweetAlertP">El jugador : ${this.nombre}</p><br>` +
                 `<p class="sweetAlertP">Fue añadido al equipo : ${this.equipo}</p><br>`,
             showCloseButton: true,
-            showCancelButton: true,
             focusConfirm: false,
         })
     }
