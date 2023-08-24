@@ -1,19 +1,15 @@
 const btnCambiar = document.getElementById("btnCambiar");
 
+//actuliza el localStorage del equipo del jugador
 const actualizarInfoEquipo = (nombreJug,id,equipo)=>{
-    debugger
     let arrAux = JSON.parse(localStorage.getItem(equipo));
 
-
     arrAux.forEach(element => {
-        console.log(element)
-        debugger
         if (element.id === id) {
             element.jugador = {
                 ...element.jugador,
                 ["nombre"] : nombreJug
             }
-            debugger
         }
     });
 
@@ -21,6 +17,7 @@ const actualizarInfoEquipo = (nombreJug,id,equipo)=>{
     console.log(JSON.parse(localStorage.getItem(equipo)))
 }
 
+//cambia los datos del jugador
 const cambiarInfo = () => {
     const nuevoNombre = document.getElementById("nuevoNombre");
     const nuevaContraseña = document.getElementById("nuevaContraseña");

@@ -1,3 +1,6 @@
+import { noCoffeNoWorkee, codigoYCafe, iTurnCoffeIntoCode } from "./equipos.js";
+
+
 const usuariosRegistrados = [];
 
 let usuarioIn = {
@@ -12,7 +15,6 @@ let usuarioReg = {
 }
 
 const msg = document.querySelector(".msg");
-
 
 const opcion = () => {
     const btnOpcionIniciarSesion = document.getElementById("btnOpcion__iniciarSesion");
@@ -35,6 +37,17 @@ const opcion = () => {
 const cargarStorage = (arr) => {
     //cargamos al local storage algunos usuarios 
     JSON.parse(localStorage.getItem("usuarios")) || localStorage.setItem("usuarios", JSON.stringify(arr));
+}
+
+const cargarStorageEquipos = ()=>{
+    
+    let aux = JSON.parse(localStorage.getItem("noCoffeNoWorkee")) || JSON.parse(localStorage.getItem("codigoYCafe")) || JSON.parse(localStorage.getItem("iTurnCoffeIntoCode"));
+
+    if (aux === null) {
+        localStorage.setItem("noCoffeNoWorkee",JSON.stringify(noCoffeNoWorkee));
+        localStorage.setItem("codigoYCafe",JSON.stringify(codigoYCafe));
+        localStorage.setItem("iTurnCoffeIntoCode",JSON.stringify(iTurnCoffeIntoCode));
+    }
 }
 
 const capturarValores = (arr, nombreObjeto) => {
@@ -233,6 +246,7 @@ const casoReg = () => {
 
 const cargarFuns = ()=>{
     cargarStorage(usuariosRegistrados);
+    cargarStorageEquipos();
     opcion();
     datosIn();
     datosReg();

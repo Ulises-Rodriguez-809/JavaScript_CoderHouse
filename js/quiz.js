@@ -2,22 +2,6 @@
 import { Jugadores, noCoffeNoWorkee, codigoYCafe, iTurnCoffeIntoCode } from "./equipos.js";
 import cerrarSesion from "./cerrarSesion.js";
 
-// Utilizarás AJAX y JSON para obtener datos y diversas herramientas de JS como librerías, promises y asincronía para controlar eventos en la interfaz y producir animaciones en respuesta
-
-//Utilizar asincronía y fetch para cargar datos estáticos o consumir una API.
-
-// Se debe entregar
-
-// Objetos y Arrays. Métodos de Arrays.
-// Funciones y condicionales.
-// Generación del DOM de forma dinámica. Eventos.
-// Sintaxis avanzada.
-// Al menos una librería de uso relevante para el proyecto.
-// Manejo de promesas con fetch. 
-// Carga de datos desde un JSON local o desde una API externa.
-
-
-
 //esto para poder modificar los datos en el ranking
 let datosAux = {
     id: 0,
@@ -39,6 +23,7 @@ let equipoSeleccionado = "";
 let equipoElegido = [];
 
 let algunoPintado = false;
+
 //obtenemos las img de los equipos q podes seleccionar
 const imgEquipo = document.querySelectorAll(".equipo");
 
@@ -72,7 +57,7 @@ const peticionFetch = async () => {
     const arrPreguntasYrespuestas = await peticion.json();
     const arrLength = await arrPreguntasYrespuestas.length;
 
-    return [arrLength,arrPreguntasYrespuestas];
+    return [arrLength, arrPreguntasYrespuestas];
 }
 
 //traemos el contenido del localStorage para obtener el nombre del jugador
@@ -115,68 +100,59 @@ const pintarFondo = (arr) => {
 //push al equipo elegido y oculta el input de nombre. los equipos y el btn de empezar a jugar
 const agregarAEquipo = (nombre, puntos = 0, equipo) => {
 
-    let auxEquipo = [];
+    let arrEquipo = JSON.parse(localStorage.getItem(equipo));
 
-    //creo el nuevo jugador
-    let jugadorNuevo = {
-        id: 0,
-        jugador: new Jugadores(nombre, puntos, equipo)
+    let jugadorEncontrado = arrEquipo.find((element) => element.jugador.nombre === nombre);
+
+    if (jugadorEncontrado) {
+        jugadorDatos = {
+            usuario: nombre,
+            equipo: equipo,
+            puntuacion: jugadorEncontrado.jugador.puntuacion,
+            id: jugadorEncontrado.id
+        }
+
+        infoContainer.innerHTML = `
+        <div class="msgJuegoIniciado">Jugador: ${nombre} bienvenido devuelta</div>
+        `;
+
+    } else {
+        //creo el nuevo jugador
+        let jugadorNuevo = {
+            id: arrEquipo.length + 1,
+            jugador: new Jugadores(nombre, puntos, equipo)
+        }
+
+        jugadorDatos = {
+            ...jugadorDatos,
+            id: jugadorNuevo.id
+        }
+
+        arrEquipo.push(jugadorNuevo);
+        arrEquipo[arrEquipo.length - 1].jugador.infoJugador();
+
+        localStorage.setItem(equipo, JSON.stringify(arrEquipo));
+
+        infoContainer.innerHTML = `
+        <div class="msgJuegoIniciado">Jugador: ${nombre} fue agregado con exito al equipo : ${equipo}</div>
+        `;
     }
-
-    switch (equipo) {
-        case "noCoffeNoWorkee":
-            jugadorNuevo = {
-                ...jugadorNuevo,
-                id: noCoffeNoWorkee.length + 1
-            }
-
-            auxEquipo = noCoffeNoWorkee;
-            noCoffeNoWorkee.push(jugadorNuevo);
-            noCoffeNoWorkee[noCoffeNoWorkee.length - 1].jugador.infoJugador()
-
-            break;
-        case "codigoYCafe":
-            jugadorNuevo = {
-                ...jugadorNuevo,
-                id: codigoYCafe.length + 1
-            }
-
-            auxEquipo = codigoYCafe;
-            codigoYCafe.push(jugadorNuevo);
-            codigoYCafe[codigoYCafe.length - 1].jugador.infoJugador()
-
-            break;
-        case "iTurnCoffeIntoCode":
-            jugadorNuevo = {
-                ...jugadorNuevo,
-                id: iTurnCoffeIntoCode.length + 1
-            }
-
-            auxEquipo = iTurnCoffeIntoCode;
-            iTurnCoffeIntoCode.push(jugadorNuevo);
-            iTurnCoffeIntoCode[iTurnCoffeIntoCode.length - 1].jugador.infoJugador()
-
-            break;
-        default:
-            break;
-    }
-
-    jugadorDatos = {
-        ...jugadorDatos,
-        id: jugadorNuevo.id
-    }
-
-    setLocalStorage(equipoSeleccionado, auxEquipo);
-
-    //ESTO PARA EL PROYECTO FINAL CAMBIALO POR UN TOASTIFY O UN SWEET ALERT 
-    infoContainer.innerHTML = `
-    <div class="msgJuegoIniciado">Jugador: ${nombre} fue agregado con exito al equipo : ${equipo}</div>
-    `;
 
     //desaparecemos el menu de eleccion de equipo y nombre
     btnContainer.style.display = "none";
 
-    return auxEquipo;
+    return arrEquipo;
+}
+
+//ranking/cambiarInfo --> quiz
+const comprobarDatosLS = () => {
+    let aux = JSON.parse(localStorage.getItem("jugadorDatos"));
+
+    if (aux) {
+
+        equipoSeleccionado = aux.equipo;
+        algunoPintado = true;
+    }
 }
 
 //funcion q le da al btn (empezar a jugar su evento)
@@ -208,8 +184,6 @@ const comenzarJuego = (arrLength) => {
             //modificiamos los datos del jugador actual
             jugadorDatos = {
                 ...jugadorDatos,
-                usuario: nombre,
-                equipo: equipoSeleccionado,
                 puntuacion: 0
             }
 
@@ -388,10 +362,11 @@ const eventoNuevoJuego = () => {
 
 //funcion q carga las 2 funciones anteriorres (esto para q no haya q llamar a tantas funcion al final)
 const cargarEventosMenu = async (arr) => {
-    const [arrLength,arrPreguntasYrespuestas] = await peticionFetch();
+    const [arrLength, arrPreguntasYrespuestas] = await peticionFetch();
+    comprobarDatosLS();
     pintarFondo(arr);
     comenzarJuego(arrLength);
-    funcionPregunta(arrPreguntasYrespuestas, analizandoRespuesta,arrLength);
+    funcionPregunta(arrPreguntasYrespuestas, analizandoRespuesta, arrLength);
     eventoNuevoJuego();
 }
 
