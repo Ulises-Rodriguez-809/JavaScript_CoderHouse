@@ -1,19 +1,19 @@
 const btnCambiar = document.getElementById("btnCambiar");
 
 //actuliza el localStorage del equipo del jugador
-const actualizarInfoEquipo = (nombreJug,id,equipo)=>{
+const actualizarInfoEquipo = (nombreJug, id, equipo) => {
     let arrAux = JSON.parse(localStorage.getItem(equipo));
 
     arrAux.forEach(element => {
         if (element.id === id) {
             element.jugador = {
                 ...element.jugador,
-                ["nombre"] : nombreJug
+                ["nombre"]: nombreJug
             }
         }
     });
 
-    localStorage.setItem(equipo,JSON.stringify(arrAux));
+    localStorage.setItem(equipo, JSON.stringify(arrAux));
 }
 
 //cambia los datos del jugador
@@ -25,6 +25,7 @@ const cambiarInfo = () => {
     const msg3 = document.querySelector(".msg3");
     msg3.style.display = "none";
 
+    let usuarios = JSON.parse(localStorage.getItem("usuarios"));
     let jugActual = JSON.parse(localStorage.getItem("jugadorActual"));
     let jugDatos = JSON.parse(localStorage.getItem("jugadorDatos"));
 
@@ -55,6 +56,13 @@ const cambiarInfo = () => {
                     msg3.innerHTML = `Los datos se cambiaron con exito`;
                     msg3.classList.replace("msgInc", "msgCor");
 
+                    usuarioIndice = usuarios.findIndex((element) => jugActual.usuario === element.usuario);
+
+                    usuarios[usuarioIndice] = {
+                        usuario: nuevoNombre.value,
+                        contraseña: nuevaContraseña.value
+                    }
+
                     jugActual = {
                         usuario: nuevoNombre.value,
                         contraseña: nuevaContraseña.value,
@@ -62,13 +70,15 @@ const cambiarInfo = () => {
 
                     jugDatos = {
                         ...jugDatos,
-                        ["usuario"] : nuevoNombre.value
+                        ["usuario"]: nuevoNombre.value
                     }
 
-                    localStorage.setItem("jugadorActual", JSON.stringify(jugActual));
-                    localStorage.setItem("jugadorDatos",JSON.stringify(jugDatos));
 
-                    actualizarInfoEquipo(jugDatos.usuario,jugDatos.id,jugDatos.equipo);
+                    localStorage.setItem("usuarios", JSON.stringify(usuarios));
+                    localStorage.setItem("jugadorActual", JSON.stringify(jugActual));
+                    localStorage.setItem("jugadorDatos", JSON.stringify(jugDatos));
+
+                    actualizarInfoEquipo(jugDatos.usuario, jugDatos.id, jugDatos.equipo);
                 }
             })
         }

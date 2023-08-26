@@ -51,17 +51,6 @@ const obtenerEquiposLocalStorage = (arrNombre) => {
     let equipoLS = [];
 
     equipoLS = auxArr ? ordernar(auxArr) : localStorageNoCargado(arrNombre);
-    
-    //caso para ordernar los jugadores por su puntuacion
-    // if (equipoLS) {
-    //     equipoLS.sort((a, b) => b.jugador.puntuacion - a.jugador.puntuacion);
-
-    //     //caso por si algun motivo no se cargo al localStorage previamente
-    // } else {
-    //     setLocalStorage(arrNombre);
-
-    //     equipoLS = JSON.parse(localStorage.getItem(arrNombre));
-    // }
 
     return equipoLS;
 }
