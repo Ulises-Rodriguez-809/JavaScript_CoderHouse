@@ -5,7 +5,7 @@ const equipoPorDefecto = "noCoffeNoWorkee";
 
 const listaMejJug = document.getElementById("listaMejJug");
 
-//fun q setea el local storage
+//fun q setea el local storage en caso de q no esten cargador previamente
 const setLocalStorage = (arrNombre) => {
     switch (arrNombre) {
         case "noCoffeNoWorkee":
@@ -25,19 +25,43 @@ const setLocalStorage = (arrNombre) => {
     }
 }
 
+const ordernar = (arr)=>{
+    let equipoLS = [];
+
+    equipoLS = arr.sort((a, b) => b.jugador.puntuacion - a.jugador.puntuacion);
+
+    return equipoLS;
+}
+
+const localStorageNoCargado = (arrNombre)=>{
+    let equipoLS = [];
+    
+    setLocalStorage(arrNombre);
+
+    equipoLS = JSON.parse(localStorage.getItem(arrNombre));
+
+    return equipoLS
+}
+
 //fun q obtiene el local storage del equipo clickeado
 const obtenerEquiposLocalStorage = (arrNombre) => {
 
-    let equipoLS = JSON.parse(localStorage.getItem(arrNombre));
+    let auxArr = JSON.parse(localStorage.getItem(arrNombre));
 
-    if (equipoLS) {
-        equipoLS.sort((a, b) => b.jugador.puntuacion - a.jugador.puntuacion);
+    let equipoLS = [];
 
-    } else {
-        setLocalStorage(arrNombre);
+    equipoLS = auxArr ? ordernar(auxArr) : localStorageNoCargado(arrNombre);
+    
+    //caso para ordernar los jugadores por su puntuacion
+    // if (equipoLS) {
+    //     equipoLS.sort((a, b) => b.jugador.puntuacion - a.jugador.puntuacion);
 
-        equipoLS = JSON.parse(localStorage.getItem(arrNombre));
-    }
+    //     //caso por si algun motivo no se cargo al localStorage previamente
+    // } else {
+    //     setLocalStorage(arrNombre);
+
+    //     equipoLS = JSON.parse(localStorage.getItem(arrNombre));
+    // }
 
     return equipoLS;
 }
@@ -61,22 +85,7 @@ const puntosDelEquipo = (equipo, fun) => {
 
     let puntosTotales = 0;
 
-    switch (equipo) {
-        case "noCoffeNoWorkee":
-            puntosTotales = fun("noCoffeNoWorkee", noCoffeNoWorkee);
-
-            break;
-        case "codigoYCafe":
-            puntosTotales = fun("codigoYCafe", codigoYCafe);
-
-            break;
-        case "iTurnCoffeIntoCode":
-            puntosTotales = fun("iTurnCoffeIntoCode", iTurnCoffeIntoCode);
-
-            break;
-        default:
-            break;
-    }
+    puntosTotales = fun(equipo);
 
     return puntosTotales;
 }
@@ -118,27 +127,6 @@ const cargarLista = (arrNombre) => {
     crearElementos(lSEquipo);
 }
 
-//funcion q analiza el equipo a cargar su info
-const cambiarInfoLista = (nombreEquipo) => {
-
-    switch (nombreEquipo) {
-        case "noCoffeNoWorkee":
-            cargarLista("noCoffeNoWorkee");
-
-            break;
-        case "codigoYCafe":
-            cargarLista("codigoYCafe");
-
-            break;
-        case "iTurnCoffeIntoCode":
-            cargarLista("iTurnCoffeIntoCode");
-
-            break;
-        default:
-            break;
-    }
-}
-
 //info por defecto para q asi se muestre un equipo y la info de ese equipo al entrar al ranking
 const infoPorDefecto = (equipoPorDefecto) => {
 
@@ -148,7 +136,25 @@ const infoPorDefecto = (equipoPorDefecto) => {
 
     cambiarPuntosTotales(puntosPorDefecto);
 
-    cambiarInfoLista(equipoPorDefecto);
+    cargarLista(equipoPorDefecto);
+}
+
+//fun q ejecuta el tostify
+const toastifiFun = (equipo) => {
+    Toastify({
+        text: `Mostrando el ranking del equipo ${equipo}`,
+        style: "font-size : 2.5rem",
+        duration: 3500,
+        close: true,
+        gravity: "top",
+        position: "right",
+        stopOnFocus: true,
+        style: {
+            fontSize: "2rem",
+            background: "linear-gradient(to right, #00b09b, #96c93d)",
+        }
+
+    }).showToast();
 }
 
 //funcion q se encarga de darle el evento a los equipos
@@ -156,11 +162,12 @@ const mostrarInfoEquipoClick = () => {
     const equiposImg = document.querySelectorAll(".equipoLista");
     const jugadoresContainer = document.querySelector(".jugadoresContainer");
 
-
     equiposImg.forEach(element => {
         element.addEventListener("click", (e) => {
             const { target } = e;
             const { name } = target;
+
+            toastifiFun(name);
 
             jugadoresContainer.style.display = "block";
 
@@ -171,7 +178,7 @@ const mostrarInfoEquipoClick = () => {
 
             cambiarPuntosTotales(puntosTotalesEquipo);
 
-            cambiarInfoLista(name);
+            cargarLista(name);
         })
     });
 }
@@ -180,7 +187,6 @@ const mostrarInfoEquipoClick = () => {
 const cargarFuncionalidad = () => {
     infoPorDefecto(equipoPorDefecto);
     mostrarInfoEquipoClick();
-    //funcionalidad para cerrar sesion
     cerrarSesion();
 }
 

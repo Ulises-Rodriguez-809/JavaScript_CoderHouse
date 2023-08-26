@@ -32,5 +32,4 @@ const cerrarSesion = () => {
     })
 }
 
-
 export default cerrarSesion;

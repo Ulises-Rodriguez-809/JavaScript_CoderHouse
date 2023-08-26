@@ -14,7 +14,6 @@ const actualizarInfoEquipo = (nombreJug,id,equipo)=>{
     });
 
     localStorage.setItem(equipo,JSON.stringify(arrAux));
-    console.log(JSON.parse(localStorage.getItem(equipo)))
 }
 
 //cambia los datos del jugador

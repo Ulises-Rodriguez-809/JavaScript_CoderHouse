@@ -1,6 +1,5 @@
 import { noCoffeNoWorkee, codigoYCafe, iTurnCoffeIntoCode } from "./equipos.js";
 
-
 const usuariosRegistrados = [];
 
 let usuarioIn = {
@@ -16,6 +15,7 @@ let usuarioReg = {
 
 const msg = document.querySelector(".msg");
 
+//fun q se encarga de los eventos de los btn de is y reg
 const opcion = () => {
     const btnOpcionIniciarSesion = document.getElementById("btnOpcion__iniciarSesion");
     const btnOpcionRegistrarse = document.getElementById("btnOpcion__registrarse");
@@ -35,21 +35,22 @@ const opcion = () => {
 }
 
 const cargarStorage = (arr) => {
-    //cargamos al local storage algunos usuarios 
     JSON.parse(localStorage.getItem("usuarios")) || localStorage.setItem("usuarios", JSON.stringify(arr));
 }
 
-const cargarStorageEquipos = ()=>{
-    
+//carga los equipos al localStorage
+const cargarStorageEquipos = () => {
+
     let aux = JSON.parse(localStorage.getItem("noCoffeNoWorkee")) || JSON.parse(localStorage.getItem("codigoYCafe")) || JSON.parse(localStorage.getItem("iTurnCoffeIntoCode"));
 
     if (aux === null) {
-        localStorage.setItem("noCoffeNoWorkee",JSON.stringify(noCoffeNoWorkee));
-        localStorage.setItem("codigoYCafe",JSON.stringify(codigoYCafe));
-        localStorage.setItem("iTurnCoffeIntoCode",JSON.stringify(iTurnCoffeIntoCode));
+        localStorage.setItem("noCoffeNoWorkee", JSON.stringify(noCoffeNoWorkee));
+        localStorage.setItem("codigoYCafe", JSON.stringify(codigoYCafe));
+        localStorage.setItem("iTurnCoffeIntoCode", JSON.stringify(iTurnCoffeIntoCode));
     }
 }
 
+//fun q guarda los datos dependiendo si es is o reg
 const capturarValores = (arr, nombreObjeto) => {
 
     arr.forEach((element) => {
@@ -60,12 +61,7 @@ const capturarValores = (arr, nombreObjeto) => {
             switch (nombreObjeto) {
                 case "usuarioIn":
                     usuarioIn = {
-                        //con el spread copias todo lo q tenga objeto
                         ...usuarioIn,
-                        //recorda q para acceder a las props de un objeto tenes el . y ["nombre de la clave"]
-                        //de esta manera modificas el valor de la clave cuyo nombre coincida con name
-                        //osea es como si hicieras objeto["usuario"] o objeto.usuario : "pepe" / usuario : "pepe"
-                        //te ahorras tener q hacer el if else
                         [name]: value
                     }
 
@@ -170,6 +166,7 @@ const casoReg = () => {
         const regContraseña = document.getElementById("regContraseña");
         const regConConfirmar = document.getElementById("regConConfirmar");
 
+        //caso usuario ya registrado
         if (usuarioEncontrado) {
             msg2.innerHTML = `
                 <p>Ese usuario ya existe</p>
@@ -189,7 +186,7 @@ const casoReg = () => {
                 focusConfirm: false,
             })
 
-        }
+        }//caso contraseñas distintas
         else if (regContraseña.value !== regConConfirmar.value) {
             msg2.innerHTML = `
                 <p>Las contraseñas no coinciden</p>
@@ -202,12 +199,13 @@ const casoReg = () => {
                 title: '<h1>No se logro completar el registro</h1>',
                 icon: 'warning',
                 html:
-                    '<h2>Las contraseñas no coinciden</h2>"',
+                    '<h2>Las contraseñas no coinciden</h2>',
                 showCloseButton: true,
                 showCancelButton: true,
                 focusConfirm: false,
             })
-        }
+
+        }//caso todo bien
         else {
             let aux = {
                 usuario: usuarioReg.usuario,
@@ -244,7 +242,7 @@ const casoReg = () => {
     })
 }
 
-const cargarFuns = ()=>{
+const cargarFuns = () => {
     cargarStorage(usuariosRegistrados);
     cargarStorageEquipos();
     opcion();
