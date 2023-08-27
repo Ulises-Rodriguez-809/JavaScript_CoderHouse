@@ -110,7 +110,7 @@ const agregarAEquipo = (nombre, puntos = 0, equipo) => {
         }
 
         infoContainer.innerHTML = `
-        <div class="msgJuegoIniciado">Jugador: ${nombre} bienvenido devuelta</div>
+        <div class="msgJuegoIniciado">Jugador: ${nombre} bienvenido devuelta al equipo: ${equipo}</div>
         `;
 
         //agrega un jugador nuevo al equipo
