@@ -25,6 +25,7 @@ const setLocalStorage = (arrNombre) => {
     }
 }
 
+//fun q ordena los jugadores por su puntuacion
 const ordernar = (arr)=>{
     let equipoLS = [];
 
