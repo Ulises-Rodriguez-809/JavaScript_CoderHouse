@@ -12,6 +12,7 @@ const cerrarSesion = () => {
     const cerrarSesionBtn = document.getElementById("cerrarSesion");
 
     cerrarSesionBtn.addEventListener("click", () => {
+
         let jugadorDatos = localStorageGet("jugadorDatos");
         let jugadorAtual = localStorageGet("jugadorActual");
 

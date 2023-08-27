@@ -99,7 +99,9 @@ const agregarAEquipo = (nombre, puntos = 0, equipo) => {
     let jugadorEncontrado = arrEquipo.find((element) => element.jugador.nombre === nombre);
 
     //se encarga de saludar a un jugador ya agregado y de tomar sus datos
+
     if (jugadorEncontrado) {
+
         jugadorDatos = {
             usuario: nombre,
             equipo: equipo,
@@ -113,14 +115,17 @@ const agregarAEquipo = (nombre, puntos = 0, equipo) => {
 
         //agrega un jugador nuevo al equipo
     } else {
+
         let jugadorNuevo = {
             id: arrEquipo.length + 1,
             jugador: new Jugadores(nombre, puntos, equipo)
         }
 
         jugadorDatos = {
-            ...jugadorDatos,
-            id: jugadorNuevo.id
+            id: jugadorNuevo.id,
+            usuario: nombre,
+            equipo: equipo,
+            puntuacion : 0
         }
 
         arrEquipo.push(jugadorNuevo);
